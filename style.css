@@ -649,3 +649,4 @@ details.day .daylink + .bring { margin-top: 0; }
 .csheet .sbar { position: sticky; top: 0; z-index: 3; height: 46px; background: #fff; border-radius: 20px 20px 0 0; display: flex; align-items: center; justify-content: center; }
 .csheet .sbar .grab { margin: 0; }
 .csheet .sbar .x { position: absolute; right: 10px; top: 4px; float: none; margin: 0; }
+.sc .facts b.bad, .csheet .facts b.bad { color: #c62828; }
