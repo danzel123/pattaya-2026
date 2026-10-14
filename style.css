@@ -592,3 +592,4 @@ footer { color: var(--mut); }
 .tg.t-kidfree { background: #e5f6ea; color: #1d6b31; }
 .vfilter { margin: 0 0 12px; }
 .hide { display: none !important; }
+.daylink { display: block; margin: 8px 14px 2px; padding: 12px 14px; border-radius: 14px; background: var(--c); color: #fff !important; font-weight: 800; text-decoration: none !important; }
