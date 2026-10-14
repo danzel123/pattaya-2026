@@ -642,3 +642,7 @@ details.day .daylink + .bring { margin-top: 0; }
 .csheet dt { font-weight: 800; margin-top: 12px; }
 .csheet dd { margin: 2px 0 0; line-height: 1.45; }
 #lightbox { z-index: 3300 !important; }
+/* окно: всегда в пределах видимой части экрана, крестик закреплён сверху */
+.csheet { max-height: 85vh; max-height: calc(100dvh - 48px); }
+.csheet .x { position: sticky; top: 8px; float: right; margin: 0 10px -38px 0; }
+.csheet .grab { margin-top: 10px; }

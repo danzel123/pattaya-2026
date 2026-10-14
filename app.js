@@ -665,26 +665,19 @@ document.querySelectorAll('a[href^="http"]').forEach(a => { a.target = "_blank";
   const sheet = $("card-sheet");
   if (!sheet) return;
   const box = sheet.querySelector(".csheet"), body = sheet.querySelector(".cbody");
-  let prevHash = "";
   function open(card) {
     body.innerHTML = "";
     body.append(...card.querySelector(".full").cloneNode(true).childNodes);
     sheet.hidden = false; box.scrollTop = 0;
-    if (location.hash.slice(1) !== card.id) { prevHash = location.hash; history.replaceState(history.state, "", "#" + card.id); }
     const gal = body.querySelector(".cgal"), dots = body.querySelectorAll(".dots i");
     if (gal && dots.length) {
       const upd = () => { const i = Math.round(gal.scrollLeft / (gal.firstElementChild.offsetWidth + 8)); dots.forEach((d, k) => d.classList.toggle("on", k === i)); };
       gal.addEventListener("scroll", upd, { passive: true }); upd();
     }
   }
-  function close() {
-    if (sheet.hidden) return;
-    sheet.hidden = true;
-    history.replaceState(history.state, "", prevHash || location.pathname + location.search);
-  }
+  function close() { sheet.hidden = true; }
   function scrollTo(card) {
-    const y = card.getBoundingClientRect().top + scrollY - (typeof topGap === "function" ? topGap(card) : 80);
-    window.scrollTo(0, y);
+    window.scrollTo(0, card.getBoundingClientRect().top + scrollY - (typeof topGap === "function" ? topGap(card) : 80));
   }
   window.cardSheet = { open, close, scrollTo };
   document.addEventListener("click", e => {
@@ -693,9 +686,8 @@ document.querySelectorAll('a[href^="http"]').forEach(a => { a.target = "_blank";
     open(c);
   });
   document.addEventListener("keydown", e => {
-    if (e.key === "Escape") close();
+    if (e.key === "Escape" && !sheet.hidden) close();
     if (e.key === "Enter" && document.activeElement && document.activeElement.classList.contains("sc")) open(document.activeElement);
   });
-  sheet.addEventListener("click", e => { if (e.target === sheet || e.target.closest(".x")) close(); });
-  new MutationObserver(() => { if (sheet.hidden && location.hash && $(location.hash.slice(1)) && $(location.hash.slice(1)).classList.contains("sc")) history.replaceState(history.state, "", prevHash || location.pathname + location.search); }).observe(sheet, { attributes: true, attributeFilter: ["hidden"] });
+  sheet.addEventListener("click", e => { if (e.target === sheet || e.target.closest(".x")) { e.preventDefault(); e.stopPropagation(); close(); } });
 })();
