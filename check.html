@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ru"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow"><meta name="theme-color" content="#0b6e8f">
+<title>Чек-лист · Паттайя 2026</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌴</text></svg>">
+<link rel="stylesheet" href="style.css?v=5306adc7">
+<link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Паттайя">
+</head><body class="p-check">
+<header class="topbar"><a href="index.html" class="home">🌴</a><h1>✅ Чек-лист</h1><button class="sbtn" data-search aria-label="Поиск">🔍</button></header>
+<main><section id="check">
+<h2>✅ Чек-лист до вылета</h2>
+<p class="note">Галочки сохраняются на этом телефоне.</p>
+<div class="card pad"><label class="chk"><input type="checkbox" data-k="c0"><span>Проверить правила въезда/транзита в Китае для граждан РФ</span></label><label class="chk"><input type="checkbox" data-k="c1"><span>Заказать бесплатный шаттл отеля в Пекине (WeChat ELONGHOTEL001): вечером из T3 и в 05:30 в T2</span></label><label class="chk"><input type="checkbox" data-k="c2"><span>Заполнить TDAC на всех пятерых (18–20.10)</span></label><label class="chk"><input type="checkbox" data-k="c3"><span>Написать в Mövenpick: ребёнок, кроватка, завтрак, breakfast box на 01.11, Wi-Fi в номерах</span></label><label class="chk"><input type="checkbox" data-k="c4"><span>Уточнить у родителей условия аренды: кресло, место возврата, страховка, водители</span></label><label class="chk"><input type="checkbox" data-k="c5"><span>МВУ у водителя (или водителей)</span></label><label class="chk"><input type="checkbox" data-k="c6"><span>Страховки для выезжающих за рубеж на всех (и малышка), номер ассистанса и фото полисов — в телефоне у каждого взрослого</span></label><label class="chk"><input type="checkbox" data-k="c7"><span>Наличные: юани на Пекин, доллары на Таиланд</span></label><label class="chk"><input type="checkbox" data-k="c8"><span>Скриншот адреса пекинского отеля на китайском, офлайн-карты</span></label><label class="chk"><input type="checkbox" data-k="c9"><span>Собрать аптечку по списку, показать детскую часть педиатру; панамка</span></label><label class="chk"><input type="checkbox" data-k="c10"><span>Лёгкая прогулочная коляска (сдаётся у трапа), переноска</span></label><label class="chk"><input type="checkbox" data-k="c11"><span>eSIM/сим-карты: Китай + Таиланд (с безлимитом и раздачей для работы)</span></label><label class="chk"><input type="checkbox" data-k="c12"><span>Ноутбук, зарядки, переходник, удлинитель; проверить VPN и рабочие доступы</span></label></div>
+<div class="progress"><div id="pbar"></div></div>
+</section></main>
+<footer>Фото отелей и заведений — с сайтов отелей, Trip.com и Google Maps; остальные — Wikipedia / Wikimedia Commons. Карта: © OpenStreetMap. Время и цены — примерные.</footer>
+<nav class="tabbar"><a href="index.html" class=""><span>🏠</span>Главная</a><a href="plan.html" class=""><span>🗓</span>План</a><a href="places.html" class=""><span>📍</span>Места</a><a href="food.html" class=""><span>🍽</span>Еда</a><a href="#" data-more class="on"><span>☰</span>Ещё</a></nav>
+<div id="more" hidden><div class="msheet"><button class="mclose" aria-label="Закрыть">✕</button><h3>Ещё</h3><a href="hotels.html"><span>🏨</span>Отели</a><a href="shop.html"><span>🛍</span>Покупки</a><a href="massage.html"><span>💆</span>Массаж</a><a href="talk.html"><span>🗣</span>Разговорник</a><a href="safety.html"><span>🩹</span>Безопасность</a><a href="check.html"><span>✅</span>Чек-лист</a><a href="#" data-fx><span>💱</span>Калькулятор валют</a><a href="index.html#offline"><span>📥</span>Скачать для офлайна</a></div></div>
+<button id="fxbtn" data-fx aria-label="Калькулятор валют">฿ → ₽</button>
+<div id="fx" hidden>
+  <div class="fxbox">
+    <button class="fxclose" aria-label="Закрыть">✕</button>
+    <h3>💱 Сколько это стоит</h3>
+    <label>Баты, ฿<input type="number" inputmode="decimal" id="fx-thb" value="100"></label>
+    <label>Рубли, ₽<input type="number" inputmode="decimal" id="fx-rub"></label>
+    <label>Доллары, $<input type="number" inputmode="decimal" id="fx-usd"></label>
+    <div class="fxq"><button data-v="40">40</button><button data-v="100">100</button><button data-v="500">500</button><button data-v="1000">1000</button><button data-v="1490">1490</button><button data-v="5000">5000</button></div>
+    <p class="fxrate" id="fx-rate">загружаю курс…</p>
+  </div>
+</div>
+<div id="bigtext" hidden><div class="bt"></div><div class="br"></div><button class="say-th btsay" aria-label="Произнести по-тайски">🔊 Произнести</button><div class="bh">нажмите, чтобы закрыть</div></div>
+<div id="lightbox" hidden>
+  <button class="lbx close" aria-label="Закрыть">✕</button>
+  <button class="lbx prev" aria-label="Назад">‹</button>
+  <img alt=""><div class="cap"></div>
+  <button class="lbx next" aria-label="Вперёд">›</button>
+</div>
+
+
+<script src="app.js?v=5306adc7"></script>
+</body></html>

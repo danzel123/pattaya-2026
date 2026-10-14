@@ -1,0 +1,81 @@
+// Офлайн-режим: страницы и картинки хранятся в телефоне
+const VER = "beb8b566";
+const CORE = "core-" + VER, IMG = "img-v1", RT = "rt-v1", TILES = "tiles-v1";
+const FILES = ["index.html", "plan.html", "places.html", "food.html", "hotels.html", "shop.html", "massage.html", "talk.html", "safety.html", "check.html", "style.css?v=5306adc7", "app.js?v=5306adc7", "search.json", "nearby.json", "manifest.webmanifest", "icon-192.png", "vendor/leaflet.js", "vendor/leaflet.css", "img/t/a_aedes.jpg", "img/t/a_blueringed.jpg", "img/t/a_boxjelly.jpg", "img/t/a_centipede.jpg", "img/t/a_cobra.jpg", "img/t/a_cone.jpg", "img/t/a_coral.jpg", "img/t/a_dog.jpg", "img/t/a_greenviper.jpg", "img/t/a_hornet.jpg", "img/t/a_horseshoe.jpg", "img/t/a_kingcobra.jpg", "img/t/a_lionfish.jpg", "img/t/a_macaque.jpg", "img/t/a_malayanviper.jpg", "img/t/a_manowar.jpg", "img/t/a_monitor.jpg", "img/t/a_moonjelly.jpg", "img/t/a_paederus.jpg", "img/t/a_python.jpg", "img/t/a_scorpion.jpg", "img/t/a_seakrait.jpg", "img/t/a_stingray.jpg", "img/t/a_stonefish.jpg", "img/t/a_tokay.jpg", "img/t/a_urchin.jpg", "img/t/aquaverse.jpg", "img/t/balihai.jpg", "img/t/bigbuddha.jpg", "img/t/bj_bld.jpg", "img/t/bj_ext.jpg", "img/t/bj_lobby.jpg", "img/t/bj_rest.jpg", "img/t/bj_room.jpg", "img/t/bkk_arr.jpg", "img/t/chichan.jpg", "img/t/d_boatnoodle.jpg", "img/t/d_bualoy.jpg", "img/t/d_coconutice.jpg", "img/t/d_fruit.jpg", "img/t/d_gaengsom.jpg", "img/t/d_gaitod.jpg", "img/t/d_greencurry.jpg", "img/t/d_hoytod.jpg", "img/t/d_insects.jpg", "img/t/d_jok.jpg", "img/t/d_kaijeow.jpg", "img/t/d_kaiyang.jpg", "img/t/d_kanomkrok.jpg", "img/t/d_kaomokgai.jpg", "img/t/d_kaprao.jpg", "img/t/d_khanombuang.jpg", "img/t/d_khaomangai.jpg", "img/t/d_khaopad.jpg", "img/t/d_khaosoi.jpg", "img/t/d_larb.jpg", "img/t/d_lookchin.jpg", "img/t/d_mangosticky.jpg", "img/t/d_massaman.jpg", "img/t/d_moodaeng.jpg", "img/t/d_mookrob.jpg", "img/t/d_mooping.jpg", "img/t/d_padpakboong.jpg", "img/t/d_padseeew.jpg", "img/t/d_padthai.jpg", "img/t/d_panang.jpg", "img/t/d_plamuek.jpg", "img/t/d_plaraad.jpg", "img/t/d_poopadpong.jpg", "img/t/d_radna.jpg", "img/t/d_redcurry.jpg", "img/t/d_roti.jpg", "img/t/d_saikrok.jpg", "img/t/d_seafoodgrill.jpg", "img/t/d_shake.jpg", "img/t/d_somtam.jpg", "img/t/d_springroll.jpg", "img/t/d_streetstall.jpg", "img/t/d_thaitea.jpg", "img/t/d_todmanpla.jpg", "img/t/d_tomkha.jpg", "img/t/d_tomyum.jpg", "img/t/d_yamwoonsen.jpg", "img/t/floating.jpg", "img/t/jomtien.jpg", "img/t/kolan.jpg", "img/t/kolan_ferry.jpg", "img/t/m_bigcextra.jpg", "img/t/m_central.jpg", "img/t/m_foodland.jpg", "img/t/m_friendship.jpg", "img/t/m_harbor.jpg", "img/t/m_jomtienmarket.jpg", "img/t/m_lotustai.jpg", "img/t/m_makro.jpg", "img/t/m_marina.jpg", "img/t/m_nightbazaar.jpg", "img/t/m_outlet.jpg", "img/t/m_royal.jpg", "img/t/m_tops.jpg", "img/t/m_villa.jpg", "img/t/ms_bannammao.jpg", "img/t/ms_cert.jpg", "img/t/ms_dhyana.jpg", "img/t/ms_gaysorn.jpg", "img/t/ms_healthland.jpg", "img/t/ms_kradangnga.jpg", "img/t/ms_letsrelax.jpg", "img/t/ms_lrt21.jpg", "img/t/ms_mumu.jpg", "img/t/ms_nok.jpg", "img/t/ms_oasis.jpg", "img/t/ms_onsen.jpg", "img/t/ms_siladon.jpg", "img/t/ms_sukkai.jpg", "img/t/ms_tbmi.jpg", "img/t/ms_veranda.jpg", "img/t/mv_aerial.jpg", "img/t/mv_buffet.jpg", "img/t/mv_choc.jpg", "img/t/mv_fire.jpg", "img/t/mv_kids.jpg", "img/t/mv_lacosta.jpg", "img/t/mv_play.jpg", "img/t/mv_pool.jpg", "img/t/mv_room.jpg", "img/t/mv_slide.jpg", "img/t/mv_sunset.jpg", "img/t/mv_twist.jpg", "img/t/nongnooch.jpg", "img/t/p_babylove.jpg", "img/t/p_bananaboat.jpg", "img/t/p_chatramue.jpg", "img/t/p_coconutchips.jpg", "img/t/p_crystal.jpg", "img/t/p_doichaang.jpg", "img/t/p_driedmango.jpg", "img/t/p_dutchmill.jpg", "img/t/p_foremost.jpg", "img/t/p_lactasoy.jpg", "img/t/p_lobo.jpg", "img/t/p_maesri.jpg", "img/t/p_mamypoko.jpg", "img/t/p_meiji.jpg", "img/t/p_mistine.jpg", "img/t/p_peachy.jpg", "img/t/p_poysian.jpg", "img/t/p_soffell.jpg", "img/t/p_sriraja.jpg", "img/t/p_tigerbalm.jpg", "img/t/p_toastie.jpg", "img/t/pek_t2.jpg", "img/t/pek_t3.jpg", "img/t/r_balihaisunset.jpg", "img/t/r_bluesea.jpg", "img/t/r_friendsea.jpg", "img/t/r_glasshouse.jpg", "img/t/r_lanpho.jpg", "img/t/r_lungsawai.jpg", "img/t/r_mumaroi.jpg", "img/t/r_pier21.jpg", "img/t/r_praneat.jpg", "img/t/r_pupen.jpg", "img/t/r_samaebeach.jpg", "img/t/r_samaesarn.jpg", "img/t/r_silverlake.jpg", "img/t/r_skygallery.jpg", "img/t/r_thepprasit.jpg", "img/t/ramayana.jpg", "img/t/s7_inside.jpg", "img/t/s7_mama.jpg", "img/t/s7_milk.jpg", "img/t/s7_salapao.jpg", "img/t/s7_taokaenoi.jpg", "img/t/s_curry.jpg", "img/t/s_silk.jpg", "img/t/s_thaitea.jpg", "img/t/s_tiger.jpg", "img/t/sattahip.jpg", "img/t/seven.jpg", "img/t/terminal21.jpg", "img/t/thepprasit.jpg", "img/t/truth.jpg", "img/t/underwater.jpg", "img/t/zoo.jpg", "img/a_aedes.jpg", "img/a_blueringed.jpg", "img/a_boxjelly.jpg", "img/a_centipede.jpg", "img/a_cobra.jpg", "img/a_cone.jpg", "img/a_coral.jpg", "img/a_dog.jpg", "img/a_greenviper.jpg", "img/a_hornet.jpg", "img/a_horseshoe.jpg", "img/a_kingcobra.jpg", "img/a_lionfish.jpg", "img/a_macaque.jpg", "img/a_malayanviper.jpg", "img/a_manowar.jpg", "img/a_monitor.jpg", "img/a_moonjelly.jpg", "img/a_paederus.jpg", "img/a_python.jpg", "img/a_scorpion.jpg", "img/a_seakrait.jpg", "img/a_stingray.jpg", "img/a_stonefish.jpg", "img/a_tokay.jpg", "img/a_urchin.jpg", "img/aquaverse.jpg", "img/balihai.jpg", "img/bigbuddha.jpg", "img/bj_bld.jpg", "img/bj_ext.jpg", "img/bj_lobby.jpg", "img/bj_rest.jpg", "img/bj_room.jpg", "img/bkk_arr.jpg", "img/chichan.jpg", "img/d_boatnoodle.jpg", "img/d_bualoy.jpg", "img/d_coconutice.jpg", "img/d_fruit.jpg", "img/d_gaengsom.jpg", "img/d_gaitod.jpg", "img/d_greencurry.jpg", "img/d_hoytod.jpg", "img/d_insects.jpg", "img/d_jok.jpg", "img/d_kaijeow.jpg", "img/d_kaiyang.jpg", "img/d_kanomkrok.jpg", "img/d_kaomokgai.jpg", "img/d_kaprao.jpg", "img/d_khanombuang.jpg", "img/d_khaomangai.jpg", "img/d_khaopad.jpg", "img/d_khaosoi.jpg", "img/d_larb.jpg", "img/d_lookchin.jpg", "img/d_mangosticky.jpg", "img/d_massaman.jpg", "img/d_moodaeng.jpg", "img/d_mookrob.jpg", "img/d_mooping.jpg", "img/d_padpakboong.jpg", "img/d_padseeew.jpg", "img/d_padthai.jpg", "img/d_panang.jpg", "img/d_plamuek.jpg", "img/d_plaraad.jpg", "img/d_poopadpong.jpg", "img/d_radna.jpg", "img/d_redcurry.jpg", "img/d_roti.jpg", "img/d_saikrok.jpg", "img/d_seafoodgrill.jpg", "img/d_shake.jpg", "img/d_somtam.jpg", "img/d_springroll.jpg", "img/d_streetstall.jpg", "img/d_thaitea.jpg", "img/d_todmanpla.jpg", "img/d_tomkha.jpg", "img/d_tomyum.jpg", "img/d_yamwoonsen.jpg", "img/floating.jpg", "img/jomtien.jpg", "img/kolan.jpg", "img/kolan_ferry.jpg", "img/m_bigcextra.jpg", "img/m_central.jpg", "img/m_foodland.jpg", "img/m_friendship.jpg", "img/m_harbor.jpg", "img/m_jomtienmarket.jpg", "img/m_lotustai.jpg", "img/m_makro.jpg", "img/m_marina.jpg", "img/m_nightbazaar.jpg", "img/m_outlet.jpg", "img/m_royal.jpg", "img/m_tops.jpg", "img/m_villa.jpg", "img/ms_bannammao.jpg", "img/ms_cert.jpg", "img/ms_dhyana.jpg", "img/ms_gaysorn.jpg", "img/ms_healthland.jpg", "img/ms_kradangnga.jpg", "img/ms_letsrelax.jpg", "img/ms_lrt21.jpg", "img/ms_mumu.jpg", "img/ms_nok.jpg", "img/ms_oasis.jpg", "img/ms_onsen.jpg", "img/ms_siladon.jpg", "img/ms_sukkai.jpg", "img/ms_tbmi.jpg", "img/ms_veranda.jpg", "img/mv_aerial.jpg", "img/mv_buffet.jpg", "img/mv_choc.jpg", "img/mv_fire.jpg", "img/mv_kids.jpg", "img/mv_lacosta.jpg", "img/mv_play.jpg", "img/mv_pool.jpg", "img/mv_room.jpg", "img/mv_slide.jpg", "img/mv_sunset.jpg", "img/mv_twist.jpg", "img/nongnooch.jpg", "img/p_babylove.jpg", "img/p_bananaboat.jpg", "img/p_chatramue.jpg", "img/p_coconutchips.jpg", "img/p_crystal.jpg", "img/p_doichaang.jpg", "img/p_driedmango.jpg", "img/p_dutchmill.jpg", "img/p_foremost.jpg", "img/p_lactasoy.jpg", "img/p_lobo.jpg", "img/p_maesri.jpg", "img/p_mamypoko.jpg", "img/p_meiji.jpg", "img/p_mistine.jpg", "img/p_peachy.jpg", "img/p_poysian.jpg", "img/p_soffell.jpg", "img/p_sriraja.jpg", "img/p_tigerbalm.jpg", "img/p_toastie.jpg", "img/pek_t2.jpg", "img/pek_t3.jpg", "img/r_balihaisunset.jpg", "img/r_bluesea.jpg", "img/r_friendsea.jpg", "img/r_glasshouse.jpg", "img/r_lanpho.jpg", "img/r_lungsawai.jpg", "img/r_mumaroi.jpg", "img/r_pier21.jpg", "img/r_praneat.jpg", "img/r_pupen.jpg", "img/r_samaebeach.jpg", "img/r_samaesarn.jpg", "img/r_silverlake.jpg", "img/r_skygallery.jpg", "img/r_thepprasit.jpg", "img/ramayana.jpg", "img/s7_inside.jpg", "img/s7_mama.jpg", "img/s7_milk.jpg", "img/s7_salapao.jpg", "img/s7_taokaenoi.jpg", "img/s_curry.jpg", "img/s_silk.jpg", "img/s_thaitea.jpg", "img/s_tiger.jpg", "img/sattahip.jpg", "img/seven.jpg", "img/terminal21.jpg", "img/thepprasit.jpg", "img/truth.jpg", "img/underwater.jpg", "img/zoo.jpg"];
+const PAGES = FILES.filter(f => !f.startsWith("img/"));
+const THUMBS = FILES.filter(f => f.startsWith("img/t/")), BIG = FILES.filter(f => /^img\/[^/]+$/.test(f));
+
+// Скачивание для офлайна — только по кнопке на сайте. Уже скачанное не перекачивается.
+async function fill(cacheName, list, prog) {
+  const c = await caches.open(cacheName);
+  const have = new Set((await c.keys()).map(r => { const u = new URL(r.url); return (u.pathname.split("/pattaya-2026/").pop() + u.search).replace(/^\//, ""); }));
+  const todo = list.filter(f => !have.has(f));
+  let ok = list.length - todo.length, fail = 0;
+  prog(ok, fail);
+  const work = async () => { while (todo.length) { const f = todo.shift(); try { await c.add(f); ok++; } catch (_) { fail++; } prog(ok, fail); } };
+  await Promise.all([work(), work(), work()]);
+  return fail;
+}
+async function tell(msg) { for (const cl of await self.clients.matchAll({ includeUncontrolled: true })) cl.postMessage(msg); }
+let busy = false;
+async function download() {
+  if (busy) return; busy = true;
+  const total = FILES.length;
+  let base = 0;
+  const prog = n => (ok, fail) => tell({ t: "prog", done: base + ok, fail, total });
+  try {
+    const f1 = await fill(CORE, PAGES, prog());
+    base = PAGES.length;
+    const f2 = await fill(IMG, THUMBS.concat(BIG), prog());
+    tell({ t: "done", fail: f1 + f2, total, ver: VER });
+  } catch (e) { tell({ t: "done", fail: -1, total }); }
+  busy = false;
+}
+async function status() {
+  const core = await caches.open(CORE), img = await caches.open(IMG);
+  const n = (await core.keys()).length + (await img.keys()).length;
+  tell({ t: "status", have: Math.min(n, FILES.length), total: FILES.length, fresh: (await core.keys()).length >= PAGES.length });
+}
+self.addEventListener("install", () => self.skipWaiting());
+self.addEventListener("activate", e => {
+  e.waitUntil((async () => {
+    for (const k of await caches.keys()) if (k.startsWith("core-") && k !== CORE) await caches.delete(k);
+    await self.clients.claim();
+  })());
+});
+self.addEventListener("message", e => {
+  if (e.data === "download") e.waitUntil(download());
+  if (e.data === "status") e.waitUntil(status());
+});
+async function tilesPut(req, res) {
+  const c = await caches.open(TILES);
+  await c.put(req, res);
+  const keys = await c.keys();
+  for (const k of keys.slice(0, Math.max(0, keys.length - 1500))) await c.delete(k);
+}
+self.addEventListener("fetch", e => {
+  const r = e.request;
+  if (r.method !== "GET") return;
+  const u = new URL(r.url);
+  if (/tile\.openstreetmap|basemaps\.cartocdn|tile\.opentopomap/.test(u.host)) {
+    e.respondWith(caches.match(r).then(m => m || fetch(r).then(res => { if (res.ok || res.type === "opaque") tilesPut(r, res.clone()); return res; })));
+    return;
+  }
+  if (u.origin !== location.origin) return;
+  if (r.mode === "navigate" || u.pathname.endsWith(".json")) {
+    // страницы: свежие из сети (если сеть не отвечает 4 с — сохранённые)
+    const net = fetch(r).then(res => { const cp = res.clone(); caches.open(RT).then(c => c.put(r, cp)); return res; });
+    const saved = () => caches.match(r, { ignoreSearch: true }).then(m => m || caches.match(u.pathname.split("/").pop() || "index.html")).then(m => m || caches.match("index.html"));
+    e.respondWith(new Promise(ok => {
+      let done = false;
+      const t = setTimeout(() => saved().then(m => { if (m && !done) { done = true; ok(m); } }), 4000);
+      net.then(res => { if (!done) { done = true; clearTimeout(t); ok(res); } })
+         .catch(() => saved().then(m => { if (!done) { done = true; clearTimeout(t); ok(m || Response.error()); } }));
+    }));
+    return;
+  }
+  e.respondWith(caches.match(r).then(m => m || fetch(r).then(res => {
+    if (res.ok && u.pathname.includes("/img/")) { const cp = res.clone(); caches.open(IMG).then(c => c.put(r, cp)); }
+    return res;
+  })));
+});

@@ -1,0 +1,3586 @@
+{
+"pharmacy": [
+{
+"lat": 12.83319,
+"lon": 100.91437,
+"name": "Fascino Pharmacy",
+"hours": "Mo-Su 08:00-21:00",
+"brand": "Fascino"
+},
+{
+"lat": 12.84108,
+"lon": 100.91104,
+"name": "Pharmacy",
+"kind": "drugstore"
+},
+{
+"lat": 12.82054,
+"lon": 100.91677,
+"name": "Pharmacy",
+"kind": "drugstore"
+},
+{
+"lat": 12.81932,
+"lon": 100.91618,
+"name": "ดีฟาร์มาซี"
+},
+{
+"lat": 12.81796,
+"lon": 100.9163,
+"name": "Pharmacy"
+},
+{
+"lat": 12.86672,
+"lon": 100.91051,
+"name": "Erawadee 2",
+"hours": "Mo-Su 09:00-18:00"
+},
+{
+"lat": 12.87233,
+"lon": 100.88881,
+"name": "Pharmacy"
+},
+{
+"lat": 12.78995,
+"lon": 100.92916,
+"name": "Pharmacy"
+},
+{
+"lat": 12.78903,
+"lon": 100.92973,
+"name": "เขาชีจรรย์ เภสัช"
+},
+{
+"lat": 12.87913,
+"lon": 100.89204,
+"name": "Pharmacy"
+},
+{
+"lat": 12.88003,
+"lon": 100.89473,
+"name": "Pharmacy"
+},
+{
+"lat": 12.8807,
+"lon": 100.89549,
+"name": "Pharmacy"
+},
+{
+"lat": 12.88288,
+"lon": 100.90904,
+"name": "Pharmacy"
+},
+{
+"lat": 12.89224,
+"lon": 100.89223,
+"name": "Vitamax"
+},
+{
+"lat": 12.89544,
+"lon": 100.90609,
+"name": "Pharmacy"
+},
+{
+"lat": 12.89033,
+"lon": 100.87475,
+"name": "Kattika pharmacy"
+},
+{
+"lat": 12.89542,
+"lon": 100.87025,
+"name": "Apotheke",
+"hours": "Mo-Su 09:00-22:00"
+},
+{
+"lat": 12.89737,
+"lon": 100.87208,
+"name": "Knowing"
+},
+{
+"lat": 12.89791,
+"lon": 100.87273,
+"name": "Grand Pharmacy"
+},
+{
+"lat": 12.89686,
+"lon": 100.86966,
+"name": "พัทยา ฟาร์มาชี(2)"
+},
+{
+"lat": 12.89854,
+"lon": 100.86791,
+"name": "Dr. Holland- Pharmacy",
+"hours": "Mo-Su 01:00-00:00"
+},
+{
+"lat": 12.89959,
+"lon": 100.86816,
+"name": "Plus Pharmacy"
+},
+{
+"lat": 12.89899,
+"lon": 100.86716,
+"name": "Bright Pharmacy"
+},
+{
+"lat": 12.90917,
+"lon": 100.89306,
+"name": "Wangphrom Herbal Products Pattaya",
+"hours": "Mo-Su 11:00-20:00"
+},
+{
+"lat": 12.90632,
+"lon": 100.87834,
+"name": "Fascino",
+"brand": "Fascino"
+},
+{
+"lat": 12.90327,
+"lon": 100.86972,
+"name": "Ocean Drug"
+},
+{
+"lat": 12.9044,
+"lon": 100.86977,
+"name": "Pharmacy"
+},
+{
+"lat": 12.90481,
+"lon": 100.86957,
+"name": "Pharmacy"
+},
+{
+"lat": 12.916,
+"lon": 100.89561,
+"name": "Top Charoen Optical"
+},
+{
+"lat": 12.91591,
+"lon": 100.89451,
+"name": "Boots",
+"brand": "Boots"
+},
+{
+"lat": 12.90867,
+"lon": 100.86892,
+"name": "Health Me Pharmacy"
+},
+{
+"lat": 12.9144,
+"lon": 100.88015,
+"name": "Pharmacy"
+},
+{
+"lat": 12.90902,
+"lon": 100.86445,
+"name": "Goodwill pharmacy"
+},
+{
+"lat": 12.9095,
+"lon": 100.86531,
+"name": "Pharmacy"
+},
+{
+"lat": 12.90901,
+"lon": 100.8644,
+"name": "Nona"
+},
+{
+"lat": 12.92085,
+"lon": 100.91404,
+"name": "เภสัชใกล้บ้าน"
+},
+{
+"lat": 12.92015,
+"lon": 100.89272,
+"name": "ร้านขายยาสยามเฮิร์บ"
+},
+{
+"lat": 12.92262,
+"lon": 100.91246,
+"name": "Pharmacy"
+},
+{
+"lat": 12.9228,
+"lon": 100.91091,
+"name": "Watsons",
+"brand": "Watsons",
+"kind": "drugstore"
+},
+{
+"lat": 12.91483,
+"lon": 100.87114,
+"name": "The Grand of Pharmacy"
+},
+{
+"lat": 12.91507,
+"lon": 100.87121,
+"name": "Pronya"
+},
+{
+"lat": 12.9214,
+"lon": 100.88752,
+"name": "สาโรช ฟาร์มาซี"
+},
+{
+"lat": 12.92142,
+"lon": 100.88748,
+"name": "ธนภูมิ ฟาร์มาซี"
+},
+{
+"lat": 12.92413,
+"lon": 100.90812,
+"name": "Pharmacy"
+},
+{
+"lat": 12.91645,
+"lon": 100.87146,
+"name": "Goodwill"
+},
+{
+"lat": 12.92425,
+"lon": 100.90761,
+"name": "Pharmacy"
+},
+{
+"lat": 12.91008,
+"lon": 100.85894,
+"name": "Pharmacy",
+"kind": "drugstore"
+},
+{
+"lat": 12.91099,
+"lon": 100.86004,
+"name": "MedPharma",
+"kind": "drugstore"
+},
+{
+"lat": 12.92111,
+"lon": 100.87832,
+"name": "Drug House"
+},
+{
+"lat": 12.92194,
+"lon": 100.8783,
+"name": "ชัยบันลือ ฟาร์มาซี"
+},
+{
+"lat": 12.91506,
+"lon": 100.86194,
+"name": "ALYZ Pharmacy",
+"kind": "drugstore"
+},
+{
+"lat": 12.9214,
+"lon": 100.87559,
+"name": "Pharmacy"
+},
+{
+"lat": 12.91501,
+"lon": 100.86138,
+"name": "K&K Sabi",
+"kind": "drugstore"
+},
+{
+"lat": 12.92265,
+"lon": 100.8775,
+"name": "Pharmacy",
+"hours": "Mo-Su 09:00-22:00"
+},
+{
+"lat": 12.92397,
+"lon": 100.8811,
+"name": "พัทยาฟาร์ม่า"
+},
+{
+"lat": 12.92351,
+"lon": 100.87682,
+"name": "สุขประเสริฐเภสัช"
+},
+{
+"lat": 12.92709,
+"lon": 100.88927,
+"name": "ร้านยาทรัพย์ทวีคูณศิลปเภสัช"
+},
+{
+"lat": 12.9235,
+"lon": 100.87584,
+"name": "Pharmacy"
+},
+{
+"lat": 12.9243,
+"lon": 100.87772,
+"name": "D Pharmacia"
+},
+{
+"lat": 12.92421,
+"lon": 100.87727,
+"name": "Pharmacy"
+},
+{
+"lat": 12.92393,
+"lon": 100.87634,
+"name": "ชัยพฤกษ์เภสัช"
+},
+{
+"lat": 12.92515,
+"lon": 100.88007,
+"name": "Wisdom Pharmacy"
+},
+{
+"lat": 12.92325,
+"lon": 100.87382,
+"name": "Yensabai Pharmacy"
+},
+{
+"lat": 12.92742,
+"lon": 100.88664,
+"name": "Jaidee Pharmacy"
+},
+{
+"lat": 12.92635,
+"lon": 100.882,
+"name": "Global Drug"
+},
+{
+"lat": 12.92805,
+"lon": 100.88742,
+"name": "Phonsunan Pharmacy"
+},
+{
+"lat": 12.925,
+"lon": 100.87631,
+"name": "ชินวัฒน์โอสถ พัทยา"
+},
+{
+"lat": 12.92735,
+"lon": 100.88345,
+"name": "Buakhao Pharmacy",
+"hours": "Mo-Su 09:00-01:00"
+},
+{
+"lat": 12.92522,
+"lon": 100.87613,
+"name": "Fascino",
+"brand": "Fascino"
+},
+{
+"lat": 12.92479,
+"lon": 100.87364,
+"name": "Ruamya Pharmacy"
+},
+{
+"lat": 12.92469,
+"lon": 100.87318,
+"name": "Top Pharmacy"
+},
+{
+"lat": 12.92823,
+"lon": 100.88431,
+"name": "Med-Ya Pharmacy"
+},
+{
+"lat": 12.92524,
+"lon": 100.87411,
+"name": "C.P. Pharmacy"
+},
+{
+"lat": 12.92543,
+"lon": 100.87406,
+"name": "J.D. Pharmacy"
+},
+{
+"lat": 12.92555,
+"lon": 100.87424,
+"name": "Tanya Pharmacy"
+},
+{
+"lat": 12.93057,
+"lon": 100.89415,
+"name": "Namo Pharmacy"
+},
+{
+"lat": 12.92614,
+"lon": 100.87574,
+"name": "Top Pharmacy"
+},
+{
+"lat": 12.92903,
+"lon": 100.88486,
+"name": "Caring Pharma"
+},
+{
+"lat": 12.92918,
+"lon": 100.88513,
+"name": "Drug Center"
+},
+{
+"lat": 12.92076,
+"lon": 100.86218,
+"name": "จิตนิยมเภสัช2"
+},
+{
+"lat": 12.92927,
+"lon": 100.8852,
+"name": "We're Drugs"
+},
+{
+"lat": 12.92944,
+"lon": 100.88531,
+"name": "Buakhao Clinic"
+},
+{
+"lat": 12.92657,
+"lon": 100.87517,
+"name": "Pharmacy"
+},
+{
+"lat": 12.92731,
+"lon": 100.87731,
+"name": "Pharmacy"
+},
+{
+"lat": 12.92081,
+"lon": 100.86142,
+"name": "จิตนิยมเภสัช"
+},
+{
+"lat": 12.92984,
+"lon": 100.88557,
+"name": "Pharmacy Anteka"
+},
+{
+"lat": 12.92807,
+"lon": 100.87855,
+"name": "Garden Pharmacy"
+},
+{
+"lat": 12.92784,
+"lon": 100.87744,
+"name": "Deluck Pharmacy"
+},
+{
+"lat": 12.92968,
+"lon": 100.88384,
+"name": "Guardian Pharmacy"
+},
+{
+"lat": 12.92804,
+"lon": 100.87796,
+"name": "Axon Pharma"
+},
+{
+"lat": 12.92095,
+"lon": 100.86077,
+"name": "Smart Pharmacy"
+},
+{
+"lat": 12.93092,
+"lon": 100.88903,
+"name": "Drugstore"
+},
+{
+"lat": 12.93033,
+"lon": 100.8859,
+"name": "Buakhao House"
+},
+{
+"lat": 12.93193,
+"lon": 100.89425,
+"name": "Prima Pharmacy"
+},
+{
+"lat": 12.93096,
+"lon": 100.88842,
+"name": "Anun Pharmacy"
+},
+{
+"lat": 12.92727,
+"lon": 100.87466,
+"name": "Bee Pharmacy"
+},
+{
+"lat": 12.92965,
+"lon": 100.88146,
+"name": "Boots",
+"brand": "Boots",
+"kind": "drugstore"
+},
+{
+"lat": 12.92825,
+"lon": 100.87592,
+"name": "Pro Pharmacy"
+},
+{
+"lat": 12.93366,
+"lon": 100.90345,
+"name": "Fascino",
+"hours": "08:00-21:00",
+"brand": "Fascino"
+},
+{
+"lat": 12.9323,
+"lon": 100.89058,
+"name": "First Drug สายสาม"
+},
+{
+"lat": 12.92937,
+"lon": 100.8782,
+"name": "Watsons",
+"brand": "Watsons"
+},
+{
+"lat": 12.93029,
+"lon": 100.88131,
+"name": "สยามฟาร์มาซี"
+},
+{
+"lat": 12.93257,
+"lon": 100.89074,
+"name": "Pharmacy"
+},
+{
+"lat": 12.93115,
+"lon": 100.88386,
+"name": "AA Pharma"
+},
+{
+"lat": 12.92949,
+"lon": 100.87766,
+"name": "Boots",
+"brand": "Boots"
+},
+{
+"lat": 12.93277,
+"lon": 100.89127,
+"name": "ธีรศักดิ์เภสัช"
+},
+{
+"lat": 12.93143,
+"lon": 100.88457,
+"name": "Anteka Pharmacy"
+},
+{
+"lat": 12.93202,
+"lon": 100.88686,
+"name": "Family Drug"
+},
+{
+"lat": 12.93067,
+"lon": 100.88116,
+"name": "Pharmacy"
+},
+{
+"lat": 12.93394,
+"lon": 100.89478,
+"name": "T Pharmacy"
+},
+{
+"lat": 12.93271,
+"lon": 100.88718,
+"name": "Anteka Pharmacy"
+},
+{
+"lat": 12.93209,
+"lon": 100.88341,
+"name": "City Pharmacy"
+},
+{
+"lat": 12.93307,
+"lon": 100.88724,
+"name": "Major Pharmacy"
+},
+{
+"lat": 12.93337,
+"lon": 100.8877,
+"name": "คลิ๊กฟาร์มาซี"
+},
+{
+"lat": 12.93558,
+"lon": 100.9043,
+"name": "Hope Pharmacy"
+},
+{
+"lat": 12.9349,
+"lon": 100.89379,
+"name": "Boots",
+"brand": "Boots",
+"kind": "drugstore"
+},
+{
+"lat": 12.93593,
+"lon": 100.9031,
+"name": "Watsons",
+"brand": "Watsons"
+},
+{
+"lat": 12.93547,
+"lon": 100.89625,
+"name": "ร้านยาฟาร์เมต"
+},
+{
+"lat": 12.93508,
+"lon": 100.89137,
+"name": "Bear Drug"
+},
+{
+"lat": 12.93513,
+"lon": 100.89122,
+"name": "For You Pharnacie"
+},
+{
+"lat": 12.93461,
+"lon": 100.8881,
+"name": "Royal Drug Pharmacy"
+},
+{
+"lat": 12.93315,
+"lon": 100.88107,
+"name": "Pharmacy"
+},
+{
+"lat": 12.9349,
+"lon": 100.88565,
+"name": "Wealth Pharmacy"
+},
+{
+"lat": 12.93588,
+"lon": 100.88909,
+"name": "Fascino",
+"hours": "Mo-Su 08:00-22:00",
+"brand": "Fascino"
+},
+{
+"lat": 12.93585,
+"lon": 100.88843,
+"name": "Anteka Pharmacy"
+},
+{
+"lat": 12.93587,
+"lon": 100.88832,
+"name": "Pharmacy"
+},
+{
+"lat": 12.93611,
+"lon": 100.88851,
+"name": "Beach Pharmacy",
+"hours": "Mo-Su 09:00-16:00"
+},
+{
+"lat": 12.93776,
+"lon": 100.89803,
+"name": "I Care Pharmacy",
+"hours": "Mo-Su 09:00-23:00"
+},
+{
+"lat": 12.93631,
+"lon": 100.88792,
+"name": "Watsons",
+"brand": "Watsons",
+"kind": "drugstore"
+},
+{
+"lat": 12.9357,
+"lon": 100.88432,
+"name": "Pharmacy"
+},
+{
+"lat": 12.93643,
+"lon": 100.88757,
+"name": "Pattaya Klang Pharmacy"
+},
+{
+"lat": 12.93634,
+"lon": 100.88704,
+"name": "ประเสริฐเภสัช"
+},
+{
+"lat": 12.93641,
+"lon": 100.88687,
+"name": "พัทยาเหนือฟาร์มาซี"
+},
+{
+"lat": 12.93641,
+"lon": 100.8848,
+"name": "Pharmacy"
+},
+{
+"lat": 12.93653,
+"lon": 100.88452,
+"name": "Corner Pharmacy"
+},
+{
+"lat": 12.93935,
+"lon": 100.9,
+"name": "Pharmacy"
+},
+{
+"lat": 12.94205,
+"lon": 100.90402,
+"name": "D Pharmacy"
+},
+{
+"lat": 12.94101,
+"lon": 100.88754,
+"name": "Emperor Pharma"
+},
+{
+"lat": 12.94258,
+"lon": 100.88796,
+"name": "Square Drug",
+"hours": "Mo-Su 09:00-23:00"
+},
+{
+"lat": 12.94305,
+"lon": 100.88812,
+"name": "Pharmacy"
+},
+{
+"lat": 12.94273,
+"lon": 100.88509,
+"name": "A. A. Drugs"
+},
+{
+"lat": 12.94287,
+"lon": 100.88495,
+"name": "Anteka Pharmacy"
+},
+{
+"lat": 12.94378,
+"lon": 100.88864,
+"name": "Pharmacy",
+"hours": "Mo-Su 12:00-23:00"
+},
+{
+"lat": 12.94543,
+"lon": 100.90162,
+"name": "ณ ยา ฟาร์มาซี"
+},
+{
+"lat": 12.94484,
+"lon": 100.88874,
+"name": "1988 Pharmacy"
+},
+{
+"lat": 12.94455,
+"lon": 100.88495,
+"name": "Mister DRUGs 2"
+},
+{
+"lat": 12.94535,
+"lon": 100.88874,
+"name": "Super Drug"
+},
+{
+"lat": 12.94592,
+"lon": 100.89028,
+"name": "Watsons",
+"brand": "Watsons",
+"kind": "drugstore"
+},
+{
+"lat": 12.94688,
+"lon": 100.88899,
+"name": "1988 Pharmacy",
+"hours": "Mo-Su 18:00-23:00"
+},
+{
+"lat": 12.9476,
+"lon": 100.88898,
+"name": "Pharmacy"
+}
+],
+"store": [
+{
+"lat": 12.83337,
+"lon": 100.91307,
+"name": "7-Eleven",
+"hours": "24/7",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.83277,
+"lon": 100.91437,
+"name": "Big C Mini",
+"brand": "Mini Big C"
+},
+{
+"lat": 12.84018,
+"lon": 100.91177,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.84067,
+"lon": 100.9064,
+"name": "7-Eleven",
+"hours": "24/7",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.84099,
+"lon": 100.91165,
+"name": "Big C mini",
+"brand": "Mini Big C"
+},
+{
+"lat": 12.84118,
+"lon": 100.91101,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.84143,
+"lon": 100.91077,
+"name": "Lotus's go fresh",
+"brand": "Lotus's go fresh"
+},
+{
+"lat": 12.82595,
+"lon": 100.915,
+"name": "7-Eleven",
+"hours": "24/7",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.84505,
+"lon": 100.9099,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.82294,
+"lon": 100.91594,
+"name": "FamilyMart",
+"hours": "00:00-24:00",
+"brand": "FamilyMart"
+},
+{
+"lat": 12.82037,
+"lon": 100.91667,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.84916,
+"lon": 100.90948,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.82398,
+"lon": 100.92524,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.82389,
+"lon": 100.92617,
+"name": "Mini Big C",
+"brand": "Mini Big C"
+},
+{
+"lat": 12.81408,
+"lon": 100.91651,
+"name": "7-Eleven",
+"hours": "24/7",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.85775,
+"lon": 100.90975,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.85844,
+"lon": 100.91499,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.86083,
+"lon": 100.89959,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.86082,
+"lon": 100.89919,
+"name": "Tops Daily",
+"brand": "Tops Daily"
+},
+{
+"lat": 12.86423,
+"lon": 100.9009,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.86312,
+"lon": 100.89465,
+"name": "FamilyMart",
+"brand": "FamilyMart"
+},
+{
+"lat": 12.86639,
+"lon": 100.90538,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.86078,
+"lon": 100.9293,
+"name": "Big C Mini",
+"brand": "Mini Big C"
+},
+{
+"lat": 12.86079,
+"lon": 100.92958,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.80568,
+"lon": 100.93195,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.79672,
+"lon": 100.91719,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.86709,
+"lon": 100.89215,
+"name": "FamilyMart",
+"hours": "24/7",
+"brand": "FamilyMart"
+},
+{
+"lat": 12.86732,
+"lon": 100.89217,
+"name": "Tops Daily",
+"brand": "Tops Daily"
+},
+{
+"lat": 12.79549,
+"lon": 100.91814,
+"name": "7-Eleven",
+"hours": "Mo-Su 09:00-22:00",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.87014,
+"lon": 100.89691,
+"name": "7-Eleven",
+"hours": "24/7",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.86345,
+"lon": 100.93846,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.87125,
+"lon": 100.88949,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.87294,
+"lon": 100.88859,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.79178,
+"lon": 100.92727,
+"name": "Lotus's go fresh",
+"brand": "Lotus's go fresh"
+},
+{
+"lat": 12.87829,
+"lon": 100.91648,
+"name": "Big C Mini",
+"hours": "24/7",
+"brand": "Mini Big C"
+},
+{
+"lat": 12.86559,
+"lon": 100.94495,
+"name": "Mini Big C",
+"brand": "Mini Big C"
+},
+{
+"lat": 12.78958,
+"lon": 100.92983,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.87859,
+"lon": 100.89208,
+"name": "7-Eleven",
+"hours": "24/7",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.87623,
+"lon": 100.88616,
+"name": "FamilyMart",
+"brand": "FamilyMart"
+},
+{
+"lat": 12.86283,
+"lon": 100.94864,
+"name": "TESCO Lotus Express",
+"brand": "Lotus's go fresh"
+},
+{
+"lat": 12.86201,
+"lon": 100.94938,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.88001,
+"lon": 100.89488,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.87923,
+"lon": 100.89223,
+"name": "7-Eleven",
+"hours": "24/7",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.88101,
+"lon": 100.89826,
+"name": "FamilyMart",
+"brand": "FamilyMart"
+},
+{
+"lat": 12.87675,
+"lon": 100.88564,
+"name": "7-Eleven",
+"hours": "24/7",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.88236,
+"lon": 100.90319,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.88242,
+"lon": 100.9027,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.88217,
+"lon": 100.89869,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.88369,
+"lon": 100.9132,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.88384,
+"lon": 100.91197,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.87831,
+"lon": 100.88473,
+"name": "7-Eleven",
+"hours": "24/7",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.88003,
+"lon": 100.88326,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.88184,
+"lon": 100.88185,
+"name": "FamilyMart",
+"brand": "FamilyMart"
+},
+{
+"lat": 12.88318,
+"lon": 100.88068,
+"name": "7-Eleven",
+"hours": "24/7",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.88414,
+"lon": 100.8799,
+"name": "7-Eleven",
+"hours": "24/7",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.89206,
+"lon": 100.89782,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.88532,
+"lon": 100.8789,
+"name": "7-Eleven",
+"hours": "24/7",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.8899,
+"lon": 100.8873,
+"name": "7-Eleven",
+"hours": "24/7",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.88953,
+"lon": 100.88547,
+"name": "7-Eleven",
+"hours": "24/7",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.88632,
+"lon": 100.87848,
+"name": "7-Eleven",
+"hours": "24/7",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.88964,
+"lon": 100.88435,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.88697,
+"lon": 100.87766,
+"name": "FamilyMart",
+"brand": "FamilyMart"
+},
+{
+"lat": 12.89504,
+"lon": 100.90564,
+"name": "CJ Supermarket",
+"brand": "CJ"
+},
+{
+"lat": 12.89463,
+"lon": 100.90063,
+"name": "FamilyMart",
+"brand": "FamilyMart"
+},
+{
+"lat": 12.89487,
+"lon": 100.90164,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.89433,
+"lon": 100.89746,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.89563,
+"lon": 100.90645,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.88812,
+"lon": 100.87675,
+"name": "Tops daily",
+"hours": "24/7",
+"brand": "FamilyMart"
+},
+{
+"lat": 12.89011,
+"lon": 100.88015,
+"name": "7-Eleven",
+"hours": "24/7",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.88841,
+"lon": 100.87649,
+"name": "7-Eleven",
+"hours": "24/7",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.88912,
+"lon": 100.87601,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.8909,
+"lon": 100.87887,
+"name": "7-Eleven",
+"hours": "24/7",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.8895,
+"lon": 100.8755,
+"name": "FamilyMart",
+"hours": "06:00-24:00",
+"brand": "FamilyMart"
+},
+{
+"lat": 12.89017,
+"lon": 100.87497,
+"name": "7-Eleven",
+"hours": "24/7",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.8903,
+"lon": 100.87481,
+"name": "7-Eleven",
+"hours": "24/7",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.89991,
+"lon": 100.90086,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.89408,
+"lon": 100.87688,
+"name": "Lotus’s Go Fresh Jomtien Sai 2 Road",
+"hours": "24/7",
+"brand": "Lotus's go fresh"
+},
+{
+"lat": 12.89399,
+"lon": 100.87183,
+"name": "7 eleven",
+"hours": "24/7",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.89671,
+"lon": 100.94165,
+"name": "7-Eleven",
+"hours": "24/7",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.8946,
+"lon": 100.87107,
+"name": "Tops",
+"hours": "24/7",
+"brand": "Tops Daily"
+},
+{
+"lat": 12.90448,
+"lon": 100.896,
+"name": "FamilyMart",
+"brand": "FamilyMart"
+},
+{
+"lat": 12.89737,
+"lon": 100.87379,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.89552,
+"lon": 100.8702,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.89756,
+"lon": 100.8735,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.89611,
+"lon": 100.86966,
+"name": "7-Eleven",
+"hours": "24/7",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.89789,
+"lon": 100.87275,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.89643,
+"lon": 100.86933,
+"name": "7-Eleven",
+"hours": "24/7",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.90765,
+"lon": 100.90624,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.90776,
+"lon": 100.91092,
+"name": "Lotus's go fresh",
+"brand": "Lotus's go fresh"
+},
+{
+"lat": 12.90787,
+"lon": 100.90953,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.90789,
+"lon": 100.90632,
+"name": "FamilyMart",
+"brand": "FamilyMart"
+},
+{
+"lat": 12.89683,
+"lon": 100.86887,
+"name": "7-Eleven",
+"hours": "24/7",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.90797,
+"lon": 100.90432,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.90817,
+"lon": 100.90449,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.89923,
+"lon": 100.87124,
+"name": "Tops Daily",
+"hours": "24/7",
+"brand": "Tops Daily"
+},
+{
+"lat": 12.90795,
+"lon": 100.89661,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.90888,
+"lon": 100.9025,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.90958,
+"lon": 100.91706,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.90811,
+"lon": 100.89142,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.90963,
+"lon": 100.89972,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.90966,
+"lon": 100.8986,
+"name": "FamilyMart",
+"brand": "FamilyMart"
+},
+{
+"lat": 12.90867,
+"lon": 100.89235,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.89878,
+"lon": 100.86688,
+"name": "7-Eleven",
+"hours": "24/7",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.89881,
+"lon": 100.86685,
+"name": "7 eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.90026,
+"lon": 100.86907,
+"name": "7-Eleven",
+"hours": "24/7",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.90095,
+"lon": 100.87004,
+"name": "7-Eleven",
+"hours": "24/7",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.89902,
+"lon": 100.86667,
+"name": "7-Eleven",
+"hours": "24/7",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.9075,
+"lon": 100.88535,
+"name": "FamilyMart",
+"brand": "FamilyMart"
+},
+{
+"lat": 12.90911,
+"lon": 100.88883,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.90807,
+"lon": 100.88395,
+"name": "Big C Mini",
+"brand": "Mini Big C"
+},
+{
+"lat": 12.90786,
+"lon": 100.88299,
+"name": "7-Eleven",
+"hours": "24/7",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.90869,
+"lon": 100.88527,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.90591,
+"lon": 100.87671,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.90637,
+"lon": 100.87697,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.90838,
+"lon": 100.88188,
+"name": "FamilyMart",
+"hours": "24/7",
+"brand": "FamilyMart"
+},
+{
+"lat": 12.9031,
+"lon": 100.86973,
+"name": "7-Eleven",
+"hours": "24/7",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.90299,
+"lon": 100.86931,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.90552,
+"lon": 100.87366,
+"name": "Tops Daily",
+"hours": "24/7",
+"brand": "Tops Daily"
+},
+{
+"lat": 12.90477,
+"lon": 100.87146,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.90438,
+"lon": 100.86959,
+"name": "Tops daily",
+"brand": "Tops Daily"
+},
+{
+"lat": 12.91009,
+"lon": 100.88033,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.91623,
+"lon": 100.91504,
+"name": "Lotus's go fresh",
+"brand": "Lotus's go fresh"
+},
+{
+"lat": 12.91626,
+"lon": 100.91532,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.91175,
+"lon": 100.87998,
+"name": "FamilyMart",
+"brand": "FamilyMart"
+},
+{
+"lat": 12.91686,
+"lon": 100.9007,
+"name": "FamilyMart",
+"brand": "FamilyMart"
+},
+{
+"lat": 12.91685,
+"lon": 100.89896,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.91424,
+"lon": 100.88551,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.91473,
+"lon": 100.88569,
+"name": "FamilyMart",
+"brand": "FamilyMart"
+},
+{
+"lat": 12.917,
+"lon": 100.89658,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.91349,
+"lon": 100.88,
+"name": "FamilyMart",
+"brand": "FamilyMart"
+},
+{
+"lat": 12.91735,
+"lon": 100.89532,
+"name": "FamilyMart",
+"brand": "FamilyMart"
+},
+{
+"lat": 12.90887,
+"lon": 100.86893,
+"name": "7-Eleven",
+"hours": "24/7",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.91763,
+"lon": 100.89684,
+"name": "FamilyMart",
+"brand": "FamilyMart"
+},
+{
+"lat": 12.91414,
+"lon": 100.88038,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.91756,
+"lon": 100.92763,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.91865,
+"lon": 100.89638,
+"name": "TESCO Lotus Express",
+"hours": "24/7",
+"brand": "Lotus's go fresh"
+},
+{
+"lat": 12.91514,
+"lon": 100.88014,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.9103,
+"lon": 100.86832,
+"name": "FamilyMart",
+"brand": "FamilyMart"
+},
+{
+"lat": 12.91516,
+"lon": 100.87968,
+"name": "Lotus's go fresh",
+"brand": "Lotus's go fresh"
+},
+{
+"lat": 12.91542,
+"lon": 100.87963,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.90971,
+"lon": 100.86643,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.9093,
+"lon": 100.86543,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.90897,
+"lon": 100.86426,
+"name": "FamilyMart",
+"brand": "FamilyMart"
+},
+{
+"lat": 12.90881,
+"lon": 100.86389,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.9122,
+"lon": 100.86969,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.92117,
+"lon": 100.91397,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.91859,
+"lon": 100.88575,
+"name": "Lotus's go fresh",
+"brand": "Lotus's go fresh"
+},
+{
+"lat": 12.92025,
+"lon": 100.89257,
+"name": "7-Eleven",
+"hours": "24/7",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.91974,
+"lon": 100.88997,
+"name": "7-Eleven",
+"hours": "24/7",
+"brand": "7-Eleven"
+},
+{
+"lat": 12.91889,
+"lon": 100.88555,
+"name": "7-Eleven",
+"brand": "7-Eleven"
+}
+],
+"toilet": [
+{
+"lat": 12.83735,
+"lon": 100.90633,
+"name": "Toilet"
+},
+{
+"lat": 12.83811,
+"lon": 100.90674,
+"name": "Toilet"
+},
+{
+"lat": 12.83932,
+"lon": 100.91218,
+"name": "Toilet"
+},
+{
+"lat": 12.82587,
+"lon": 100.91476,
+"name": "Toilet",
+"wheelchair": "yes"
+},
+{
+"lat": 12.84221,
+"lon": 100.90451,
+"name": "Toilet"
+},
+{
+"lat": 12.84668,
+"lon": 100.90917,
+"name": "Toilet"
+},
+{
+"lat": 12.81315,
+"lon": 100.91268,
+"name": "Toilet"
+},
+{
+"lat": 12.87363,
+"lon": 100.9029,
+"name": "Toilet"
+},
+{
+"lat": 12.80177,
+"lon": 100.93806,
+"name": "Toilet",
+"hours": "24/7"
+},
+{
+"lat": 12.8809,
+"lon": 100.88258,
+"name": "Toilet",
+"fee": "yes"
+},
+{
+"lat": 12.88243,
+"lon": 100.88128,
+"name": "Toilet",
+"fee": "yes"
+},
+{
+"lat": 12.88423,
+"lon": 100.88005,
+"name": "Toilet",
+"fee": "5 thb"
+},
+{
+"lat": 12.88496,
+"lon": 100.8792,
+"name": "Toilet",
+"fee": "yes"
+},
+{
+"lat": 12.892,
+"lon": 100.89792,
+"name": "Toilet"
+},
+{
+"lat": 12.89743,
+"lon": 100.89519,
+"name": "Toilet",
+"fee": "no",
+"wheelchair": "no"
+},
+{
+"lat": 12.89031,
+"lon": 100.87484,
+"name": "Toilet"
+},
+{
+"lat": 12.89317,
+"lon": 100.87298,
+"name": "Toilet",
+"fee": "yes"
+},
+{
+"lat": 12.90443,
+"lon": 100.89564,
+"name": "Toilet"
+},
+{
+"lat": 12.89757,
+"lon": 100.87178,
+"name": "Toilet",
+"fee": "yes"
+},
+{
+"lat": 12.90594,
+"lon": 100.89501,
+"name": "Toilet",
+"fee": "no",
+"wheelchair": "yes",
+"changing_table": "no"
+},
+{
+"lat": 12.90643,
+"lon": 100.89711,
+"name": "Toilet",
+"wheelchair": "yes",
+"changing_table": "yes"
+},
+{
+"lat": 12.90844,
+"lon": 100.89669,
+"name": "Toilet",
+"fee": "no",
+"wheelchair": "yes",
+"changing_table": "no"
+},
+{
+"lat": 12.90785,
+"lon": 100.89335,
+"name": "Toilet"
+},
+{
+"lat": 12.90807,
+"lon": 100.89362,
+"name": "Toilet"
+},
+{
+"lat": 12.90924,
+"lon": 100.8896,
+"name": "Toilet"
+},
+{
+"lat": 12.90923,
+"lon": 100.88883,
+"name": "Toilet"
+},
+{
+"lat": 12.89971,
+"lon": 100.86595,
+"name": "Toilet",
+"fee": "yes"
+},
+{
+"lat": 12.90182,
+"lon": 100.86938,
+"name": "Toilet",
+"fee": "yes",
+"wheelchair": "no"
+},
+{
+"lat": 12.90108,
+"lon": 100.86771,
+"name": "Toilet",
+"fee": "yes",
+"wheelchair": "no"
+},
+{
+"lat": 12.90067,
+"lon": 100.86459,
+"name": "Toilet",
+"fee": "yes"
+},
+{
+"lat": 12.90482,
+"lon": 100.8696,
+"name": "Toilet",
+"fee": "no"
+},
+{
+"lat": 12.90551,
+"lon": 100.8695,
+"name": "Toilet"
+},
+{
+"lat": 12.90392,
+"lon": 100.86152,
+"name": "Toilet",
+"fee": "yes",
+"wheelchair": "no"
+},
+{
+"lat": 12.91883,
+"lon": 100.89606,
+"name": "Toilet"
+},
+{
+"lat": 12.90872,
+"lon": 100.86317,
+"name": "Toilet"
+},
+{
+"lat": 12.91506,
+"lon": 100.86803,
+"name": "Toilet"
+},
+{
+"lat": 12.92338,
+"lon": 100.88428,
+"name": "Toilet"
+},
+{
+"lat": 12.92651,
+"lon": 100.90007,
+"name": "Toilet"
+},
+{
+"lat": 12.92336,
+"lon": 100.88005,
+"name": "Toilet"
+},
+{
+"lat": 12.91891,
+"lon": 100.86729,
+"name": "Toilet"
+},
+{
+"lat": 12.92802,
+"lon": 100.90026,
+"name": "Toilet"
+},
+{
+"lat": 12.9249,
+"lon": 100.87919,
+"name": "Toilet",
+"fee": "yes",
+"wheelchair": "no"
+},
+{
+"lat": 12.92862,
+"lon": 100.89318,
+"name": "Toilet",
+"fee": "yes"
+},
+{
+"lat": 12.92365,
+"lon": 100.87373,
+"name": "Toilet",
+"fee": "yes"
+},
+{
+"lat": 12.92071,
+"lon": 100.86661,
+"name": "Toilet"
+},
+{
+"lat": 12.92604,
+"lon": 100.88076,
+"name": "Toilet"
+},
+{
+"lat": 12.92127,
+"lon": 100.86641,
+"name": "Toilet",
+"fee": "yes"
+},
+{
+"lat": 12.92555,
+"lon": 100.87717,
+"name": "Toilet"
+},
+{
+"lat": 12.93016,
+"lon": 100.89489,
+"name": "Toilet"
+},
+{
+"lat": 12.92896,
+"lon": 100.88766,
+"name": "Toilet"
+},
+{
+"lat": 12.92909,
+"lon": 100.88767,
+"name": "Toilet"
+},
+{
+"lat": 12.92912,
+"lon": 100.88729,
+"name": "Toilet"
+},
+{
+"lat": 12.92936,
+"lon": 100.88784,
+"name": "Toilet"
+},
+{
+"lat": 12.92938,
+"lon": 100.88753,
+"name": "Toilet"
+},
+{
+"lat": 12.9294,
+"lon": 100.88724,
+"name": "Toilet"
+},
+{
+"lat": 12.92941,
+"lon": 100.88702,
+"name": "Toilet"
+},
+{
+"lat": 12.92911,
+"lon": 100.88109,
+"name": "Toilet"
+},
+{
+"lat": 12.92946,
+"lon": 100.88153,
+"name": "Toilet",
+"hours": "Mo-Su 07:00-00:00"
+},
+{
+"lat": 12.92969,
+"lon": 100.88142,
+"name": "Toilet"
+},
+{
+"lat": 12.93008,
+"lon": 100.88265,
+"name": "Toilet",
+"fee": "yes"
+},
+{
+"lat": 12.92074,
+"lon": 100.85886,
+"name": "Toilet",
+"hours": "Mo-Su 06:00-20:00"
+},
+{
+"lat": 12.92505,
+"lon": 100.86771,
+"name": "Toilet",
+"fee": "yes"
+},
+{
+"lat": 12.92407,
+"lon": 100.86522,
+"name": "Toilet",
+"fee": "yes"
+},
+{
+"lat": 12.92807,
+"lon": 100.875,
+"name": "Toilet",
+"fee": "yes"
+},
+{
+"lat": 12.93116,
+"lon": 100.8859,
+"name": "Toilet",
+"fee": "yes"
+},
+{
+"lat": 12.92543,
+"lon": 100.86762,
+"name": "Toilet",
+"fee": "yes"
+},
+{
+"lat": 12.9338,
+"lon": 100.90047,
+"name": "Toilet"
+},
+{
+"lat": 12.93171,
+"lon": 100.88503,
+"name": "Toilet",
+"fee": "yes"
+},
+{
+"lat": 12.93225,
+"lon": 100.88545,
+"name": "Toilet"
+},
+{
+"lat": 12.93264,
+"lon": 100.88473,
+"name": "Toilet",
+"fee": "yes"
+},
+{
+"lat": 12.9322,
+"lon": 100.88227,
+"name": "Toilet"
+},
+{
+"lat": 12.93286,
+"lon": 100.88487,
+"name": "Toilet",
+"fee": "yes"
+},
+{
+"lat": 12.93425,
+"lon": 100.88753,
+"name": "Toilet"
+},
+{
+"lat": 12.93294,
+"lon": 100.93725,
+"name": "Toilet",
+"wheelchair": "yes"
+},
+{
+"lat": 12.93292,
+"lon": 100.88102,
+"name": "Toilet",
+"fee": "yes"
+},
+{
+"lat": 12.93442,
+"lon": 100.88641,
+"name": "Toilet",
+"fee": "yes"
+},
+{
+"lat": 12.93428,
+"lon": 100.88568,
+"name": "Toilet"
+},
+{
+"lat": 12.93629,
+"lon": 100.88409,
+"name": "Toilet",
+"fee": "yes"
+},
+{
+"lat": 12.93655,
+"lon": 100.88308,
+"name": "Toilet",
+"fee": "yes"
+},
+{
+"lat": 12.93692,
+"lon": 100.88418,
+"name": "Toilet",
+"fee": "yes"
+},
+{
+"lat": 12.94389,
+"lon": 100.90348,
+"name": "Toilet",
+"wheelchair": "yes"
+},
+{
+"lat": 12.94286,
+"lon": 100.88498,
+"name": "Toilet"
+},
+{
+"lat": 12.94584,
+"lon": 100.90393,
+"name": "Toilet"
+},
+{
+"lat": 12.9457,
+"lon": 100.88981,
+"name": "Toilet",
+"hours": "Mo-Su 10:00-02:00",
+"fee": "no"
+},
+{
+"lat": 12.94338,
+"lon": 100.94604,
+"name": "Toilet"
+},
+{
+"lat": 12.9481,
+"lon": 100.88891,
+"name": "Toilet"
+},
+{
+"lat": 12.95005,
+"lon": 100.9032,
+"name": "Toilet",
+"fee": "yes"
+},
+{
+"lat": 12.95027,
+"lon": 100.90576,
+"name": "Toilet"
+},
+{
+"lat": 12.95008,
+"lon": 100.89979,
+"name": "Toilet"
+},
+{
+"lat": 12.95129,
+"lon": 100.90573,
+"name": "Toilet"
+},
+{
+"lat": 12.95355,
+"lon": 100.88982,
+"name": "Toilet"
+},
+{
+"lat": 12.96416,
+"lon": 100.88503,
+"name": "Toilet"
+},
+{
+"lat": 12.96809,
+"lon": 100.88582,
+"name": "Toilet"
+}
+],
+"playground": [
+{
+"lat": 12.8017,
+"lon": 100.93812,
+"name": "Playground"
+},
+{
+"lat": 12.89669,
+"lon": 100.89644,
+"name": "Playground"
+},
+{
+"lat": 12.8955,
+"lon": 100.88601,
+"name": "Playground"
+},
+{
+"lat": 12.89138,
+"lon": 100.87345,
+"name": "Play park Angry Birds",
+"hours": "24/7"
+},
+{
+"lat": 12.9059,
+"lon": 100.89048,
+"name": "Playground"
+},
+{
+"lat": 12.9226,
+"lon": 100.86023,
+"name": "Funtasea"
+},
+{
+"lat": 12.93496,
+"lon": 100.8828,
+"name": "Fun Ball Family",
+"hours": "Mo-Su 11:00-21:30"
+}
+],
+"clinic": [
+{
+"lat": 12.90078,
+"lon": 100.87009,
+"name": "Chanya",
+"type": "clinic"
+},
+{
+"lat": 12.9017,
+"lon": 100.86994,
+"name": "Jomtien Medical Clinic",
+"type": "clinic"
+},
+{
+"lat": 12.91255,
+"lon": 100.89771,
+"name": "Jomtien Hospital",
+"type": "hospital",
+"emergency": "yes"
+},
+{
+"lat": 12.90551,
+"lon": 100.87358,
+"name": "Pattaya 2 Internal Medicine Clinic",
+"type": "clinic"
+},
+{
+"lat": 12.90526,
+"lon": 100.8725,
+"name": "MML",
+"type": "clinic"
+},
+{
+"lat": 12.90646,
+"lon": 100.87402,
+"name": "Dr. Olivier Clinic",
+"hours": "Mo-Fr 09:00-14:00",
+"type": "clinic"
+},
+{
+"lat": 12.90594,
+"lon": 100.86978,
+"name": "Mandarina Clinic",
+"type": "clinic"
+},
+{
+"lat": 12.91647,
+"lon": 100.8947,
+"name": "Rinrada Clinic",
+"type": "clinic"
+},
+{
+"lat": 12.91697,
+"lon": 100.89379,
+"name": "Jankamol Clinic",
+"type": "clinic"
+},
+{
+"lat": 12.90967,
+"lon": 100.86842,
+"name": "Bangkok Clinic",
+"type": "clinic"
+},
+{
+"lat": 12.9203,
+"lon": 100.88987,
+"name": "Million Clinic",
+"type": "clinic"
+},
+{
+"lat": 12.9205,
+"lon": 100.87846,
+"name": "Pro Care Clinic",
+"hours": "Mo-Fr 16:30-22:00; Sa-Su 09:00-21:00",
+"type": "clinic"
+},
+{
+"lat": 12.92262,
+"lon": 100.88484,
+"name": "Orthopaedic Clinic Dr. Rudjasorn",
+"type": "clinic"
+},
+{
+"lat": 12.9221,
+"lon": 100.88217,
+"name": "M.T. Inter Medical Laboratory",
+"type": "clinic"
+},
+{
+"lat": 12.92048,
+"lon": 100.8766,
+"name": "Clinic Lifecare Pattaya",
+"type": "clinic"
+},
+{
+"lat": 12.9154,
+"lon": 100.86415,
+"name": "TRT Bangkok",
+"type": "clinic"
+},
+{
+"lat": 12.92379,
+"lon": 100.88216,
+"name": "Banglamung",
+"hours": "Mo-Su 09:00-16:00",
+"type": "clinic"
+},
+{
+"lat": 12.92389,
+"lon": 100.88181,
+"name": "บางละมุงคลการแพทย์",
+"type": "clinic"
+},
+{
+"lat": 12.92314,
+"lon": 100.87906,
+"name": "คลินิกแพทย์กิตติพงษ์",
+"type": "clinic"
+},
+{
+"lat": 12.92541,
+"lon": 100.88426,
+"name": "Navarat Breast Care",
+"type": "clinic"
+},
+{
+"lat": 12.92587,
+"lon": 100.88487,
+"name": "Pear Aesthetic Clinic",
+"type": "clinic"
+},
+{
+"lat": 12.9258,
+"lon": 100.8844,
+"name": "Yinyang Acupunture Clinic",
+"type": "clinic"
+},
+{
+"lat": 12.92366,
+"lon": 100.8764,
+"name": "Dr. Pattaya",
+"type": "clinic"
+},
+{
+"lat": 12.92694,
+"lon": 100.88663,
+"name": "Asia Inter Clinic",
+"type": "clinic"
+},
+{
+"lat": 12.92711,
+"lon": 100.88616,
+"name": "นายแพทย์ โอภาส คลินิก",
+"type": "clinic"
+},
+{
+"lat": 12.92826,
+"lon": 100.89147,
+"name": "Sisters Foundation Pattaya",
+"hours": "Mo-Fr 13:00-17:00, Sa-Su closed",
+"type": "clinic"
+},
+{
+"lat": 12.92329,
+"lon": 100.8723,
+"name": "Dr. Sawaddipong",
+"hours": "Mo-Sa 09:00-20:00",
+"type": "clinic"
+},
+{
+"lat": 12.92742,
+"lon": 100.88468,
+"name": "Pattaya City Hospital",
+"type": "hospital"
+},
+{
+"lat": 12.92768,
+"lon": 100.88414,
+"name": "Pattaya Public Health Service Center",
+"type": "clinic"
+},
+{
+"lat": 12.92771,
+"lon": 100.88367,
+"name": "Medical Clinic",
+"type": "clinic"
+},
+{
+"lat": 12.92885,
+"lon": 100.88853,
+"name": "Akara Klinik",
+"type": "clinic"
+},
+{
+"lat": 12.92782,
+"lon": 100.88392,
+"name": "Virinda Clinic",
+"type": "clinic"
+},
+{
+"lat": 12.92473,
+"lon": 100.87321,
+"name": "OP Clinic",
+"type": "clinic"
+},
+{
+"lat": 12.93005,
+"lon": 100.88906,
+"name": "Saisam Medical Clinic",
+"type": "clinic"
+},
+{
+"lat": 12.92697,
+"lon": 100.87521,
+"name": "นิรามัยแพทย์",
+"type": "clinic"
+},
+{
+"lat": 12.92794,
+"lon": 100.87702,
+"name": "RC Clinic",
+"type": "clinic"
+},
+{
+"lat": 12.93115,
+"lon": 100.88601,
+"name": "Oasis clinic",
+"type": "clinic",
+"emergency": "no"
+},
+{
+"lat": 12.93167,
+"lon": 100.88667,
+"name": "Pattaya City Clinic",
+"type": "clinic"
+},
+{
+"lat": 12.9339,
+"lon": 100.8949,
+"name": "PHD Clinic",
+"type": "clinic"
+},
+{
+"lat": 12.9316,
+"lon": 100.88288,
+"name": "Dheva Clinic Aesthetics & Surgery (Dermatology)",
+"type": "clinic"
+},
+{
+"lat": 12.93262,
+"lon": 100.88042,
+"name": "La Nitivadee Dermatology & Aesthetic Laser Center",
+"hours": "Mo-Fr 10:00-19:00; Sa 10:00-16:00",
+"type": "clinic"
+},
+{
+"lat": 12.93539,
+"lon": 100.8896,
+"name": "พี.เซ็นเตอร์",
+"hours": "Mo-Su 09:00-21:00",
+"type": "clinic"
+},
+{
+"lat": 12.93611,
+"lon": 100.89293,
+"name": "Cosmo Clinic",
+"type": "clinic"
+},
+{
+"lat": 12.9356,
+"lon": 100.88656,
+"name": "Pattaya Memorial Hospital",
+"type": "hospital",
+"emergency": "yes"
+},
+{
+"lat": 12.93659,
+"lon": 100.88626,
+"name": "Bangkok Clinic Loyal",
+"type": "clinic"
+},
+{
+"lat": 12.93912,
+"lon": 100.89886,
+"name": "EASE Orthopedic Hospital",
+"type": "hospital"
+},
+{
+"lat": 12.93833,
+"lon": 100.88711,
+"name": "89 Medical Clinic",
+"type": "clinic"
+},
+{
+"lat": 12.94041,
+"lon": 100.90287,
+"name": "พัทยาแพทย์เฉพาะทาง",
+"type": "clinic"
+},
+{
+"lat": 12.94406,
+"lon": 100.88766,
+"name": "Pattaya International Hospital",
+"type": "hospital",
+"emergency": "yes"
+},
+{
+"lat": 12.94955,
+"lon": 100.89827,
+"name": "Korawin Clinic",
+"type": "clinic"
+},
+{
+"lat": 12.95083,
+"lon": 100.89093,
+"name": "Mediqueen Clinic",
+"type": "clinic"
+},
+{
+"lat": 12.9538,
+"lon": 100.9055,
+"name": "Bangkok Hospital Pattaya",
+"type": "hospital",
+"emergency": "yes"
+},
+{
+"lat": 12.95502,
+"lon": 100.90716,
+"name": "Seoul Clinic Pattaya",
+"type": "clinic"
+},
+{
+"lat": 12.9562,
+"lon": 100.89135,
+"name": "Loma Clinic",
+"hours": "Mo-Sa 09:00-21:00",
+"type": "clinic"
+},
+{
+"lat": 12.96173,
+"lon": 100.89534,
+"name": "Dr Rut & Dr Suree Clinic",
+"hours": "Mo-Fr 16:00-19:00; Sa 09:00-13:00",
+"type": "clinic"
+},
+{
+"lat": 12.96633,
+"lon": 100.90639,
+"name": "Pattaya BhattamaKun Hospital",
+"type": "hospital"
+},
+{
+"lat": 12.96906,
+"lon": 100.90139,
+"name": "Pattaya Clinic Laboratory",
+"hours": "Mo-Sa 07:00-12:00",
+"type": "clinic"
+}
+],
+"atm": [
+{
+"lat": 12.82595,
+"lon": 100.91513,
+"name": "Kasikorn ATM",
+"brand": "Kasikorn"
+},
+{
+"lat": 12.81801,
+"lon": 100.91632,
+"name": "Krungthai ATM",
+"brand": "Krungthai"
+},
+{
+"lat": 12.82389,
+"lon": 100.92518,
+"name": "Bangkok Bank ATM",
+"brand": "Bangkok Bank"
+},
+{
+"lat": 12.85775,
+"lon": 100.90973,
+"name": "Bangkok Bank ATM",
+"brand": "Bangkok Bank"
+},
+{
+"lat": 12.85904,
+"lon": 100.91891,
+"name": "ATM"
+},
+{
+"lat": 12.86821,
+"lon": 100.90701,
+"name": "ATM"
+},
+{
+"lat": 12.87922,
+"lon": 100.8922,
+"name": "ATM"
+},
+{
+"lat": 12.88322,
+"lon": 100.90682,
+"name": "ATM"
+},
+{
+"lat": 12.87833,
+"lon": 100.88465,
+"name": "Krungthai ATM",
+"brand": "Krungthai"
+},
+{
+"lat": 12.88436,
+"lon": 100.87969,
+"name": "ttb ATM",
+"hours": "Mo-Fr 09:30-17:00",
+"brand": "ttb",
+"in_bank": true
+},
+{
+"lat": 12.88704,
+"lon": 100.88285,
+"name": "Bangkok Bank ATM",
+"brand": "Bangkok Bank"
+},
+{
+"lat": 12.88539,
+"lon": 100.87882,
+"name": "ATM"
+},
+{
+"lat": 12.88683,
+"lon": 100.87798,
+"name": "SCB ATM",
+"brand": "SCB",
+"in_bank": true
+},
+{
+"lat": 12.8961,
+"lon": 100.8968,
+"name": "ATM"
+},
+{
+"lat": 12.89547,
+"lon": 100.87023,
+"name": "Bangkok Bank ATM",
+"brand": "Bangkok Bank"
+},
+{
+"lat": 12.89758,
+"lon": 100.87349,
+"name": "Kasikorn ATM",
+"hours": "24/7",
+"brand": "Kasikorn"
+},
+{
+"lat": 12.89704,
+"lon": 100.87164,
+"name": "Krungsri ATM",
+"brand": "Krungsri"
+},
+{
+"lat": 12.8979,
+"lon": 100.87274,
+"name": "Krungsri ATM",
+"brand": "Krungsri"
+},
+{
+"lat": 12.89805,
+"lon": 100.8726,
+"name": "Bangkok Bank ATM",
+"brand": "Bangkok Bank",
+"in_bank": true
+},
+{
+"lat": 12.90637,
+"lon": 100.89663,
+"name": "SCB ATM",
+"brand": "SCB"
+},
+{
+"lat": 12.90637,
+"lon": 100.89661,
+"name": "Bangkok Bank ATM",
+"brand": "Bangkok Bank"
+},
+{
+"lat": 12.90637,
+"lon": 100.89659,
+"name": "Kasikorn ATM",
+"brand": "Kasikorn"
+},
+{
+"lat": 12.89693,
+"lon": 100.86977,
+"name": "ATM",
+"in_bank": true
+},
+{
+"lat": 12.90792,
+"lon": 100.90596,
+"name": "Krungsri ATM",
+"brand": "Krungsri",
+"in_bank": true
+},
+{
+"lat": 12.90837,
+"lon": 100.90377,
+"name": "Kasikorn ATM",
+"brand": "Kasikorn"
+},
+{
+"lat": 12.89744,
+"lon": 100.8684,
+"name": "Kasikorn ATM",
+"brand": "Kasikorn",
+"in_bank": true
+},
+{
+"lat": 12.90889,
+"lon": 100.90244,
+"name": "Krungsri ATM",
+"brand": "Krungsri"
+},
+{
+"lat": 12.9089,
+"lon": 100.90242,
+"name": "SCB ATM",
+"brand": "SCB"
+},
+{
+"lat": 12.89897,
+"lon": 100.86713,
+"name": "Bangkok Bank ATM",
+"brand": "Bangkok Bank"
+},
+{
+"lat": 12.89962,
+"lon": 100.86822,
+"name": "Kasikorn ATM",
+"brand": "Kasikorn"
+},
+{
+"lat": 12.90883,
+"lon": 100.89122,
+"name": "Bangkok Bank ATM",
+"brand": "Bangkok Bank"
+},
+{
+"lat": 12.89953,
+"lon": 100.8677,
+"name": "Krungsri ATM",
+"brand": "Krungsri",
+"in_bank": true
+},
+{
+"lat": 12.90917,
+"lon": 100.8915,
+"name": "SCB ATM",
+"brand": "SCB",
+"in_bank": true
+},
+{
+"lat": 12.9091,
+"lon": 100.89085,
+"name": "Bangkok Bank ATM",
+"brand": "Bangkok Bank",
+"in_bank": true
+},
+{
+"lat": 12.90801,
+"lon": 100.8855,
+"name": "Bangkok Bank ATM",
+"brand": "Bangkok Bank"
+},
+{
+"lat": 12.90885,
+"lon": 100.88821,
+"name": "SCB ATM",
+"brand": "SCB",
+"in_bank": true
+},
+{
+"lat": 12.90915,
+"lon": 100.88879,
+"name": "Krungsri ATM",
+"brand": "Krungsri"
+},
+{
+"lat": 12.90872,
+"lon": 100.88714,
+"name": "SCB ATM",
+"brand": "SCB",
+"in_bank": true
+},
+{
+"lat": 12.90916,
+"lon": 100.88879,
+"name": "Krungthai ATM",
+"brand": "Krungthai"
+},
+{
+"lat": 12.90242,
+"lon": 100.8699,
+"name": "ttb ATM",
+"brand": "ttb",
+"in_bank": true
+},
+{
+"lat": 12.90296,
+"lon": 100.86977,
+"name": "CIMB ATM",
+"brand": "CIMB",
+"in_bank": true
+},
+{
+"lat": 12.90319,
+"lon": 100.86932,
+"name": "Krungsri ATM",
+"brand": "Krungsri"
+},
+{
+"lat": 12.9051,
+"lon": 100.87292,
+"name": "Krungthai ATM",
+"brand": "Krungthai",
+"in_bank": true
+},
+{
+"lat": 12.90476,
+"lon": 100.87142,
+"name": "Bangkok Bank ATM",
+"hours": "24/7",
+"brand": "Bangkok Bank"
+},
+{
+"lat": 12.90537,
+"lon": 100.86937,
+"name": "GSB ATM",
+"brand": "GSB",
+"in_bank": true
+},
+{
+"lat": 12.91529,
+"lon": 100.89468,
+"name": "Bangkok Bank ATM",
+"brand": "Bangkok Bank"
+},
+{
+"lat": 12.91548,
+"lon": 100.89464,
+"name": "ATM",
+"in_bank": true
+},
+{
+"lat": 12.91561,
+"lon": 100.89464,
+"name": "SCB ATM",
+"brand": "SCB",
+"in_bank": true
+},
+{
+"lat": 12.91578,
+"lon": 100.89458,
+"name": "ATM",
+"in_bank": true
+},
+{
+"lat": 12.91468,
+"lon": 100.88563,
+"name": "ATM"
+},
+{
+"lat": 12.91416,
+"lon": 100.88046,
+"name": "ATM"
+},
+{
+"lat": 12.91507,
+"lon": 100.88006,
+"name": "Krungsri ATM",
+"brand": "Krungsri"
+},
+{
+"lat": 12.91548,
+"lon": 100.87961,
+"name": "ATM"
+},
+{
+"lat": 12.92121,
+"lon": 100.91393,
+"name": "Krungthai ATM",
+"brand": "Krungthai"
+},
+{
+"lat": 12.91883,
+"lon": 100.88557,
+"name": "ttb ATM",
+"brand": "ttb"
+},
+{
+"lat": 12.91909,
+"lon": 100.88553,
+"name": "Bangkok Bank ATM",
+"brand": "Bangkok Bank"
+},
+{
+"lat": 12.90964,
+"lon": 100.8619,
+"name": "SCB ATM",
+"brand": "SCB"
+},
+{
+"lat": 12.92273,
+"lon": 100.91203,
+"name": "GH Bank ATM",
+"brand": "GH Bank",
+"in_bank": true
+},
+{
+"lat": 12.92284,
+"lon": 100.91117,
+"name": "Krungsri ATM",
+"brand": "Krungsri"
+},
+{
+"lat": 12.92285,
+"lon": 100.91118,
+"name": "SCB ATM",
+"brand": "SCB"
+},
+{
+"lat": 12.92286,
+"lon": 100.91118,
+"name": "Bangkok Bank ATM",
+"brand": "Bangkok Bank"
+},
+{
+"lat": 12.92289,
+"lon": 100.91108,
+"name": "Kasikorn ATM",
+"brand": "Kasikorn"
+},
+{
+"lat": 12.92315,
+"lon": 100.91106,
+"name": "Krungsri ATM",
+"brand": "Krungsri",
+"in_bank": true
+},
+{
+"lat": 12.92337,
+"lon": 100.91048,
+"name": "SCB ATM",
+"brand": "SCB"
+},
+{
+"lat": 12.90895,
+"lon": 100.85852,
+"name": "ATM"
+},
+{
+"lat": 12.92399,
+"lon": 100.90867,
+"name": "Bangkok Bank ATM",
+"brand": "Bangkok Bank"
+},
+{
+"lat": 12.92427,
+"lon": 100.90754,
+"name": "Bangkok Bank ATM",
+"brand": "Bangkok Bank"
+},
+{
+"lat": 12.92254,
+"lon": 100.88788,
+"name": "Bangkok Bank ATM",
+"brand": "Bangkok Bank"
+},
+{
+"lat": 12.92486,
+"lon": 100.90526,
+"name": "Bangkok Bank ATM",
+"brand": "Bangkok Bank",
+"in_bank": true
+},
+{
+"lat": 12.92499,
+"lon": 100.89839,
+"name": "Bangkok Bank ATM",
+"brand": "Bangkok Bank"
+},
+{
+"lat": 12.92297,
+"lon": 100.88405,
+"name": "Bangkok Bank ATM",
+"brand": "Bangkok Bank"
+},
+{
+"lat": 12.92642,
+"lon": 100.89859,
+"name": "ATM"
+},
+{
+"lat": 12.91521,
+"lon": 100.86229,
+"name": "Bangkok Bank ATM",
+"brand": "Bangkok Bank"
+},
+{
+"lat": 12.91522,
+"lon": 100.86173,
+"name": "SCB ATM",
+"brand": "SCB"
+},
+{
+"lat": 12.92568,
+"lon": 100.88889,
+"name": "Krungsri ATM",
+"brand": "Krungsri"
+},
+{
+"lat": 12.92569,
+"lon": 100.8889,
+"name": "Kasikorn ATM",
+"brand": "Kasikorn"
+},
+{
+"lat": 12.92377,
+"lon": 100.88079,
+"name": "Krungsri ATM",
+"hours": "Mo-Fr 08:30-16:30; PH off",
+"brand": "Krungsri",
+"in_bank": true
+},
+{
+"lat": 12.92279,
+"lon": 100.87758,
+"name": "ATM"
+},
+{
+"lat": 12.92308,
+"lon": 100.87676,
+"name": "Krungsri ATM",
+"brand": "Krungsri"
+},
+{
+"lat": 12.92397,
+"lon": 100.87899,
+"name": "Kasikorn ATM",
+"hours": "Mo-Fr 08:30-16:30",
+"brand": "Kasikorn",
+"in_bank": true
+},
+{
+"lat": 12.92496,
+"lon": 100.88015,
+"name": "Krungsri ATM",
+"brand": "Krungsri"
+},
+{
+"lat": 12.9276,
+"lon": 100.88906,
+"name": "Krungsri ATM",
+"brand": "Krungsri"
+},
+{
+"lat": 12.92761,
+"lon": 100.88905,
+"name": "Bangkok Bank ATM",
+"brand": "Bangkok Bank"
+},
+{
+"lat": 12.92458,
+"lon": 100.87712,
+"name": "Krungthai ATM",
+"hours": "Mo-Fr 08:30-16:30",
+"brand": "Krungthai",
+"in_bank": true
+},
+{
+"lat": 12.92472,
+"lon": 100.87747,
+"name": "Krungthai ATM",
+"brand": "Krungthai"
+},
+{
+"lat": 12.92629,
+"lon": 100.88183,
+"name": "Kasikorn ATM",
+"brand": "Kasikorn"
+},
+{
+"lat": 12.92629,
+"lon": 100.88183,
+"name": "Krungsri ATM",
+"brand": "Krungsri"
+},
+{
+"lat": 12.92953,
+"lon": 100.91955,
+"name": "Bangkok Bank ATM",
+"brand": "Bangkok Bank"
+},
+{
+"lat": 12.93001,
+"lon": 100.91444,
+"name": "Bangkok Bank ATM",
+"brand": "Bangkok Bank",
+"in_bank": true
+},
+{
+"lat": 12.92909,
+"lon": 100.89435,
+"name": "Kasikorn ATM",
+"brand": "Kasikorn"
+},
+{
+"lat": 12.92736,
+"lon": 100.88347,
+"name": "SCB ATM",
+"brand": "SCB"
+},
+{
+"lat": 12.92738,
+"lon": 100.88349,
+"name": "Bangkok Bank ATM",
+"brand": "Bangkok Bank"
+},
+{
+"lat": 12.92739,
+"lon": 100.8835,
+"name": "Kasikorn ATM",
+"brand": "Kasikorn"
+},
+{
+"lat": 12.93079,
+"lon": 100.9107,
+"name": "Bangkok Bank ATM",
+"brand": "Bangkok Bank"
+},
+{
+"lat": 12.92765,
+"lon": 100.88387,
+"name": "Krungsri ATM",
+"brand": "Krungsri"
+},
+{
+"lat": 12.92473,
+"lon": 100.87357,
+"name": "ATM"
+},
+{
+"lat": 12.93005,
+"lon": 100.89418,
+"name": "Kasikorn ATM",
+"brand": "Kasikorn"
+},
+{
+"lat": 12.92478,
+"lon": 100.87332,
+"name": "Bangkok Bank ATM",
+"brand": "Bangkok Bank",
+"in_bank": true
+},
+{
+"lat": 12.9249,
+"lon": 100.87342,
+"name": "ttb ATM",
+"brand": "ttb"
+},
+{
+"lat": 12.92704,
+"lon": 100.87951,
+"name": "ATM"
+},
+{
+"lat": 12.93031,
+"lon": 100.8942,
+"name": "Krungsri ATM",
+"brand": "Krungsri"
+},
+{
+"lat": 12.93032,
+"lon": 100.8942,
+"name": "SCB ATM",
+"brand": "SCB"
+},
+{
+"lat": 12.92855,
+"lon": 100.88472,
+"name": "ttb ATM",
+"brand": "ttb"
+},
+{
+"lat": 12.93149,
+"lon": 100.90752,
+"name": "Bangkok Bank ATM",
+"brand": "Bangkok Bank"
+},
+{
+"lat": 12.92863,
+"lon": 100.88477,
+"name": "Bangkok Bank ATM",
+"brand": "Bangkok Bank"
+},
+{
+"lat": 12.92879,
+"lon": 100.88487,
+"name": "ttb ATM",
+"brand": "ttb"
+},
+{
+"lat": 12.9288,
+"lon": 100.88487,
+"name": "Krungsri ATM",
+"brand": "Krungsri"
+},
+{
+"lat": 12.92915,
+"lon": 100.8851,
+"name": "ttb ATM",
+"brand": "ttb"
+},
+{
+"lat": 12.92915,
+"lon": 100.88511,
+"name": "SCB ATM",
+"brand": "SCB"
+},
+{
+"lat": 12.92909,
+"lon": 100.88459,
+"name": "Krungsri ATM",
+"brand": "Krungsri"
+},
+{
+"lat": 12.9291,
+"lon": 100.88458,
+"name": "Bangkok Bank ATM",
+"brand": "Bangkok Bank"
+},
+{
+"lat": 12.9291,
+"lon": 100.88458,
+"name": "ttb ATM",
+"brand": "ttb"
+},
+{
+"lat": 12.92922,
+"lon": 100.88498,
+"name": "Kasikorn ATM",
+"brand": "Kasikorn"
+},
+{
+"lat": 12.92976,
+"lon": 100.88661,
+"name": "Krungsri ATM",
+"brand": "Krungsri"
+},
+{
+"lat": 12.92976,
+"lon": 100.88659,
+"name": "Bangkok Bank ATM",
+"brand": "Bangkok Bank"
+},
+{
+"lat": 12.92963,
+"lon": 100.88543,
+"name": "Krungsri ATM",
+"brand": "Krungsri"
+},
+{
+"lat": 12.93057,
+"lon": 100.88937,
+"name": "Bangkok Bank ATM",
+"brand": "Bangkok Bank"
+},
+{
+"lat": 12.92891,
+"lon": 100.88191,
+"name": "Bangkok Bank ATM",
+"brand": "Bangkok Bank"
+},
+{
+"lat": 12.92892,
+"lon": 100.88191,
+"name": "Kasikorn ATM",
+"brand": "Kasikorn"
+},
+{
+"lat": 12.92762,
+"lon": 100.87744,
+"name": "GSB ATM",
+"brand": "GSB",
+"in_bank": true
+},
+{
+"lat": 12.92881,
+"lon": 100.8814,
+"name": "ttb ATM",
+"brand": "ttb"
+},
+{
+"lat": 12.92551,
+"lon": 100.87137,
+"name": "Krungsri ATM",
+"brand": "Krungsri"
+},
+{
+"lat": 12.93158,
+"lon": 100.89427,
+"name": "Bangkok Bank ATM",
+"brand": "Bangkok Bank"
+},
+{
+"lat": 12.92962,
+"lon": 100.8841,
+"name": "Kasikorn ATM",
+"brand": "Kasikorn"
+},
+{
+"lat": 12.92963,
+"lon": 100.88411,
+"name": "ttb ATM",
+"brand": "ttb"
+},
+{
+"lat": 12.92805,
+"lon": 100.87835,
+"name": "Krungthai ATM",
+"brand": "Krungthai"
+},
+{
+"lat": 12.92756,
+"lon": 100.8767,
+"name": "ttb ATM",
+"brand": "ttb",
+"in_bank": true
+},
+{
+"lat": 12.9278,
+"lon": 100.87725,
+"name": "UOB ATM",
+"brand": "UOB",
+"in_bank": true
+},
+{
+"lat": 12.92083,
+"lon": 100.86031,
+"name": "Bangkok Bank ATM",
+"brand": "Bangkok Bank",
+"in_bank": true
+},
+{
+"lat": 12.93032,
+"lon": 100.88572,
+"name": "Kasikorn ATM",
+"brand": "Kasikorn"
+},
+{
+"lat": 12.92691,
+"lon": 100.87396,
+"name": "ATM"
+},
+{
+"lat": 12.92854,
+"lon": 100.87869,
+"name": "Kasikorn ATM",
+"brand": "Kasikorn"
+},
+{
+"lat": 12.92858,
+"lon": 100.87868,
+"name": "Bangkok Bank ATM",
+"brand": "Bangkok Bank"
+},
+{
+"lat": 12.92862,
+"lon": 100.87866,
+"name": "SCB ATM",
+"brand": "SCB"
+},
+{
+"lat": 12.93277,
+"lon": 100.89861,
+"name": "Kiatnakin ATM",
+"brand": "Kiatnakin",
+"in_bank": true
+},
+{
+"lat": 12.93096,
+"lon": 100.88625,
+"name": "Bangkok Bank ATM",
+"brand": "Bangkok Bank"
+},
+{
+"lat": 12.93097,
+"lon": 100.88625,
+"name": "Krungsri ATM",
+"brand": "Krungsri"
+},
+{
+"lat": 12.93245,
+"lon": 100.89435,
+"name": "Krungsri ATM",
+"brand": "Krungsri"
+},
+{
+"lat": 12.92975,
+"lon": 100.88129,
+"name": "Krungsri ATM",
+"hours": "Mo-Sa 10:00-19:00",
+"brand": "Krungsri",
+"in_bank": true
+},
+{
+"lat": 12.92983,
+"lon": 100.88112,
+"name": "Kasikorn ATM",
+"hours": "Mo-Su 11:00-19:00",
+"brand": "Kasikorn",
+"in_bank": true
+},
+{
+"lat": 12.9298,
+"lon": 100.87944,
+"name": "ATM"
+},
+{
+"lat": 12.93253,
+"lon": 100.89071,
+"name": "Kasikorn ATM",
+"brand": "Kasikorn"
+},
+{
+"lat": 12.93349,
+"lon": 100.89709,
+"name": "Krungsri ATM",
+"brand": "Krungsri"
+},
+{
+"lat": 12.93354,
+"lon": 100.89751,
+"name": "SCB ATM",
+"brand": "SCB",
+"in_bank": true
+},
+{
+"lat": 12.93351,
+"lon": 100.89705,
+"name": "SCB ATM",
+"brand": "SCB"
+},
+{
+"lat": 12.92926,
+"lon": 100.87709,
+"name": "Bangkok Bank ATM",
+"brand": "Bangkok Bank",
+"in_bank": true
+},
+{
+"lat": 12.92966,
+"lon": 100.878,
+"name": "Kasikorn ATM",
+"brand": "Kasikorn",
+"in_bank": true
+},
+{
+"lat": 12.92954,
+"lon": 100.87756,
+"name": "SCB ATM",
+"brand": "SCB"
+},
+{
+"lat": 12.93012,
+"lon": 100.87919,
+"name": "Krungsri ATM",
+"brand": "Krungsri"
+},
+{
+"lat": 12.93022,
+"lon": 100.87885,
+"name": "SCB ATM",
+"brand": "SCB"
+}
+]
+}
