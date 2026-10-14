@@ -364,7 +364,7 @@ document.querySelectorAll('a[href^="http"]').forEach(a => { a.target = "_blank";
     frag.append(t.slice(last)); n.replaceWith(frag);
   });
   // В блоках с ценами (class="thb") числа без слова «бат» — тоже цены, кроме минут, часов, км, отзывов и т. п.
-  const NUM = "(\\d{1,3}(?:[ \\u00a0]\\d{3})+|\\d{2,5})";
+  const NUM = "(\\d{1,3}(?:[ \\u00a0]\\d{3})+|(?!(?:19|20)\\d\\d(?!\\d))\\d{2,5})";  // годы 19xx/20xx — не цены
   const reZone = new RegExp(`(?<![\\d.,:A-Za-zА-Яа-яЁё])(?<![A-Za-z]\\s)(?<!(?:полиция|полиции|скорая|скорой|тел\\.|номер)\\s)${NUM}(?:\\s*[–-]\\s*${NUM})?(?![\\d.,:]?\\d)(?!\\s*[–-]\\s*\\d)(?!\\s*(?:ч\\b|час|мин|км|м\\b|%|шт|г\\b|мл|кг|лет|этаж|отзыв|°|см|\\+? ?отз))`, "g");
   document.querySelectorAll(".thb").forEach(zone => {
     const w = document.createTreeWalker(zone, NodeFilter.SHOW_TEXT, { acceptNode: n => n.parentElement.closest(".price,b") ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT });
