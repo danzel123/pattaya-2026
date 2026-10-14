@@ -650,3 +650,4 @@ details.day .daylink + .bring { margin-top: 0; }
 .csheet .sbar .grab { margin: 0; }
 .csheet .sbar .x { position: absolute; right: 10px; top: 4px; float: none; margin: 0; }
 .sc .facts b.bad, .csheet .facts b.bad { color: #c62828; }
+.facts .f { white-space: nowrap; }
