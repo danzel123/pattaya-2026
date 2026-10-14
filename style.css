@@ -596,3 +596,5 @@ footer { color: var(--mut); }
 .tl { border-left: 0 !important; }
 .tl li::before { z-index: 1; }
 .tl li:not(:last-child)::after { content: ""; position: absolute; left: -16px; top: 17px; bottom: -17px; border-left: 3px dotted #9fd6d3; z-index: 0; }
+.bjmap { margin: 6px 0 12px; border-radius: 14px; overflow: hidden; background: #fff; border: 1px solid var(--line); }
+.bjmap img { display: block; width: 100%; height: auto; }
