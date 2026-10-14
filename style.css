@@ -362,17 +362,6 @@ body.noscroll { overflow: hidden; }
 .callbtn { display: block; margin: 12px 0 2px; padding: 12px; border-radius: 12px; background: var(--c); color: #fff !important; text-align: center; font-weight: 700; font-size: 17px; text-decoration: none !important; }
 
 /* ---- погода, установка ---- */
-.wx { margin-left: 8px; font-weight: 600; color: var(--c2); font-size: 14px; }
-.wx:empty { display: none; }
-.wxbox { background: linear-gradient(135deg, #e8f6fb, #fff); border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; margin: 14px 0 6px; }
-.wxh { display: flex; gap: 12px; align-items: center; line-height: 1.45; }
-.wxi { font-size: 40px; line-height: 1; }
-.wxrain { margin: 8px 0 0; background: #fff6e0; border-radius: 10px; padding: 8px 10px; font-size: 15px; }
-.wxd { display: flex; gap: 6px; margin-top: 10px; overflow-x: auto; scrollbar-width: none; }
-.wxd div { flex: 1 0 52px; display: flex; flex-direction: column; align-items: center; background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 5px 2px; font-size: 13px; }
-.wxd i { font-style: normal; color: var(--mut); font-size: 12px; }
-.wxd span { font-size: 20px; }
-.wxbox .meta { margin: 8px 0 0; font-size: 12px; color: var(--mut); }
 .instbtn { margin: 8px 0 4px; border: 0; background: var(--c); color: #fff; font: inherit; font-weight: 700; padding: 10px 18px; border-radius: 12px; cursor: pointer; }
 .insthide { font-size: 13px; color: var(--mut); }
 .bring { margin: 4px 14px 2px; background: #fff8e6; border-radius: 10px; padding: 8px 11px; font-size: 15px; }
@@ -474,8 +463,6 @@ h4 { font-weight: 800; }
 .warn { background: #fff1dc; box-shadow: inset 4px 0 0 var(--sun); }
 .info { background: var(--sea-soft); box-shadow: inset 4px 0 0 var(--c); }
 .ok { background: #e7f6e9; box-shadow: inset 4px 0 0 #3c9a3c; }
-.wxbox { border: 0; border-radius: var(--r); background: linear-gradient(135deg, #dff3f1, #fff 70%); box-shadow: var(--sh); }
-.wxd div { border: 0; background: rgba(255,255,255,.85); border-radius: 14px; }
 
 /* --- кнопки --- */
 .offbtn, .instbtn, .callbtn { background: var(--coral); border-radius: 999px; min-height: 48px; padding: 12px 22px; font-family: var(--hf); font-weight: 800; box-shadow: 0 6px 16px rgba(196, 69, 42, .28); }
@@ -511,7 +498,6 @@ details.day .chev { width: 32px; height: 32px; display: grid; place-items: cente
 details.day[open] summary { border-bottom: 1px dashed var(--line); }
 .day.is-today, #today details.day { border: 0; box-shadow: 0 0 0 2.5px var(--coral), 0 8px 24px rgba(196,69,42,.15); }
 .day .today { background: var(--coral); }
-.wx { color: var(--c2); }
 .bring { background: #fff3d6; border-radius: 16px; padding: 10px 13px; margin: 12px 14px 4px; }
 .tl { border-left: 3px dotted #9fd6d3; }
 .tl li::before { border-color: var(--c); background: #fff; }

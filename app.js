@@ -549,54 +549,6 @@ document.querySelectorAll('a[href^="http"]').forEach(a => { a.target = "_blank";
   }, true);
 })();
 
-// Погода (open-meteo.com): на главной и в карточках дней; без сети — последний сохранённый прогноз
-(function () {
-  const START = "2026-10-21", END = "2026-11-01";
-  const add = (d, n) => new Date(Date.parse(d) + n * 864e5).toISOString().slice(0, 10);
-  const from = TH_TODAY > START ? TH_TODAY : START;
-  const to = [END, add(TH_TODAY, 15)].sort()[0];
-  const ICON = c => c === 0 ? "☀️" : c <= 2 ? "🌤" : c === 3 ? "☁️" : c <= 48 ? "🌫" : c <= 57 ? "🌦" : c <= 67 ? "🌧" : c <= 82 ? "🌧" : "⛈";
-  const WD = ["вс", "пн", "вт", "ср", "чт", "пт", "сб"];
-  function render(w) {
-    const D = {};
-    w.daily.time.forEach((t, i) => (D[t] = { c: w.daily.weather_code[i], tx: Math.round(w.daily.temperature_2m_max[i]), tn: Math.round(w.daily.temperature_2m_min[i]), p: w.daily.precipitation_probability_max[i], mm: w.daily.precipitation_sum[i], uv: Math.round(w.daily.uv_index_max[i]), ss: (w.daily.sunset[i] || "").slice(11, 16), wv: w.wave ? w.wave[t] : null }));
-    document.querySelectorAll("[data-wx]").forEach(el => {
-      const d = D[el.dataset.wx];
-      el.innerHTML = d ? `${ICON(d.c)} ${d.tx}°${d.p >= 40 ? ` · 💧${d.p}%` : ""}` : "";
-    });
-    const box = $("weather");
-    if (!box) return;
-    const days = Object.keys(D).filter(t => t >= from && t <= END).slice(0, 7);
-    if (!days.length) return;
-    const t0 = D[days[0]];
-    const rainy = t0.p >= 60 || t0.mm >= 8;
-    box.innerHTML = `<div class="wxh"><span class="wxi">${ICON(t0.c)}</span><div><b>${days[0] === TH_TODAY ? "Сегодня" : (+days[0].slice(8)) + "." + days[0].slice(5, 7)} в На Джомтьене: ${t0.tn}…${t0.tx}°</b><br>` +
-      `💧 дождь ${t0.p}%${t0.mm ? ` (${String(t0.mm).replace(".", ",")} мм)` : ""} · ☀️ УФ ${t0.uv}${t0.uv >= 8 ? " — крем и панамка!" : ""}${t0.wv != null ? ` · 🌊 волна ${String(t0.wv).replace(".", ",")} м` : ""} · 🌅 закат ${t0.ss}</div></div>` +
-      (rainy ? `<p class="wxrain">🌧 Обещают дождь — обычно это ливень на 1–2 часа. Пляж и бассейн лучше утром, а на время дождя — <a href="plan.html#rain">куда пойти под крышей</a>.</p>` : "") +
-      `<div class="wxd">${days.slice(1).map(t => { const d = D[t]; return `<div><i>${WD[new Date(t).getUTCDay()]} ${+t.slice(8)}</i><span>${ICON(d.c)}</span><b>${d.tx}°</b><i>${d.p}%</i></div>`; }).join("")}</div>` +
-      `<p class="meta">Прогноз open-meteo.com${w.saved ? ", обновлён " + new Date(w.saved).toLocaleString("ru", { day: "numeric", month: "numeric", hour: "2-digit", minute: "2-digit" }) : ""}</p>`;
-    box.hidden = false;
-  }
-  if (from > to) return;  // до поездки больше 16 дней — прогноза ещё нет
-  const KEY = "wx-v1";
-  let cached = null;
-  try { cached = JSON.parse(localStorage.getItem(KEY)); } catch (_) {}
-  if (cached) render(cached);
-  if (cached && Date.now() - cached.saved < 3 * 3600e3) return;
-  const LL = "latitude=12.8306&longitude=100.9015";
-  Promise.all([
-    fetch(`https://api.open-meteo.com/v1/forecast?${LL}&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,precipitation_sum,uv_index_max,sunset&timezone=Asia%2FBangkok&start_date=${from}&end_date=${to}`).then(r => r.json()),
-    fetch(`https://marine-api.open-meteo.com/v1/marine?latitude=12.83&longitude=100.88&daily=wave_height_max&timezone=Asia%2FBangkok&start_date=${from}&end_date=${to}`).then(r => r.json()).catch(() => null),
-  ]).then(([f, m]) => {
-    if (!f || !f.daily) return;
-    f.wave = {};
-    if (m && m.daily) m.daily.time.forEach((t, i) => (f.wave[t] = m.daily.wave_height_max[i]));
-    f.saved = Date.now();
-    localStorage.setItem(KEY, JSON.stringify(f));
-    render(f);
-  }).catch(() => {});
-})();
-
 // До поездки — напоминание «До вылета»; в поездке — план открывается на сегодняшнем дне
 (function () {
   if (TH_TODAY >= "2026-10-20") document.querySelectorAll(".pretrip").forEach(e => e.remove());
