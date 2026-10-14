@@ -582,3 +582,5 @@ footer { color: var(--mut); }
 .top-hidden #fxbtn { transform: translateY(160%); opacity: 0; pointer-events: none; }
 .day.past { opacity: .8; }
 .dish img { padding: 12px 12px 0; box-sizing: border-box; height: 202px; border-radius: 0; }
+.place .pic img, .venue .pic img { padding: 12px 12px 0; box-sizing: border-box; height: 202px; border-radius: 0; }
+.animal .pic img { height: 182px; }
