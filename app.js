@@ -604,29 +604,6 @@ document.querySelectorAll('a[href^="http"]').forEach(a => { a.target = "_blank";
   }).catch(() => {});
 })();
 
-// Отметки «Пробовали» у блюд — хранятся в телефоне
-(function () {
-  const bs = [...document.querySelectorAll("button.tried")];
-  if (!bs.length) return;
-  const KEY = "tried-v1";
-  const valid = new Set(bs.map(b => b.dataset.k));
-  let set = new Set(JSON.parse(localStorage.getItem(KEY) || "[]").filter(k => valid.has(k)));
-  const cnt = document.querySelector(".triedcnt");
-  const total = new Set(bs.map(b => b.dataset.k)).size;
-  function paint() {
-    bs.forEach(b => { const on = set.has(b.dataset.k); b.classList.toggle("on", on); b.textContent = on ? "✓ Пробовали" : "Пробовали?"; });
-    if (cnt) { cnt.hidden = !set.size; cnt.textContent = `✓ Уже попробовали ${set.size} из ${total} — так держать!`; }
-  }
-  document.addEventListener("click", e => {
-    const b = e.target.closest("button.tried");
-    if (!b) return;
-    set.has(b.dataset.k) ? set.delete(b.dataset.k) : set.add(b.dataset.k);
-    localStorage.setItem(KEY, JSON.stringify([...set]));
-    paint();
-  });
-  paint();
-})();
-
 // До поездки — напоминание «До вылета»; в поездке — план открывается на сегодняшнем дне
 (function () {
   if (TH_TODAY >= "2026-10-20") document.querySelectorAll(".pretrip").forEach(e => e.remove());

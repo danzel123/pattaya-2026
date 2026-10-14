@@ -376,9 +376,6 @@ body.noscroll { overflow: hidden; }
 .instbtn { margin: 8px 0 4px; border: 0; background: var(--c); color: #fff; font: inherit; font-weight: 700; padding: 10px 18px; border-radius: 12px; cursor: pointer; }
 .insthide { font-size: 13px; color: var(--mut); }
 .bring { margin: 4px 14px 2px; background: #fff8e6; border-radius: 10px; padding: 8px 11px; font-size: 15px; }
-button.tried { margin-top: 6px; border: 1.5px solid var(--line); background: #fff; color: var(--mut); font: inherit; font-size: 14px; font-weight: 600; padding: 5px 12px; border-radius: 999px; cursor: pointer; }
-button.tried.on { background: #e5f6ea; border-color: #34a853; color: #1e7e34; }
-.triedcnt { background: #e5f6ea; color: #1e7e34; border-radius: 10px; padding: 8px 12px; font-weight: 600; }
 .mapchips.near { margin-top: 8px; align-items: center; }
 .mapchips.near span { font-weight: 700; color: var(--mut); margin-right: 2px; }
 .mapchips.near button:not(.on) { opacity: .75; }
@@ -531,16 +528,13 @@ h3.fh::after { content: ""; display: block; width: 44px; height: 4px; border-rad
 .dish h4 { font-size: 18px; color: var(--c2); }
 .dish .th, td.thai { color: var(--mut); }
 .dish.street .rank { background: var(--coral); top: 10px; left: 10px; min-width: 34px; height: 34px; }
-button.tried { min-height: 40px; padding: 8px 16px; border: 0; background: var(--sand2); color: var(--txt); font-family: var(--hf); font-weight: 800; }
-button.tried.on { background: #dff3e4; color: #1d6b31; }
-.place .pic img, .venue .pic img, .dish img, .gal img, details.day .dpic img, .noimg, .streethero { background: #e9e0d0; }
+.place .pic img, .venue .pic img, .dish img, .gal img, details.day .dpic img, .noimg, .streethero, .place .pic, .venue .pic, .streethero img { background: #fff; }
 .place .body, .venue .body { padding: 14px 16px 16px; }
 .place h3, .venue h3 { font-size: 19px; font-weight: 900; color: var(--c2); }
 .place .eat { color: #7a4d00; }
 .links span a, .pbtn { display: inline-flex; align-items: center; min-height: 40px; padding: 6px 14px; border-radius: 999px; background: var(--sea-soft); color: var(--c2); font-weight: 700; }
 details.more { background: var(--bg); border-radius: 16px; }
 .tbl th { background: var(--sand2); }
-.triedcnt { border-radius: 16px; }
 
 /* --- разговорник --- */
 details.pbcat { margin: 12px 0; }
