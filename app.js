@@ -192,7 +192,7 @@ function initMap() {
   const pname = (c, p) => p.name && !/^(Pharmacy|Toilet|ATM)$/.test(p.name) ? p.name : NI[c][1];
   function nearestBox() {
     const box = $("nearest");
-    if (!near) return;
+    if (!near || !box) return;
     box.innerHTML = `<b>${from.me ? "📍 Ближайшие к вам" : "🏨 Ближайшие к отелю"}</b>` + Object.keys(NI).map(c => {
       const p = (near[c] || []).map(x => [km(from, x), x]).sort((a, b) => a[0] - b[0])[0];
       return p ? `<div class="nrow"><span>${NI[c][0]} ${pname(c, p[1])}${p[1].hours ? ` <i>${hrs(p[1].hours)}</i>` : ""}</span><a href="${routeTo(p[1])}" target="_blank" rel="noopener">${fmtD(p[0])} →</a></div>` : "";
@@ -349,7 +349,7 @@ document.querySelectorAll('a[href^="http"]').forEach(a => { a.target = "_blank";
   const N = "(\\d{1,3}(?:[ \\u00a0]\\d{3})+|\\d+)";
   const re = new RegExp(`${N}(?:\\s*[–-]\\s*${N})?(\\s*(?:тыс\\.\\s*)?)(?:\\s*)(бат|฿|THB)`, "g");
   const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
-    acceptNode: n => (n.parentElement.closest("script,style,textarea,button,input,.price,#fx") || !re.test(n.nodeValue)) ? NodeFilter.FILTER_REJECT : (re.lastIndex = 0, NodeFilter.FILTER_ACCEPT)
+    acceptNode: n => (n.parentElement.closest("script,style,textarea,button,input,.price,#fx,.sc > .t") || !re.test(n.nodeValue)) ? NodeFilter.FILTER_REJECT : (re.lastIndex = 0, NodeFilter.FILTER_ACCEPT)
   });
   const nodes = []; while (walker.nextNode()) nodes.push(walker.currentNode);
   const num = x => +String(x).replace(/[ \u00a0]/g, "");
@@ -628,7 +628,7 @@ document.querySelectorAll('a[href^="http"]').forEach(a => { a.target = "_blank";
   const all = new RegExp(G.map(g => "(" + g[0].source + ")").join("|"), "g");
   const root = document.querySelector("main"); if (!root) return;
   const w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
-    acceptNode: n => n.parentElement.closest("h1,h2,h3,h4,a,button,summary,.tg,.tags,script,style,.gl,.subnav,figcaption,.price,textarea") ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT });
+    acceptNode: n => n.parentElement.closest("h1,h2,h3,h4,a,button,summary,.tg,.tags,script,style,.gl,.subnav,figcaption,.price,textarea,.sc > .t") ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT });
   const list = []; while (w.nextNode()) list.push(w.currentNode);
   list.forEach(n => {
     const box = n.parentElement.closest("article, .card, details, li, p") || root;
