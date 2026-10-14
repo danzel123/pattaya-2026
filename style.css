@@ -646,3 +646,6 @@ details.day .daylink + .bring { margin-top: 0; }
 .csheet { max-height: 85vh; max-height: calc(100dvh - 48px); }
 .csheet .x { position: sticky; top: 8px; float: right; margin: 0 10px -38px 0; }
 .csheet .grab { margin-top: 10px; }
+.csheet .sbar { position: sticky; top: 0; z-index: 3; height: 46px; background: #fff; border-radius: 20px 20px 0 0; display: flex; align-items: center; justify-content: center; }
+.csheet .sbar .grab { margin: 0; }
+.csheet .sbar .x { position: absolute; right: 10px; top: 4px; float: none; margin: 0; }

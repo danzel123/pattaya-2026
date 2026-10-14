@@ -253,7 +253,7 @@ document.querySelectorAll('a[href^="http"]').forEach(a => { a.target = "_blank";
   function show(i) { idx = (i + group.length) % group.length; im.src = group[idx].dataset.full || group[idx].src; cap.textContent = group[idx].dataset.cap || ""; }
   document.addEventListener("click", e => {
     const t = e.target.closest("img.lb");
-    if (!t) return;
+    if (!t || e.target.closest("button")) return;
     group = [...document.querySelectorAll(`img.lb[data-group="${t.dataset.group}"]`)].filter(x => x.offsetParent);
     show(Math.max(0, group.indexOf(t))); lb.hidden = false; document.body.style.overflow = "hidden";
   });
@@ -689,5 +689,9 @@ document.querySelectorAll('a[href^="http"]').forEach(a => { a.target = "_blank";
     if (e.key === "Escape" && !sheet.hidden) close();
     if (e.key === "Enter" && document.activeElement && document.activeElement.classList.contains("sc")) open(document.activeElement);
   });
-  sheet.addEventListener("click", e => { if (e.target === sheet || e.target.closest(".x")) { e.preventDefault(); e.stopPropagation(); close(); } });
+  // крестик и фон закрывают окно; событие дальше не идёт (иначе под пальцем откроется фото)
+  const x = sheet.querySelector(".x");
+  ["pointerdown", "touchstart", "mousedown"].forEach(ev => x.addEventListener(ev, e => e.stopPropagation(), { passive: true }));
+  x.addEventListener("click", e => { e.preventDefault(); e.stopPropagation(); e.stopImmediatePropagation(); close(); });
+  sheet.addEventListener("click", e => { if (e.target === sheet) { e.preventDefault(); e.stopPropagation(); close(); } });
 })();
