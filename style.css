@@ -587,3 +587,8 @@ footer { color: var(--mut); }
 /* фото в карточках: целиком, по центру, со скруглёнными углами */
 .dish img, .place .pic img, .venue .pic img { padding: 0; margin: 12px auto 0; width: auto; max-width: calc(100% - 24px); height: 190px; object-fit: contain; border-radius: 14px; }
 .animal .pic img { height: 170px; }
+/* контраст: чуть темнее бирюза, рейсы — без светлого угла, кнопки «Рядом» без бледности */
+:root { --c: #08737a; }
+.fl { background: linear-gradient(135deg, #08737a, #0a7f84 60%, #b8452e); }
+.mapchips.near button:not(.on) { opacity: 1; }
+.mapchips small { color: inherit; opacity: 1; }
