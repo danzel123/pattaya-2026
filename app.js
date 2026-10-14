@@ -587,3 +587,21 @@ document.querySelectorAll('a[href^="http"]').forEach(a => { a.target = "_blank";
     document.body.classList.remove("noscroll");
   });
 })();
+
+// Фильтр кафе и буфетов по тегам (страница «Еда»)
+(function () {
+  const bar = $("vfilter");
+  if (!bar) return;
+  const cards = [...document.querySelectorAll("#where .venue")];
+  bar.addEventListener("click", e => {
+    const b = e.target.closest("button"); if (!b) return;
+    const f = b.dataset.f;
+    bar.querySelectorAll("button").forEach(x => x.classList.toggle("on", x === b));
+    cards.forEach(c => c.classList.toggle("hide", f !== "all" && !c.dataset.tags.split(" ").includes(f)));
+    // пустые подзаголовки прячем
+    document.querySelectorAll("#where h3, #where h4.sub").forEach(h => {
+      let n = h.nextElementSibling; while (n && !n.classList.contains("cards")) { if (/^H[34]$/.test(n.tagName)) { n = null; break; } n = n.nextElementSibling; }
+      h.classList.toggle("hide", !!(n && f !== "all" && ![...n.children].some(c => !c.classList.contains("hide"))));
+    });
+  });
+})();

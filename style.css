@@ -584,3 +584,11 @@ footer { color: var(--mut); }
 .tl li:not(:last-child)::after { content: ""; position: absolute; left: -16px; top: 17px; bottom: -17px; border-left: 3px dotted #9fd6d3; z-index: 0; }
 .bjmap { margin: 6px 0 12px; border-radius: 14px; overflow: hidden; background: #fff; border: 1px solid var(--line); }
 .bjmap img { display: block; width: 100%; height: auto; }
+/* теги на карточках */
+.tags { display: flex; flex-wrap: wrap; gap: 5px; margin: 4px 0 8px; }
+.tg { font-size: 12.5px; font-weight: 700; padding: 3px 9px; border-radius: 999px; background: #eef6f6; color: #0b4f55; line-height: 1.35; }
+.tg.kind { background: var(--c); color: #fff; }
+.tg.days { background: #fff1dc; color: #7a4300; }
+.tg.t-kidfree { background: #e5f6ea; color: #1d6b31; }
+.vfilter { margin: 0 0 12px; }
+.hide { display: none !important; }
