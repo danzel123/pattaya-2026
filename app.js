@@ -567,6 +567,7 @@ document.querySelectorAll('a[href^="http"]').forEach(a => { a.target = "_blank";
   const anyOpen = () => [...document.querySelectorAll(sel)].some(e => !e.hidden);
   new MutationObserver(() => {
     const open = anyOpen();
+    document.documentElement.classList.toggle("noscroll", open);  // пока открыто окно — страница под ним не прокручивается
     if (open && !pushed) { history.pushState({ modal: 1 }, ""); pushed = true; }
     else if (!open && pushed) { pushed = false; if (!fromPop && !navAway) history.back(); }
     fromPop = false;
@@ -604,4 +605,56 @@ document.querySelectorAll('a[href^="http"]').forEach(a => { a.target = "_blank";
       h.classList.toggle("hide", !!(n && f !== "all" && ![...n.children].some(c => !c.classList.contains("hide"))));
     });
   });
+})();
+
+// Подсказки к названиям районов и мест: нажать на подчёркнутое слово
+(function () {
+  const G = [
+    [/На[\s ]Джомтьен[еау]?/, "Наш район: спокойный пляж к югу от Джомтьена. Здесь отель Mövenpick."],
+    [/(?<!На[\s ])Джомтьен(?:е|а|у|ом|ский|ского|ском|ская|ской|ские|ских)?/, "Длинный пляж и район между Паттайей и нашим районом. От отеля ≈ 10–15 мин на машине."],
+    [/Пратамнак[аеу]?/, "Холм между центром Паттайи и Джомтьеном: Big Buddha, смотровые площадки. ≈ 15–20 мин."],
+    [/Наклу[аеыю]/, "Северная окраина Паттайи: Храм Истины, рыбный рынок Лан Пхо. ≈ 35–45 мин."],
+    [/Сукхумвит[аеу]?/, "Главное шоссе №3 вдоль побережья. Проходит рядом с отелем, оживлённое — пешком через него с коляской не стоит."],
+    [/Тепразит[аеу]?/, "Улица в Джомтьене, где по пятницам–воскресеньям большой ночной рынок. ≈ 15–20 мин."],
+    [/Бангсара[йяюе]/, "Тихий посёлок к югу от нас. ≈ 15 мин."],
+    [/Саттахип[аеу]?/, "Город с базой ВМФ к югу. Там пляж Сай Кэу. ≈ 35–40 мин."],
+    [/Ко[\s ]Лан[аеу]?/, "Остров напротив Паттайи. Паром с пирса Бали Хай ≈ 45 мин."],
+    [/Бали[\s ]Хай/, "Пирс на юге центра Паттайи — отсюда паромы на Ко Лан. ≈ 30 мин от отеля."],
+    [/Суварнабхуми/, "Главный аэропорт Бангкока. До отеля ≈ 1,5–2 часа на машине."],
+    [/сонгтэо/i, "Пикап-маршрутка с лавками в кузове. Платите водителю при выходе."],
+    [/Walking[\s ]Street/, "Ночная улица баров в центре Паттайи — не для прогулки с ребёнком."],
+  ];
+  const all = new RegExp(G.map(g => "(" + g[0].source + ")").join("|"), "g");
+  const root = document.querySelector("main"); if (!root) return;
+  const w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+    acceptNode: n => n.parentElement.closest("h1,h2,h3,h4,a,button,summary,.tg,.tags,script,style,.gl,.subnav,figcaption,.price,textarea") ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT });
+  const list = []; while (w.nextNode()) list.push(w.currentNode);
+  list.forEach(n => {
+    const box = n.parentElement.closest("article, .card, details, li, p") || root;
+    all.lastIndex = 0; if (!all.test(n.nodeValue)) return;
+    const t = n.nodeValue, frag = document.createDocumentFragment(); let last = 0, m; all.lastIndex = 0;
+    while ((m = all.exec(t))) {
+      const i = m.slice(1).findIndex(x => x !== undefined);
+      const k = box.closest("article, .card, details") || box; if (!k.__gl) k.__gl = new Set();  // одно подчёркивание на карточку
+      if (k.__gl.has(i)) continue;
+      k.__gl.add(i);
+      frag.append(t.slice(last, m.index));
+      const s = document.createElement("span"); s.className = "gl"; s.textContent = m[0]; s.dataset.tip = G[i][1];
+      frag.append(s); last = m.index + m[0].length;
+    }
+    if (!last) return;
+    frag.append(t.slice(last)); n.replaceWith(frag);
+  });
+  const tip = document.createElement("div"); tip.className = "gltip"; tip.hidden = true; document.body.append(tip);
+  document.addEventListener("click", e => {
+    const s = e.target.closest(".gl");
+    if (!s) { tip.hidden = true; return; }
+    e.stopPropagation();
+    tip.textContent = s.dataset.tip; tip.hidden = false;
+    const r = s.getBoundingClientRect(), W = Math.min(300, innerWidth - 24);
+    tip.style.width = W + "px";
+    tip.style.left = Math.max(12, Math.min(innerWidth - W - 12, r.left + r.width / 2 - W / 2)) + scrollX + "px";
+    tip.style.top = (r.bottom + scrollY + 8) + "px";
+  }, true);
+  window.addEventListener("scroll", () => (tip.hidden = true), { passive: true });
 })();
