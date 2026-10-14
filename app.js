@@ -41,7 +41,6 @@ document.querySelectorAll(".day[data-date]").forEach(d => {
   const pick = days.find(d => d.dataset.date === TH_TODAY) || (TH_TODAY < days[0].dataset.date ? days[0] : days[days.length - 1]);
   const card = pick.cloneNode(true);
   card.open = true; card.classList.remove("past"); card.removeAttribute("id");
-  card.querySelectorAll("textarea").forEach(t => t.closest("label").remove());
   $("today-title").textContent = pick.dataset.date === TH_TODAY ? "Сегодня" : (TH_TODAY < pick.dataset.date ? "Первый день поездки" : "Последний день");
   box.appendChild(card);
 })();
@@ -235,15 +234,9 @@ function initMap() {
   upd();
 })();
 
-// Дни: раскрыть/свернуть все, заметки
+// Дни: раскрыть/свернуть все
 if ($("openall")) $("openall").onclick = () => document.querySelectorAll("main details.day").forEach(d => (d.open = true));
 if ($("closeall")) $("closeall").onclick = () => document.querySelectorAll("main details.day").forEach(d => (d.open = false));
-document.querySelectorAll("textarea[data-k]").forEach(t => {
-  t.value = localStorage.getItem("trip-" + t.dataset.k) || "";
-  const grow = () => { t.style.height = "auto"; t.style.height = t.scrollHeight + 2 + "px"; };
-  t.addEventListener("input", () => { localStorage.setItem("trip-" + t.dataset.k, t.value); grow(); });
-  setTimeout(grow, 0);
-});
 // Клик по фото в заголовке дня открывает фото, а не сворачивает день
 document.addEventListener("click", e => { if (e.target.closest("details.day summary img")) e.preventDefault(); }, true);
 
