@@ -584,3 +584,6 @@ footer { color: var(--mut); }
 .dish img { padding: 12px 12px 0; box-sizing: border-box; height: 202px; border-radius: 0; }
 .place .pic img, .venue .pic img { padding: 12px 12px 0; box-sizing: border-box; height: 202px; border-radius: 0; }
 .animal .pic img { height: 182px; }
+/* фото в карточках: целиком, по центру, со скруглёнными углами */
+.dish img, .place .pic img, .venue .pic img { padding: 0; margin: 12px auto 0; width: auto; max-width: calc(100% - 24px); height: 190px; object-fit: contain; border-radius: 14px; }
+.animal .pic img { height: 170px; }
