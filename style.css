@@ -581,3 +581,4 @@ footer { color: var(--mut); }
 #fxbtn { transition: transform .25s ease, opacity .25s; }
 .top-hidden #fxbtn { transform: translateY(160%); opacity: 0; pointer-events: none; }
 .day.past { opacity: .8; }
+.dish img { padding: 12px 12px 0; box-sizing: border-box; height: 202px; border-radius: 0; }
