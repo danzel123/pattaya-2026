@@ -51,7 +51,7 @@ function openAnchor(id) {
   if (!el) return;
   if (el.tagName === "DETAILS") el.open = true;
   const det = el.closest("details"); if (det) det.open = true;
-  if (el.classList.contains("place")) {
+  if (el.classList.contains("is-place")) {
     resetFilter();
     el.classList.remove("flash"); void el.offsetWidth; el.classList.add("flash");
   }
@@ -100,6 +100,7 @@ let map_ = null;
 function jumpTo(id) {
   const el = $(id);
   if (!el) return;
+  if (window.cardSheet) { if (el.classList.contains("sc")) { window.cardSheet.scrollTo(el); window.cardSheet.open(el); return; } window.cardSheet.close(); }
   openAnchor(id);
   topLock = Date.now() + 700;
   setTopHidden(el.getBoundingClientRect().top > 150);
@@ -128,7 +129,7 @@ const pf = $("pfilter");
 function applyFilter(f) {
   if (!pf) return;
   pf.querySelectorAll("button").forEach(b => b.classList.toggle("on", b.dataset.f === f));
-  document.querySelectorAll(".place").forEach(c => c.classList.toggle("hide", f !== "all" && !c.dataset.tags.split(" ").includes(f)));
+  document.querySelectorAll(".is-place").forEach(c => c.classList.toggle("hide", f !== "all" && !c.dataset.tags.split(" ").includes(f)));
 }
 function resetFilter() { applyFilter("all"); }
 if (pf) pf.addEventListener("click", e => { const b = e.target.closest("button"); if (b) applyFilter(b.dataset.f); });
@@ -562,7 +563,7 @@ document.querySelectorAll('a[href^="http"]').forEach(a => { a.target = "_blank";
 
 // Кнопка «Назад» на телефоне закрывает открытое окно (фото, поиск, калькулятор, «Ещё», крупный текст)
 (function () {
-  const sel = "#lightbox, #fx, #more, #bigtext, #search";
+  const sel = "#lightbox, #fx, #more, #bigtext, #search, #card-sheet";
   let pushed = false, fromPop = false;
   const anyOpen = () => [...document.querySelectorAll(sel)].some(e => !e.hidden);
   new MutationObserver(() => {
@@ -593,7 +594,7 @@ document.querySelectorAll('a[href^="http"]').forEach(a => { a.target = "_blank";
 (function () {
   const bar = $("vfilter");
   if (!bar) return;
-  const cards = [...document.querySelectorAll("#where .venue")];
+  const cards = [...document.querySelectorAll("#where .is-venue")];
   bar.addEventListener("click", e => {
     const b = e.target.closest("button"); if (!b) return;
     const f = b.dataset.f;
@@ -657,4 +658,44 @@ document.querySelectorAll('a[href^="http"]').forEach(a => { a.target = "_blank";
     tip.style.top = (r.bottom + scrollY + 8) + "px";
   }, true);
   window.addEventListener("scroll", () => (tip.hidden = true), { passive: true });
+})();
+
+// Короткие карточки: нажатие открывает окно с подробностями и фото
+(function () {
+  const sheet = $("card-sheet");
+  if (!sheet) return;
+  const box = sheet.querySelector(".csheet"), body = sheet.querySelector(".cbody");
+  let prevHash = "";
+  function open(card) {
+    body.innerHTML = "";
+    body.append(...card.querySelector(".full").cloneNode(true).childNodes);
+    sheet.hidden = false; box.scrollTop = 0;
+    if (location.hash.slice(1) !== card.id) { prevHash = location.hash; history.replaceState(history.state, "", "#" + card.id); }
+    const gal = body.querySelector(".cgal"), dots = body.querySelectorAll(".dots i");
+    if (gal && dots.length) {
+      const upd = () => { const i = Math.round(gal.scrollLeft / (gal.firstElementChild.offsetWidth + 8)); dots.forEach((d, k) => d.classList.toggle("on", k === i)); };
+      gal.addEventListener("scroll", upd, { passive: true }); upd();
+    }
+  }
+  function close() {
+    if (sheet.hidden) return;
+    sheet.hidden = true;
+    history.replaceState(history.state, "", prevHash || location.pathname + location.search);
+  }
+  function scrollTo(card) {
+    const y = card.getBoundingClientRect().top + scrollY - (typeof topGap === "function" ? topGap(card) : 80);
+    window.scrollTo(0, y);
+  }
+  window.cardSheet = { open, close, scrollTo };
+  document.addEventListener("click", e => {
+    const c = e.target.closest(".sc");
+    if (!c || e.target.closest("a, .price, .gl")) return;
+    open(c);
+  });
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape") close();
+    if (e.key === "Enter" && document.activeElement && document.activeElement.classList.contains("sc")) open(document.activeElement);
+  });
+  sheet.addEventListener("click", e => { if (e.target === sheet || e.target.closest(".x")) close(); });
+  new MutationObserver(() => { if (sheet.hidden && location.hash && $(location.hash.slice(1)) && $(location.hash.slice(1)).classList.contains("sc")) history.replaceState(history.state, "", prevHash || location.pathname + location.search); }).observe(sheet, { attributes: true, attributeFilter: ["hidden"] });
 })();

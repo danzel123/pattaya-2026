@@ -603,3 +603,42 @@ details.day .daylink { display: flex; align-items: center; gap: 8px; margin: 12p
 details.day .bring { margin: 0 14px 10px; border-radius: 12px; }
 details.day .daylink + .bring { margin-top: 0; }
 .hero .sub3 { font-size: 15px; font-weight: 700; opacity: .95; }
+
+/* ==== короткие карточки и окно с подробностями ==== */
+.cards.short { display: grid; grid-template-columns: 1fr; gap: 10px; }
+@media (min-width: 760px) { .cards.short { grid-template-columns: 1fr 1fr; } }
+.sc { display: flex; gap: 12px; align-items: flex-start; background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 10px; cursor: pointer; position: relative; -webkit-tap-highlight-color: transparent; }
+.sc:active { background: #f6fafb; }
+.sc .th { flex: none; width: 96px; height: 96px; border-radius: 12px; object-fit: cover; background: #eef2f4; display: flex; align-items: center; justify-content: center; }
+.sc .t { min-width: 0; flex: 1; padding-right: 16px; }
+.sc h3 { font-size: 17px; line-height: 1.25; margin: 2px 0 3px; color: var(--c2); }
+.sc .facts { font-size: 13.5px; color: var(--mut); margin: 0 0 4px; line-height: 1.35; }
+.sc .facts b, .csheet .facts b { color: #1d6b31; white-space: nowrap; }
+.sc .lead { font-size: 14.5px; line-height: 1.35; margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.sc::after { content: "›"; position: absolute; right: 12px; top: 50%; transform: translateY(-50%); font-size: 24px; color: #b6c2cc; }
+.sc.flash, .sc.hl { animation: flash 1.6s; }
+#card-sheet { position: fixed; inset: 0; z-index: 3150; background: rgba(0,0,0,.45); display: flex; align-items: flex-end; justify-content: center; }
+#card-sheet[hidden] { display: none; }
+.csheet { background: #fff; width: 100%; max-width: 560px; max-height: 92vh; overflow-y: auto; overscroll-behavior: contain; border-radius: 20px 20px 0 0; padding: 0 0 calc(18px + env(safe-area-inset-bottom)); position: relative; }
+.csheet .grab { width: 40px; height: 5px; border-radius: 3px; background: #d5dde3; margin: 8px auto 8px; }
+.csheet .x { position: sticky; float: right; top: 8px; margin: -4px 10px 0 0; z-index: 2; width: 38px; height: 38px; border-radius: 50%; border: 0; background: rgba(255,255,255,.95); font-size: 20px; box-shadow: 0 1px 5px rgba(0,0,0,.18); cursor: pointer; }
+.cgal { display: flex; gap: 8px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 0 16px; scrollbar-width: none; clear: both; }
+.cgal::-webkit-scrollbar { display: none; }
+.cgal figure { flex: 0 0 86%; margin: 0; scroll-snap-align: center; }
+.cgal figure:only-child { flex-basis: 100%; }
+.cgal img { width: 100%; height: 220px; object-fit: contain; background: #f3f5f7; border-radius: 14px; display: block; padding: 0; margin: 0; max-width: none; }
+.cgal figcaption { font-size: 12.5px; color: var(--mut); margin-top: 4px; }
+.dots { text-align: center; margin: 4px 0 0; line-height: 1; }
+.dots i { font-style: normal; font-size: 9px; color: #c9d2d9; margin: 0 2px; }
+.dots i.on { color: var(--c); }
+.csheet .in { padding: 8px 16px 0; }
+.csheet h2 { font-size: 21px; margin: 4px 0 4px; color: var(--c2); }
+.csheet .facts { font-size: 14px; color: var(--mut); margin: 0 0 12px; }
+.csheet .btns { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 12px; }
+.csheet .btns a { flex: 1 1 40%; justify-content: center; display: inline-flex; align-items: center; min-height: 44px; border-radius: 999px; background: var(--sea-soft, #e3f3f3); color: var(--c2); font-weight: 700; font-size: 15px; text-decoration: none; }
+.csheet .btns a.pri { background: var(--c); color: #fff; }
+.csheet .lead { font-size: 15.5px; margin: 0 0 6px; line-height: 1.45; }
+.csheet dl { margin: 0; font-size: 15px; }
+.csheet dt { font-weight: 800; margin-top: 12px; }
+.csheet dd { margin: 2px 0 0; line-height: 1.45; }
+#lightbox { z-index: 3300 !important; }
