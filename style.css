@@ -592,3 +592,7 @@ footer { color: var(--mut); }
 .fl { background: linear-gradient(135deg, #08737a, #0a7f84 60%, #b8452e); }
 .mapchips.near button:not(.on) { opacity: 1; }
 .mapchips small { color: inherit; opacity: 1; }
+/* линия расписания — только между первым и последним пунктом */
+.tl { border-left: 0 !important; }
+.tl li::before { z-index: 1; }
+.tl li:not(:last-child)::after { content: ""; position: absolute; left: -16px; top: 17px; bottom: -17px; border-left: 3px dotted #9fd6d3; z-index: 0; }
