@@ -18,9 +18,9 @@ const plural = (n, a, b, c) => { n = Math.abs(n) % 100; const m = n % 10; return
       const m = Math.floor(t / 60), sec = t % 60;
       el.innerHTML = `<span class="cd-l">✈ До вылета</span><span class="cd">` +
         `<b>${d}</b><i>${plural(d, "день", "дня", "дней")}</i>` +
-        `<b>${pad(h)}</b><i>час</i><b>${pad(m)}</b><i>мин</i><b>${pad(sec)}</b><i>сек</i></span>`;
+        `<b>${pad(h)}</b><i>${plural(h, "час", "часа", "часов")}</i><b>${pad(m)}</b><i>мин</i><b>${pad(sec)}</b><i>сек</i></span>`;
     } else if (now < end) {
-      const day = Math.floor((now - start) / 864e5) + 1;
+      const day = Math.min(13, Math.max(1, Math.round((Date.parse(TH_TODAY) - Date.parse("2026-10-20")) / 864e5) + 1));
       el.innerHTML = `<span class="cd-l">🏝 Мы в отпуске</span><span class="cd"><b>${day}</b><i>день из 13</i></span>`;
     } else el.innerHTML = `<span class="cd-l">🏠 Отпуск позади — с возвращением!</span>`;
   }
@@ -40,7 +40,7 @@ document.querySelectorAll(".day[data-date]").forEach(d => {
   const days = [...src.querySelectorAll(".day")];
   const pick = days.find(d => d.dataset.date === TH_TODAY) || (TH_TODAY < days[0].dataset.date ? days[0] : days[days.length - 1]);
   const card = pick.cloneNode(true);
-  card.open = true; card.classList.remove("past");
+  card.open = true; card.classList.remove("past"); card.removeAttribute("id");
   card.querySelectorAll("textarea").forEach(t => t.closest("label").remove());
   $("today-title").textContent = pick.dataset.date === TH_TODAY ? "Сегодня" : (TH_TODAY < pick.dataset.date ? "Первый день поездки" : "Последний день");
   box.appendChild(card);
@@ -70,8 +70,8 @@ window.addEventListener("scroll", () => {
   if (Date.now() < topLock) { lastY = y; return; }
   if (y < 60) setTopHidden(false);
   else if (dy > 6) setTopHidden(true);
-  else if (dy < -6) setTopHidden(false);
-  if (Math.abs(dy) > 6 || y < 60) lastY = y;
+  else if (dy < -35) setTopHidden(false);
+  if (dy > 6 || dy < -35 || y < 60) lastY = y;
 }, { passive: true });
 function topGap(el) {
   let g = tbH() + 10;
@@ -96,6 +96,7 @@ document.querySelectorAll(".subnav").forEach(sn => {
   window.addEventListener("scroll", spy, { passive: true }); spy();
 });
 
+let map_ = null;
 // Переход к якорю на этой странице — мгновенно и точно (с поправкой на догрузку картинок)
 function jumpTo(id) {
   const el = $(id);
@@ -109,10 +110,16 @@ function jumpTo(id) {
   history.replaceState(null, "", "#" + id);
 }
 document.addEventListener("click", e => {
-  const a = e.target.closest('a[href^="#"]');
-  if (!a || a.getAttribute("href").length < 2) return;
+  const a = e.target.closest("a[href]");
+  if (!a || a.target === "_blank") return;
+  const h = a.getAttribute("href"), here = location.pathname.split("/").pop() || "index.html";
+  let id = null;
+  if (h.startsWith("#") && h.length > 1) id = h.slice(1);
+  else if (h.startsWith(here + "#")) id = h.slice(here.length + 1);   // ссылка на эту же страницу
+  if (!id) return;
   e.preventDefault();
-  jumpTo(a.getAttribute("href").slice(1));
+  if (typeof map_ !== "undefined" && map_) map_.closePopup();
+  jumpTo(id);
 });
 if (location.hash) setTimeout(() => jumpTo(decodeURIComponent(location.hash.slice(1))), 60);
 window.addEventListener("hashchange", () => location.hash && jumpTo(decodeURIComponent(location.hash.slice(1))));
@@ -145,7 +152,8 @@ function initMap() {
   const hotel = MARKERS.find(m => m.cat === "hotel");
   const km = (a, b) => { const R = 6371, r = x => x * Math.PI / 180, dl = r(b.lat - a.lat), dn = r(b.lon - a.lon);
     const h = Math.sin(dl / 2) ** 2 + Math.cos(r(a.lat)) * Math.cos(r(b.lat)) * Math.sin(dn / 2) ** 2; return 2 * R * Math.asin(Math.sqrt(h)); };
-  const map = L.map("leaflet", { scrollWheelZoom: false, tap: true });
+  const map = L.map("leaflet", { scrollWheelZoom: false });
+  map_ = map;
   map.attributionControl.setPrefix('<a href="https://leafletjs.com" target="_blank">Leaflet</a>');
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom: 19, attribution: "© OpenStreetMap" }).addTo(map);
   const layers = {};
@@ -172,7 +180,8 @@ function initMap() {
   $("fitall").onclick = fitAll;
   $("tohotel").onclick = () => map.setView([hotel.lat, hotel.lon], 15);
   let me = null;
-  $("locate").onclick = () => map.locate({ setView: true, maxZoom: 15 });
+  let userLoc = false;
+  $("locate").onclick = () => { userLoc = true; map.locate({ setView: true, maxZoom: 15 }); };
   // «Рядом»: аптеки, 7-Eleven, банкоматы, туалеты, клиники (OpenStreetMap)
   const NI = { pharmacy: ["💊", "Аптека", "#e05a5a"], store: ["🏪", "Магазин", "#2e9e5b"], atm: ["🏧", "Банкомат", "#3b6fd1"], toilet: ["🚻", "Туалет", "#8a5cc7"], clinic: ["🩺", "Клиника", "#d07a1c"] };
   const hrs = h => h.replace("24/7", "круглосуточно").replace(/Mo-Su/g, "ежедневно");
@@ -190,7 +199,12 @@ function initMap() {
     }).join("") + (from.me ? "" : `<p class="meta">Нажмите 📍 на карте, чтобы посчитать от того места, где вы сейчас.</p>`);
     box.hidden = false;
   }
-  fetch("nearby.json").then(r => r.json()).then(d => { near = d; nearestBox(); }).catch(() => {});
+  fetch("nearby.json").then(r => r.json()).then(d => {
+    near = d; nearestBox();
+    const q = new URLSearchParams(location.search).get("near");  // с главной: «Рядом: аптека» и т.п.
+    const b = q && document.querySelector(`#nearchips [data-near="${q}"]`);
+    if (b) { b.click(); map.locate({ setView: true, maxZoom: 16 }); }
+  }).catch(() => {});
   document.querySelectorAll("#nearchips button").forEach(b => b.onclick = () => {
     if (!near) return;
     const c = b.dataset.near;
@@ -206,7 +220,7 @@ function initMap() {
   });
   map.on("locationfound", e => { from = { lat: e.latlng.lat, lon: e.latlng.lng, me: true }; nearestBox(); });
   map.on("locationfound", e => { if (me) map.removeLayer(me); me = L.circleMarker(e.latlng, { radius: 9, color: "#fff", weight: 3, fillColor: "#1a73e8", fillOpacity: 1 }).addTo(map).bindPopup("Вы здесь").openPopup(); });
-  map.on("locationerror", () => alert("Не удалось определить местоположение — разрешите доступ к геопозиции в браузере."));
+  map.on("locationerror", () => userLoc && alert("Не удалось определить местоположение — разрешите доступ к геопозиции в браузере."));
 }
 
 // Чек-лист с сохранением в localStorage
@@ -286,7 +300,15 @@ document.querySelectorAll('a[href^="http"]').forEach(a => { a.target = "_blank";
   const sheet = $("more");
   if (!sheet) return;
   document.querySelectorAll("[data-more]").forEach(b => (b.onclick = e => { e.preventDefault(); sheet.hidden = false; }));
-  sheet.addEventListener("click", e => { if (e.target === sheet || e.target.closest(".mclose")) sheet.hidden = true; });
+  sheet.addEventListener("click", e => {
+    const a = e.target.closest("a");
+    if (e.target === sheet || e.target.closest(".mclose") || a) sheet.hidden = true;
+    if (a && a.getAttribute("href").includes("#")) {
+      const [pg, id] = a.getAttribute("href").split("#");
+      const here = location.pathname.split("/").pop() || "index.html";
+      if ((pg || here) === here && id) { e.preventDefault(); jumpTo(id); }
+    }
+  });
 })();
 
 // Калькулятор валют: курс с open.er-api.com (запасной — jsDelivr), кэш 12 часов, офлайн — последний сохранённый
@@ -295,12 +317,13 @@ document.querySelectorAll('a[href^="http"]').forEach(a => { a.target = "_blank";
   if (!box) return;
   const thb = $("fx-thb"), rub = $("fx-rub"), usd = $("fx-usd"), info = $("fx-rate");
   let rate = JSON.parse(localStorage.getItem("trip-fx") || "null") || { rub: 2.49, usd: 0.0298, date: "примерный курс", ts: 0 };
-  const fmt = (v, d) => (isFinite(v) ? (+v).toFixed(d).replace(/\.0+$/, "") : "");
-  const fromThb = () => { rub.value = fmt(thb.value * rate.rub, 0); usd.value = fmt(thb.value * rate.usd, 2); };
-  const show = () => (info.textContent = `1 ฿ = ${rate.rub.toFixed(2)} ₽ = ${rate.usd.toFixed(4)} $ · 100 ₽ ≈ ${(100 / rate.rub).toFixed(0)} ฿ · курс: ${rate.date}`);
+  const num = el => parseFloat(String(el.value).replace(",", "."));
+  const fmt = (v, d) => (isFinite(v) && v !== 0 ? (+v).toFixed(d).replace(/\.0+$/, "").replace(".", ",") : "");
+  const fromThb = () => { rub.value = fmt(num(thb) * rate.rub, 0); usd.value = fmt(num(thb) * rate.usd, 2); };
+  const show = () => (info.textContent = `1 ฿ = ${rate.rub.toFixed(2).replace(".", ",")} ₽ = ${rate.usd.toFixed(4).replace(".", ",")} $ · 100 ₽ ≈ ${(100 / rate.rub).toFixed(0)} ฿ · курс: ${rate.date}`);
   thb.oninput = fromThb;
-  rub.oninput = () => { thb.value = fmt(rub.value / rate.rub, 0); usd.value = fmt(thb.value * rate.usd, 2); };
-  usd.oninput = () => { thb.value = fmt(usd.value / rate.usd, 0); rub.value = fmt(thb.value * rate.rub, 0); };
+  rub.oninput = () => { thb.value = fmt(num(rub) / rate.rub, 0); usd.value = fmt(num(rub) / rate.rub * rate.usd, 2); };
+  usd.oninput = () => { thb.value = fmt(num(usd) / rate.usd, 0); rub.value = fmt(num(usd) / rate.usd * rate.rub, 0); };
   box.querySelectorAll(".fxq button").forEach(b => (b.onclick = () => { thb.value = b.dataset.v; fromThb(); }));
   async function load() {
     if (Date.now() - rate.ts < 12 * 3600e3) return;
@@ -349,7 +372,7 @@ document.querySelectorAll('a[href^="http"]').forEach(a => { a.target = "_blank";
   });
   // В блоках с ценами (class="thb") числа без слова «бат» — тоже цены, кроме минут, часов, км, отзывов и т. п.
   const NUM = "(\\d{1,3}(?:[ \\u00a0]\\d{3})+|\\d{2,5})";
-  const reZone = new RegExp(`(?<![\\d.,:A-Za-zА-Яа-яЁё])${NUM}(?:\\s*[–-]\\s*${NUM})?(?![\\d.,:]?\\d)(?!\\s*[–-]\\s*\\d)(?!\\s*(?:ч\\b|час|мин|км|м\\b|%|шт|г\\b|мл|кг|лет|этаж|отзыв|°|см|\\+? ?отз))`, "g");
+  const reZone = new RegExp(`(?<![\\d.,:A-Za-zА-Яа-яЁё])(?<![A-Za-z]\\s)(?<!(?:полиция|полиции|скорая|скорой|тел\\.|номер)\\s)${NUM}(?:\\s*[–-]\\s*${NUM})?(?![\\d.,:]?\\d)(?!\\s*[–-]\\s*\\d)(?!\\s*(?:ч\\b|час|мин|км|м\\b|%|шт|г\\b|мл|кг|лет|этаж|отзыв|°|см|\\+? ?отз))`, "g");
   document.querySelectorAll(".thb").forEach(zone => {
     const w = document.createTreeWalker(zone, NodeFilter.SHOW_TEXT, { acceptNode: n => n.parentElement.closest(".price,b") ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT });
     const list = []; while (w.nextNode()) list.push(w.currentNode);
@@ -411,7 +434,8 @@ document.querySelectorAll('a[href^="http"]').forEach(a => { a.target = "_blank";
     }
     box.hidden = false; document.body.classList.add("noscroll");
     inp.value = ""; hint(); inp.focus();
-    if (!data) fetch("search.json").then(r => r.json()).then(d => {
+    if (!data) fetch("search.json").then(r => r.json()).catch(() => { list.innerHTML = '<p class="shint">Поиск недоступен без интернета. Нажмите «Скачать всё» на главной, когда будет связь.</p>'; return null; }).then(d => {
+      if (!d) return;
       data = d.map(r => ({ ...r, nt: norm(r.t), na: norm(r.a), nx: norm(r.x), ct: norm(r.t + " " + r.a).replace(/ /g, "") }));
       run();
     });
@@ -503,6 +527,7 @@ document.querySelectorAll('a[href^="http"]').forEach(a => { a.target = "_blank";
   });
   btn.onclick = () => { btn.disabled = true; st.textContent = "Начинаю…"; sw().then(a => a.postMessage("download")); };
   sw().then(a => a.postMessage("status"));
+  setTimeout(() => { if (st.textContent === "…") st.textContent = "Офлайн-режим в этом браузере недоступен — откройте сайт в Chrome или Safari."; }, 6000);
 })();
 
 // Озвучка тайских фраз
@@ -553,7 +578,7 @@ document.querySelectorAll('a[href^="http"]').forEach(a => { a.target = "_blank";
     const t0 = D[days[0]];
     const rainy = t0.p >= 60 || t0.mm >= 8;
     box.innerHTML = `<div class="wxh"><span class="wxi">${ICON(t0.c)}</span><div><b>${days[0] === TH_TODAY ? "Сегодня" : (+days[0].slice(8)) + "." + days[0].slice(5, 7)} в На Джомтьене: ${t0.tn}…${t0.tx}°</b><br>` +
-      `💧 дождь ${t0.p}%${t0.mm ? ` (${t0.mm} мм)` : ""} · ☀️ УФ ${t0.uv}${t0.uv >= 8 ? " — крем и панамка!" : ""}${t0.wv != null ? ` · 🌊 волна ${t0.wv} м` : ""} · 🌅 закат ${t0.ss}</div></div>` +
+      `💧 дождь ${t0.p}%${t0.mm ? ` (${String(t0.mm).replace(".", ",")} мм)` : ""} · ☀️ УФ ${t0.uv}${t0.uv >= 8 ? " — крем и панамка!" : ""}${t0.wv != null ? ` · 🌊 волна ${String(t0.wv).replace(".", ",")} м` : ""} · 🌅 закат ${t0.ss}</div></div>` +
       (rainy ? `<p class="wxrain">🌧 Обещают дождь — обычно это ливень на 1–2 часа. Пляж и бассейн лучше утром, а на время дождя — <a href="plan.html#rain">куда пойти под крышей</a>.</p>` : "") +
       `<div class="wxd">${days.slice(1).map(t => { const d = D[t]; return `<div><i>${WD[new Date(t).getUTCDay()]} ${+t.slice(8)}</i><span>${ICON(d.c)}</span><b>${d.tx}°</b><i>${d.p}%</i></div>`; }).join("")}</div>` +
       `<p class="meta">Прогноз open-meteo.com${w.saved ? ", обновлён " + new Date(w.saved).toLocaleString("ru", { day: "numeric", month: "numeric", hour: "2-digit", minute: "2-digit" }) : ""}</p>`;
@@ -584,7 +609,8 @@ document.querySelectorAll('a[href^="http"]').forEach(a => { a.target = "_blank";
   const bs = [...document.querySelectorAll("button.tried")];
   if (!bs.length) return;
   const KEY = "tried-v1";
-  let set = new Set(JSON.parse(localStorage.getItem(KEY) || "[]"));
+  const valid = new Set(bs.map(b => b.dataset.k));
+  let set = new Set(JSON.parse(localStorage.getItem(KEY) || "[]").filter(k => valid.has(k)));
   const cnt = document.querySelector(".triedcnt");
   const total = new Set(bs.map(b => b.dataset.k)).size;
   function paint() {
@@ -599,4 +625,43 @@ document.querySelectorAll('a[href^="http"]').forEach(a => { a.target = "_blank";
     paint();
   });
   paint();
+})();
+
+// До поездки — напоминание «До вылета»; в поездке — план открывается на сегодняшнем дне
+(function () {
+  if (TH_TODAY >= "2026-10-20") document.querySelectorAll(".pretrip").forEach(e => e.remove());
+  const d = TH_TODAY.slice(5, 7) + TH_TODAY.slice(8);
+  const nav = (performance.getEntriesByType("navigation")[0] || {}).type;
+  if (!location.hash && nav !== "back_forward" && !sessionStorage.getItem("plan-jumped") && document.querySelector(".pagenav") && $("day-" + d)) {
+    sessionStorage.setItem("plan-jumped", 1);
+    setTimeout(() => { const el = $("day-" + d); window.scrollTo(0, el.getBoundingClientRect().top + scrollY - topGap(el)); }, 80);
+  }
+})();
+
+// Кнопка «Назад» на телефоне закрывает открытое окно (фото, поиск, калькулятор, «Ещё», крупный текст)
+(function () {
+  const sel = "#lightbox, #fx, #more, #bigtext, #search";
+  let pushed = false, fromPop = false;
+  const anyOpen = () => [...document.querySelectorAll(sel)].some(e => !e.hidden);
+  new MutationObserver(() => {
+    const open = anyOpen();
+    if (open && !pushed) { history.pushState({ modal: 1 }, ""); pushed = true; }
+    else if (!open && pushed) { pushed = false; if (!fromPop && !navAway) history.back(); }
+    fromPop = false;
+  }).observe(document.body, { attributes: true, attributeFilter: ["hidden"], subtree: true, childList: true });
+  // уходим на другую страницу — не делаем history.back(), иначе переход отменится
+  let navAway = false;
+  const here = () => location.pathname.split("/").pop() || "index.html";
+  document.addEventListener("click", e => {
+    const a = e.target.closest("a[href]");
+    if (!a || a.target === "_blank") return;
+    const pg = a.getAttribute("href").split(/[#?]/)[0];
+    if (pg && pg !== here() && !/^(tel|mailto):/.test(pg)) navAway = true;
+  }, true);
+  window.addEventListener("popstate", () => {
+    if (!pushed) return;
+    fromPop = true; pushed = false;
+    document.querySelectorAll(sel).forEach(e => (e.hidden = true));
+    document.body.classList.remove("noscroll");
+  });
 })();
