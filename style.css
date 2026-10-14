@@ -598,3 +598,8 @@ footer { color: var(--mut); }
 .gltip[hidden] { display: none; }
 html.noscroll, html.noscroll body { overflow: hidden; overscroll-behavior: none; }
 #more, #fx, #lightbox, #bigtext, #search, .msheet, .sres { overscroll-behavior: contain; }
+/* кнопка-ссылка и «Взять с собой» в карточке дня — одинаковые отступы */
+details.day .daylink { display: flex; align-items: center; gap: 8px; margin: 12px 14px 8px; padding: 11px 14px; border-radius: 12px; background: var(--sea-soft, #e1f4f2); color: var(--c2) !important; border: 1.5px solid #bfe3df; font-weight: 800; font-size: 15px; text-decoration: none !important; }
+details.day .bring { margin: 0 14px 10px; border-radius: 12px; }
+details.day .daylink + .bring { margin-top: 0; }
+.hero .sub3 { font-size: 15px; font-weight: 700; opacity: .95; }
