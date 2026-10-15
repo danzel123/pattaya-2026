@@ -659,8 +659,10 @@ details.day .daylink + .bring { margin-top: 0; }
 .csheet .sbar .cnt { font-size: 13px; color: var(--mut); min-width: 44px; text-align: center; }
 .csheet .sbar { cursor: grab; touch-action: none; }
 .csheet .sbar .grab { width: 48px; height: 6px; padding: 10px 0; background-clip: content-box; box-sizing: content-box; cursor: pointer; }
-.csheet { max-height: 85vh; max-height: 85dvh; }
-.csheet.full { max-height: 100vh; max-height: 100dvh; height: 100vh; height: 100dvh; border-radius: 0; }
+/* окно всегда во весь рост, но длинное сначала сдвинуто вниз (--peek); раскрытие — плавный сдвиг вверх */
+.csheet { max-height: 100vh; max-height: 100dvh; --peek: 0px; --dy: 0px; transform: translateY(calc(var(--peek) + var(--dy))); transition: transform .32s cubic-bezier(.2,.8,.2,1), border-radius .32s; will-change: transform; }
+.csheet.tall:not(.full) { --peek: 15vh; --peek: 15dvh; }
+.csheet.full { border-radius: 0; }
 .csheet.full .sbar { border-radius: 0; padding-top: env(safe-area-inset-top); }
 .csheet { overflow-x: hidden; }
 .csheet .cbody { will-change: transform; }

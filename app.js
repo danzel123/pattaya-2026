@@ -679,6 +679,7 @@ document.querySelectorAll('a[href^="http"]').forEach(a => { a.target = "_blank";
     body.innerHTML = "";
     body.append(...card.querySelector(".full").cloneNode(true).childNodes);
     sheet.hidden = false; box.scrollTop = 0;
+    box.classList.toggle("tall", box.scrollHeight > innerHeight * 0.86);
     const gal = body.querySelector(".cgal"), dots = body.querySelectorAll(".dots i");
     if (gal && dots.length) {
       const upd = () => { const i = Math.round(gal.scrollLeft / (gal.firstElementChild.offsetWidth + 8)); dots.forEach((d, k) => d.classList.toggle("on", k === i)); };
@@ -726,6 +727,7 @@ document.querySelectorAll('a[href^="http"]').forEach(a => { a.target = "_blank";
   const bar = sheet.querySelector(".sbar"), grab = sheet.querySelector(".grab");
   let gy = null, gd = 0;
   const full = on => box.classList.toggle("full", on);
+  const dy = v => box.style.setProperty("--dy", v);
   bar.addEventListener("touchstart", e => {
     if (e.target.closest("button")) return;
     gy = e.touches[0].clientY; gd = 0; box.style.transition = "none";
@@ -733,18 +735,19 @@ document.querySelectorAll('a[href^="http"]').forEach(a => { a.target = "_blank";
   bar.addEventListener("touchmove", e => {
     if (gy === null) return;
     gd = e.touches[0].clientY - gy;
-    box.style.transform = gd > 0 ? `translateY(${gd}px)` : "";
+    const up = box.classList.contains("tall") && !box.classList.contains("full") ? -0.15 * innerHeight : 0;
+    dy(Math.max(gd, up) + "px");  // окно едет за пальцем
     if (Math.abs(gd) > 5) e.preventDefault();
   }, { passive: false });
   bar.addEventListener("touchend", () => {
     if (gy === null) return;
-    gy = null; box.style.transition = "transform .2s, max-height .2s";
-    if (gd < -30) { full(true); box.style.transform = ""; }
-    else if (gd > 80 && box.classList.contains("full")) { full(false); box.style.transform = ""; }
+    gy = null; box.style.transition = "";
+    if (gd < -30) { full(true); dy("0px"); }
+    else if (gd > 80 && box.classList.contains("full") && box.classList.contains("tall")) { full(false); dy("0px"); }
     else if (gd > 80) {
-      box.style.transform = "translateY(100%)";
-      setTimeout(() => { close(); box.style.transition = box.style.transform = ""; }, 200);
-    } else box.style.transform = "";
+      dy("100%");
+      setTimeout(() => { close(); box.style.transition = "none"; dy("0px"); void box.offsetWidth; box.style.transition = ""; }, 300);
+    } else dy("0px");
   });
   // начали листать текст вниз — окно раскрывается на весь экран
   box.addEventListener("scroll", () => { if (box.scrollTop > 40) full(true); }, { passive: true });
