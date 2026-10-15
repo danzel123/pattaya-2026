@@ -719,7 +719,11 @@ document.querySelectorAll('a[href^="http"]').forEach(a => { a.target = "_blank";
     if (isDay) body.append(dayFull(card));
     else body.append(...card.querySelector(".full").cloneNode(true).childNodes);
     sheet.hidden = false; box.scrollTop = 0;
-    box.classList.toggle("tall", box.scrollHeight > innerHeight * 0.86);
+    // сдвигать вниз («полуоткрытое» окно) только по-настоящему длинные карточки
+    box.classList.toggle("tall", box.scrollHeight > innerHeight * 1.2);
+    body.querySelectorAll("img").forEach(im => im.complete || im.addEventListener("load", () => {  // фото догрузилось — пересчитать
+      if (!box.classList.contains("full")) box.classList.toggle("tall", box.scrollHeight > innerHeight * 1.2);
+    }, { once: true }));
     if (restore) {  // вернуть место прокрутки (повторно — когда подгрузятся фото)
       box.classList.toggle("full", restore.full);
       const set = () => { box.scrollTop = restore.top; };
@@ -822,7 +826,10 @@ document.querySelectorAll('a[href^="http"]').forEach(a => { a.target = "_blank";
     } else dy("0px");
   });
   // начали листать текст вниз — окно раскрывается на весь экран
-  box.addEventListener("scroll", () => { if (box.scrollTop > 40) full(true); }, { passive: true });
+  box.addEventListener("scroll", () => {
+    const room = box.scrollHeight - box.clientHeight;  // если листать почти некуда — раскрыть сразу
+    if (box.scrollTop > Math.min(40, room / 2)) full(true);
+  }, { passive: true });
   grab.addEventListener("click", e => { e.preventDefault(); e.stopPropagation(); close(); });
   // свайп влево/вправо по окну: карточка едет за пальцем (кроме галереи фото — там свой свайп)
   let sx = 0, sy = 0, sw = false, horiz = null;
