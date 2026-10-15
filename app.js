@@ -980,3 +980,35 @@ document.querySelectorAll('a[href^="http"]').forEach(a => { a.target = "_blank";
   paint(); render();
   window.addEventListener("storage", () => { paint(); render(); });
 })();
+
+// Нижние окна «Калькулятор» и «Ещё»: полоска сверху, потянуть вниз — закрыть (как у карточек)
+(function () {
+  function sheetDrag(wrap, box) {
+    if (!wrap || !box) return;
+    const close = () => { wrap.hidden = true; };
+    const g = document.createElement("div"); g.className = "grab2"; box.prepend(g);
+    g.addEventListener("click", e => { e.preventDefault(); e.stopPropagation(); close(); });
+    let y0 = null, d = 0, t0 = 0;
+    box.addEventListener("touchstart", e => {
+      y0 = null;
+      if (e.touches.length !== 1 || box.scrollTop > 0) return;
+      if (e.target.closest("input, select, textarea") ) return;  // в полях ввода — обычный ввод
+      y0 = e.touches[0].clientY; d = 0; t0 = Date.now(); box.style.transition = "none";
+    }, { passive: true });
+    box.addEventListener("touchmove", e => {
+      if (y0 === null) return;
+      d = Math.max(0, e.touches[0].clientY - y0);
+      if (d > 5) { e.preventDefault(); box.style.transform = `translateY(${d}px)`; }
+    }, { passive: false });
+    box.addEventListener("touchend", () => {
+      if (y0 === null) return;
+      y0 = null; box.style.transition = "transform .25s cubic-bezier(.2,.8,.2,1)";
+      if (d > box.offsetHeight * 0.3 || (d > 70 && Date.now() - t0 < 250)) {
+        box.style.transform = "translateY(100%)";
+        setTimeout(() => { close(); box.style.transition = "none"; box.style.transform = ""; }, 250);
+      } else box.style.transform = "";
+    });
+  }
+  sheetDrag($("fx"), document.querySelector("#fx .fxbox"));
+  sheetDrag($("more"), document.querySelector("#more .msheet"));
+})();
