@@ -724,3 +724,8 @@ html.noscroll, html.noscroll body { overflow: hidden; overscroll-behavior: none;
 /* кнопка «назад» во вложенном окне */
 .csheet .sbar .bk { position: absolute; left: 8px; top: 5px; max-width: calc(100% - 130px); height: 36px; padding: 0 14px 0 10px; border: 0; border-radius: 999px; background: var(--sea-soft, #e3f3f3); color: var(--c2); font: inherit; font-weight: 700; font-size: 14.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; cursor: pointer; z-index: 2; }
 .csheet .sbar .bk[hidden] { display: none; }
+/* карточка не шире колонки, даже если в строке фактов длинный кусок */
+.cards.short { grid-template-columns: minmax(0, 1fr); }
+.cards.short > .sc { min-width: 0; }
+.sc .facts b.f { white-space: normal; }
+@media (min-width: 760px) { .cards.short { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
