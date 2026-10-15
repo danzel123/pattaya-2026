@@ -726,12 +726,12 @@ document.querySelectorAll('a[href^="http"]').forEach(a => { a.target = "_blank";
   });
   // полоска сверху: вверх — на весь экран, вниз — свернуть или закрыть, нажать — закрыть
   const bar = sheet.querySelector(".sbar"), grab = sheet.querySelector(".grab");
-  let gy = null, gd = 0;
+  let gy = null, gd = 0, gt = 0;
   const full = on => box.classList.toggle("full", on);
   const dy = v => box.style.setProperty("--dy", v);
   bar.addEventListener("touchstart", e => {
     if (e.target.closest("button")) return;
-    gy = e.touches[0].clientY; gd = 0; box.style.transition = "none";
+    gy = e.touches[0].clientY; gd = 0; gt = Date.now(); box.style.transition = "none";
   }, { passive: true });
   bar.addEventListener("touchmove", e => {
     if (gy === null) return;
@@ -745,7 +745,7 @@ document.querySelectorAll('a[href^="http"]').forEach(a => { a.target = "_blank";
     gy = null; box.style.transition = "";
     if (gd < -30) { full(true); dy("0px"); }
     else if (gd > 80 && box.classList.contains("full") && box.classList.contains("tall")) { full(false); dy("0px"); }
-    else if (gd > 80) {
+    else if (shut(gd, gt)) {
       dy("100%");
       setTimeout(() => { close(); box.style.transition = "none"; dy("0px"); void box.offsetWidth; box.style.transition = ""; }, 300);
     } else dy("0px");
@@ -778,10 +778,12 @@ document.querySelectorAll('a[href^="http"]').forEach(a => { a.target = "_blank";
     else { body.style.transition = "transform .2s, opacity .2s"; body.style.transform = ""; body.style.opacity = ""; }
   }, { passive: true });
   // карточка уже наверху и тянем вниз по содержимому — окно едет за пальцем и закрывается (как в iOS)
-  let py = null, px = 0, pd = 0, pmode = null;
+  let py = null, px = 0, pd = 0, pmode = null, pt = 0;
+  // закрыть — длинный жест (четверть экрана) или быстрое смахивание
+  const shut = (d, t0) => d > innerHeight * 0.25 || (d > 90 && Date.now() - t0 < 250);
   box.addEventListener("touchstart", e => {
     if (e.touches.length !== 1 || e.target.closest(".sbar")) { py = null; return; }
-    py = box.scrollTop <= 0 ? e.touches[0].clientY : null; px = e.touches[0].clientX; pd = 0; pmode = null;
+    py = box.scrollTop <= 0 ? e.touches[0].clientY : null; px = e.touches[0].clientX; pd = 0; pmode = null; pt = Date.now();
   }, { passive: true });
   box.addEventListener("touchmove", e => {
     if (py === null) return;
@@ -795,7 +797,9 @@ document.querySelectorAll('a[href^="http"]').forEach(a => { a.target = "_blank";
   box.addEventListener("touchend", () => {
     if (!pmode) { py = null; return; }
     pmode = null; py = null; box.style.transition = "";
-    if (pd > 110) {
+    if (pd > 80 && box.classList.contains("full") && box.classList.contains("tall")) {
+      full(false); box.style.setProperty("--dy", "0px");  // из полного экрана — сначала уменьшить
+    } else if (shut(pd, pt)) {
       box.style.setProperty("--dy", "100%");
       setTimeout(() => { close(); box.style.transition = "none"; box.style.setProperty("--dy", "0px"); void box.offsetWidth; box.style.transition = ""; }, 300);
     } else box.style.setProperty("--dy", "0px");
