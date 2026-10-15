@@ -697,3 +697,11 @@ details.day .daylink + .bring { margin-top: 0; }
 .card.pad + .card.pad, .card.pad + .certbox { margin-top: 12px; }
 /* миниатюры крупнее: на всю высоту карточки, но не уже 112 px */
 .sc .th { width: 112px; height: auto; min-height: 112px; align-self: stretch; }
+/* расширение карточки дня */
+details.day .dx { margin: 6px 14px 14px; padding-top: 10px; border-top: 1px dashed var(--line); font-size: 15px; }
+details.day .dx h4 { margin: 14px 0 6px; font-size: 16px; }
+details.day .dx ul { margin: 0; padding-left: 18px; }
+details.day .dx li { margin: 0 0 8px; line-height: 1.4; }
+details.day .dx .w { font-size: 12.5px; color: var(--mut); background: #eef2f4; border-radius: 999px; padding: 1px 8px; white-space: nowrap; }
+details.day .dx .why { color: var(--mut); }
+details.day .dx .tip { margin: 0 0 6px; line-height: 1.4; }
