@@ -159,15 +159,17 @@ function initMap() {
   // на телефоне карта не мешает листать страницу: двигать — после нажатия на карту
   if (touch) {
     const wrap = $("leaflet").parentElement, lock = document.createElement("button");
-    lock.type = "button"; lock.className = "maplock"; lock.textContent = "👆 Нажмите, чтобы двигать карту";
+    lock.type = "button"; lock.className = "maplock"; lock.textContent = "👆 Нажмите на карту, чтобы двигать";
     wrap.appendChild(lock);
-    lock.onclick = () => { map.dragging.enable(); wrap.classList.add("live"); };
+    const unlock = () => { map.dragging.enable(); wrap.classList.add("live"); y0 = scrollY; };
+    lock.onclick = unlock;
+    map.on("click", () => { if (!wrap.classList.contains("live")) unlock(); });  // нажатие на саму карту — тоже
     let y0 = scrollY;
     addEventListener("scroll", () => {
       if (wrap.classList.contains("live") && Math.abs(scrollY - y0) > 250) { map.dragging.disable(); wrap.classList.remove("live"); }
       if (!wrap.classList.contains("live")) y0 = scrollY;
     }, { passive: true });
-    map.on("popupopen", () => { map.dragging.enable(); wrap.classList.add("live"); y0 = scrollY; });
+    map.on("popupopen", unlock);
   }
   // открытое окошко точки не закрывают кнопки карты
   map.on("popupopen", () => $("leaflet").parentElement.classList.add("pop"));
