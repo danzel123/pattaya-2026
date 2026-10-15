@@ -667,3 +667,5 @@ details.day .daylink + .bring { margin-top: 0; }
 .csheet .cbody.nudge { animation: nudge 1.2s ease-in-out; }
 @keyframes nudge { 0%, 100% { transform: none; } 25% { transform: translateX(-46px); } 50% { transform: none; } 70% { transform: translateX(-20px); } }
 .csheet .sbar .nav button:active { transform: scale(.9); }
+.csheet .cbody { padding-top: 10px; }
+.csheet .sbar { box-shadow: 0 1px 0 var(--line); }
