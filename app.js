@@ -153,8 +153,25 @@ function initMap() {
   const hotel = MARKERS.find(m => m.cat === "hotel");
   const km = (a, b) => { const R = 6371, r = x => x * Math.PI / 180, dl = r(b.lat - a.lat), dn = r(b.lon - a.lon);
     const h = Math.sin(dl / 2) ** 2 + Math.cos(r(a.lat)) * Math.cos(r(b.lat)) * Math.sin(dn / 2) ** 2; return 2 * R * Math.asin(Math.sqrt(h)); };
-  const map = L.map("leaflet", { scrollWheelZoom: false });
+  const touch = matchMedia("(pointer: coarse)").matches;
+  const map = L.map("leaflet", { scrollWheelZoom: false, dragging: !touch, tap: false });
   map_ = map;
+  // на телефоне карта не мешает листать страницу: двигать — после нажатия на карту
+  if (touch) {
+    const wrap = $("leaflet").parentElement, lock = document.createElement("button");
+    lock.type = "button"; lock.className = "maplock"; lock.textContent = "👆 Нажмите, чтобы двигать карту";
+    wrap.appendChild(lock);
+    lock.onclick = () => { map.dragging.enable(); wrap.classList.add("live"); };
+    let y0 = scrollY;
+    addEventListener("scroll", () => {
+      if (wrap.classList.contains("live") && Math.abs(scrollY - y0) > 250) { map.dragging.disable(); wrap.classList.remove("live"); }
+      if (!wrap.classList.contains("live")) y0 = scrollY;
+    }, { passive: true });
+    map.on("popupopen", () => { map.dragging.enable(); wrap.classList.add("live"); y0 = scrollY; });
+  }
+  // открытое окошко точки не закрывают кнопки карты
+  map.on("popupopen", () => $("leaflet").parentElement.classList.add("pop"));
+  map.on("popupclose", () => $("leaflet").parentElement.classList.remove("pop"));
   map.attributionControl.setPrefix('<a href="https://leafletjs.com" target="_blank">Leaflet</a>');
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom: 19, attribution: "© OpenStreetMap" }).addTo(map);
   const layers = {};
@@ -166,13 +183,13 @@ function initMap() {
     const html = `${m.img ? `<img src="${m.img}" alt="">` : ""}<div class="pcat">${ICON[m.cat]} ${LABEL[m.cat]}${dist}</div><b>${m.name}</b><p>${m.desc || ""}</p>
       <div class="pbtns"><a class="pbtn" href="${route}" target="_blank">🚗 Маршрут</a><a class="pbtn" href="${m.gmap}" target="_blank">📍 Google</a>${more}</div>`;
     (layers[m.cat] = layers[m.cat] || L.layerGroup().addTo(map));
-    L.marker([m.lat, m.lon], { icon }).bindPopup(html, { maxWidth: 260 }).addTo(layers[m.cat]);
+    L.marker([m.lat, m.lon], { icon }).bindPopup(html, { maxWidth: 260, autoPanPaddingTopLeft: [10, 60], autoPanPaddingBottomRight: [10, 20] }).addTo(layers[m.cat]);
   });
   const fitAll = () => {
     const pts = MARKERS.filter(m => map.hasLayer(layers[m.cat])).map(m => [m.lat, m.lon]);
     if (pts.length) map.fitBounds(pts, { padding: [24, 24], maxZoom: 15 });
   };
-  fitAll();
+  map.setView([hotel.lat, hotel.lon], 12);  // старт — окрестности отеля, «⤢» показывает все точки
   document.querySelectorAll("#mapchips button").forEach(b => b.onclick = () => {
     b.classList.toggle("on");
     const l = layers[b.dataset.cat]; if (!l) return;
@@ -398,7 +415,7 @@ document.querySelectorAll('a[href^="http"]').forEach(a => { a.target = "_blank";
     tip.hidden = false;
     const rc = p.getBoundingClientRect();
     tip.style.left = Math.max(8, Math.min(window.innerWidth - tip.offsetWidth - 8, rc.left + rc.width / 2 - tip.offsetWidth / 2)) + "px";
-    tip.style.top = (rc.top + window.scrollY - tip.offsetHeight - 8) + "px";
+    tip.style.top = (rc.bottom + window.scrollY + 6) + "px";  // под ценой — не закрывает заголовок
   });
   let y0 = 0;
   document.addEventListener("click", () => (y0 = window.scrollY), true);

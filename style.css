@@ -729,3 +729,16 @@ html.noscroll, html.noscroll body { overflow: hidden; overscroll-behavior: none;
 .cards.short > .sc { min-width: 0; }
 .sc .facts b.f { white-space: normal; }
 @media (min-width: 760px) { .cards.short { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
+/* карта на телефоне */
+.mapwrap { position: relative; }
+.maplock { position: absolute; left: 50%; bottom: 14px; transform: translateX(-50%); z-index: 500; border: 0; border-radius: 999px; padding: 10px 16px; background: rgba(20,40,50,.82); color: #fff; font: inherit; font-weight: 700; font-size: 14px; white-space: nowrap; }
+.mapwrap.live .maplock { display: none; }
+.mapwrap.pop .mapbtns, .mapwrap.pop .leaflet-control-zoom { opacity: 0; pointer-events: none; }
+/* поиск: без второго (системного) крестика */
+input[type="search"]::-webkit-search-cancel-button { -webkit-appearance: none; display: none; }
+/* калькулятор — компактная кнопка слева, не закрывает стрелки карточек */
+#fxbtn { right: auto; left: 12px; min-height: 44px; padding: 8px 13px; font-size: 14px; }
+/* шапка плотнее — текст под ней не просвечивает */
+.topbar { background: rgba(251, 246, 238, .97); }
+/* ручку окна карточки легче поймать */
+.csheet .sbar .grab { width: 80px; }
