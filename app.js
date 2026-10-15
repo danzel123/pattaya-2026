@@ -670,6 +670,7 @@ document.querySelectorAll('a[href^="http"]').forEach(a => { a.target = "_blank";
   function open(card, dir) {
     if (!dir) box.classList.remove("full");
     cur = card;
+    sheet.dataset.cur = card.id;
     const grp = card.closest("section") || card.closest(".cards") || document;
     list = [...grp.querySelectorAll(".sc")].filter(c => !c.classList.contains("hide") && c.offsetParent !== null);
     const i = list.indexOf(card);
@@ -800,4 +801,71 @@ document.querySelectorAll('a[href^="http"]').forEach(a => { a.target = "_blank";
   ["pointerdown", "touchstart", "mousedown"].forEach(ev => x.addEventListener(ev, e => e.stopPropagation(), { passive: true }));
   x.addEventListener("click", e => { e.preventDefault(); e.stopPropagation(); e.stopImmediatePropagation(); close(); });
   sheet.addEventListener("click", e => { if (e.target === sheet) { e.preventDefault(); e.stopPropagation(); close(); } });
+})();
+
+// Избранное: звёздочка на карточках, список на главной (хранится в localStorage)
+(function () {
+  const KEY = "favs";
+  const load = () => { try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch (e) { return []; } };
+  const save = l => localStorage.setItem(KEY, JSON.stringify(l));
+  const page = location.pathname.split("/").pop() || "index.html";
+  const SEL = ".sc[id], .dish[id], article.card.venue[id]";
+  const has = id => load().some(f => f.id === id);
+  function info(el) {
+    const h = el.querySelector("h3, h4"), im = el.querySelector("img");
+    const name = h ? [...h.childNodes].filter(n => n.nodeType === 3 || !n.classList || !n.classList.contains("th")).map(n => n.textContent).join("").trim() : el.id;
+    return { id: el.id, page, name, img: im ? im.getAttribute("src") : "" };
+  }
+  function toggle(el) {
+    let l = load();
+    if (l.some(f => f.id === el.id)) l = l.filter(f => f.id !== el.id); else l.unshift(info(el));
+    save(l); paint(); render();
+  }
+  function paint() {
+    const ids = new Set(load().map(f => f.id));
+    document.querySelectorAll(".fav").forEach(b => {
+      const on = ids.has(b.dataset.id); b.classList.toggle("on", on); b.textContent = on ? "★" : "☆";
+      b.setAttribute("aria-label", on ? "Убрать из избранного" : "В избранное");
+    });
+    const sf = document.querySelector("#card-sheet .sfav");
+    if (sf) { const on = ids.has(sf.dataset.id); sf.classList.toggle("on", on); sf.textContent = on ? "★" : "☆"; }
+  }
+  document.querySelectorAll(SEL).forEach(el => {
+    if (el.closest("#alldays, #card-sheet")) return;
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "fav"; b.dataset.id = el.id;
+    el.style.position = el.style.position || "relative";
+    el.appendChild(b);
+  });
+  document.addEventListener("click", e => {
+    const b = e.target.closest(".fav");
+    if (!b) return;
+    e.preventDefault(); e.stopPropagation();
+    const el = document.getElementById(b.dataset.id); if (el) toggle(el);
+  }, true);
+  // звёздочка в открытом окне карточки
+  const sf = document.querySelector("#card-sheet .sfav");
+  if (sf) {
+    ["pointerdown", "touchstart", "mousedown"].forEach(ev => sf.addEventListener(ev, e => e.stopPropagation(), { passive: true }));
+    sf.addEventListener("click", e => { e.preventDefault(); e.stopPropagation(); const el = document.getElementById(sf.dataset.id); if (el) toggle(el); });
+    new MutationObserver(() => {
+      const c = document.getElementById(document.getElementById("card-sheet").dataset.cur || "");
+      sf.dataset.id = c ? c.id : ""; sf.style.visibility = c ? "" : "hidden"; paint();
+    }).observe(document.querySelector("#card-sheet .cbody"), { childList: true });
+  }
+  // список на главной
+  function render() {
+    const box = document.getElementById("favs"); if (!box) return;
+    const l = load(); box.hidden = !l.length;
+    box.querySelector(".favlist").innerHTML = l.map(f =>
+      `<a class="favi" href="${f.page === page ? "" : f.page}#${encodeURIComponent(f.id)}">${f.img ? `<img src="${f.img}" alt="" loading="lazy">` : "<span class=noimg>⭐</span>"}<b>${f.name}</b><button type="button" class="fav on" data-id="${f.id}" data-rm="1" aria-label="Убрать">★</button></a>`).join("");
+  }
+  document.addEventListener("click", e => {
+    const b = e.target.closest(".favi .fav[data-rm]");
+    if (!b) return;
+    e.preventDefault(); e.stopPropagation();
+    save(load().filter(f => f.id !== b.dataset.id)); render(); paint();
+  }, true);
+  paint(); render();
+  window.addEventListener("storage", () => { paint(); render(); });
 })();
