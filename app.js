@@ -147,8 +147,8 @@ if (pf) pf.addEventListener("click", e => { const b = e.target.closest("button")
   ob.observe(box);
 })();
 function initMap() {
-  const ICON = { hotel: "🏨", place: "🏝", food: "🍽", shop: "🛍", super: "🛒", massage: "💆", hospital: "🏥" };
-  const LABEL = { hotel: "Отель", place: "Место", food: "Еда", shop: "ТЦ / рынок", super: "Супермаркет", massage: "Массаж", hospital: "Больница" };
+  const ICON = { hotel: "🏨", place: "🏝", beach: "🏖", food: "🍽", shop: "🛍", super: "🛒", massage: "💆", hospital: "🏥" };
+  const LABEL = { hotel: "Отель", place: "Место", beach: "Пляж", food: "Еда", shop: "ТЦ / рынок", super: "Супермаркет", massage: "Массаж", hospital: "Больница" };
   const hotel = MARKERS.find(m => m.cat === "hotel");
   const km = (a, b) => { const R = 6371, r = x => x * Math.PI / 180, dl = r(b.lat - a.lat), dn = r(b.lon - a.lon);
     const h = Math.sin(dl / 2) ** 2 + Math.cos(r(a.lat)) * Math.cos(r(b.lat)) * Math.sin(dn / 2) ** 2; return 2 * R * Math.asin(Math.sqrt(h)); };
