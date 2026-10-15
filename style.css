@@ -671,3 +671,6 @@ details.day .daylink + .bring { margin-top: 0; }
 .csheet .sbar .nav button:active { transform: scale(.9); }
 .csheet .cbody { padding-top: 10px; }
 .csheet .sbar { box-shadow: 0 1px 0 var(--line); }
+/* нижнее меню прячется вместе с шапкой при прокрутке вниз */
+.tabbar { transition: transform .25s ease; }
+.top-hidden .tabbar { transform: translateY(100%); }
