@@ -29,7 +29,7 @@ const plural = (n, a, b, c) => { n = Math.abs(n) % 100; const m = n % 10; return
 
 // План: подсветка сегодняшнего дня, прошедшие — бледнее
 document.querySelectorAll(".day[data-date]").forEach(d => {
-  if (d.dataset.date === TH_TODAY) { d.classList.add("is-today"); d.open = true; }
+  if (d.dataset.date === TH_TODAY) { d.classList.add("is-today"); if (!document.body.classList.contains("p-plan")) d.open = true; }
   else if (d.dataset.date < TH_TODAY) d.classList.add("past");
 });
 
@@ -49,8 +49,8 @@ document.querySelectorAll(".day[data-date]").forEach(d => {
 function openAnchor(id) {
   const el = $(id);
   if (!el) return;
-  if (el.tagName === "DETAILS") el.open = true;
-  const det = el.closest("details"); if (det) det.open = true;
+  if (el.tagName === "DETAILS" && !(el.classList.contains("day") && document.body.classList.contains("p-plan"))) el.open = true;
+  const det = el.closest("details"); if (det && !(det.classList.contains("day") && document.body.classList.contains("p-plan"))) det.open = true;
   if (el.classList.contains("is-place")) {
     resetFilter();
     el.classList.remove("flash"); void el.offsetWidth; el.classList.add("flash");
@@ -100,6 +100,7 @@ let map_ = null;
 function jumpTo(id) {
   const el = $(id);
   if (!el) return;
+  if (window.cardSheet && el.matches("details.day") && document.body.classList.contains("p-plan")) { window.cardSheet.scrollTo(el); window.cardSheet.open(el); return; }
   if (window.cardSheet) { if (el.classList.contains("sc")) { if (!el.closest("#xcards")) window.cardSheet.scrollTo(el); window.cardSheet.open(el); return; } window.cardSheet.close(); }
   openAnchor(id);
   topLock = Date.now() + 700;
@@ -671,14 +672,16 @@ document.querySelectorAll('a[href^="http"]').forEach(a => { a.target = "_blank";
     if (!dir) box.classList.remove("full");
     cur = card;
     sheet.dataset.cur = card.id;
+    const isDay = card.matches("details.day");
     const grp = card.closest("section") || card.closest(".cards") || document;
-    list = [...grp.querySelectorAll(".sc")].filter(c => !c.classList.contains("hide") && c.offsetParent !== null);
+    list = [...grp.querySelectorAll(isDay ? "details.day" : ".sc")].filter(c => !c.classList.contains("hide") && c.offsetParent !== null);
     const i = list.indexOf(card);
     pv.disabled = i <= 0; nx.disabled = i < 0 || i >= list.length - 1;
     cnt.textContent = list.length > 1 && i >= 0 ? `${i + 1} / ${list.length}` : "";
     sheet.querySelector(".nav").style.visibility = list.length > 1 && i >= 0 ? "" : "hidden";
     body.innerHTML = "";
-    body.append(...card.querySelector(".full").cloneNode(true).childNodes);
+    if (isDay) body.append(dayFull(card));
+    else body.append(...card.querySelector(".full").cloneNode(true).childNodes);
     sheet.hidden = false; box.scrollTop = 0;
     box.classList.toggle("tall", box.scrollHeight > innerHeight * 0.86);
     const gal = body.querySelector(".cgal"), dots = body.querySelectorAll(".dots i");
@@ -686,6 +689,22 @@ document.querySelectorAll('a[href^="http"]').forEach(a => { a.target = "_blank";
       const upd = () => { const i = Math.round(gal.scrollLeft / (gal.firstElementChild.offsetWidth + 8)); dots.forEach((d, k) => d.classList.toggle("on", k === i)); };
       gal.addEventListener("scroll", upd, { passive: true }); upd();
     }
+  }
+  // окно дня плана: большое фото, дата, заголовок и всё содержимое дня
+  function dayFull(day) {
+    const f = document.createDocumentFragment(), sm = day.querySelector("summary"), im = sm.querySelector("img");
+    if (im) {
+      const g = document.createElement("div"); g.className = "cgal";
+      const fig = document.createElement("figure"), big = im.cloneNode(true);
+      big.src = im.dataset.full || im.src; big.removeAttribute("loading"); fig.append(big); g.append(fig); f.append(g);
+    }
+    const inn = document.createElement("div"); inn.className = "in dbox";
+    const dd = sm.querySelector(".dd"), h = sm.querySelector("h3"), ds = sm.querySelector(".dsum"), den = sm.querySelector(".den");
+    const ddh = dd ? dd.cloneNode(true) : null; if (ddh) ddh.querySelectorAll(".today").forEach(x => x.remove());
+    inn.innerHTML = `<p class="facts">${ddh ? ddh.innerHTML : ""}${day.classList.contains("is-today") ? ' · <b class="f">сегодня</b>' : ""}</p><h2>${h ? h.innerHTML : ""}</h2>` + (ds ? `<p class="lead">${ds.innerHTML}</p>` : "") + (den ? den.outerHTML : "");
+    [...day.children].filter(c => c.tagName !== "SUMMARY").forEach(c => inn.append(c.cloneNode(true)));
+    f.append(inn);
+    return f;
   }
   let busy = false;
   function step(d) {
@@ -814,6 +833,12 @@ document.querySelectorAll('a[href^="http"]').forEach(a => { a.target = "_blank";
     window.scrollTo(0, card.getBoundingClientRect().top + scrollY - (typeof topGap === "function" ? topGap(card) : 80));
   }
   window.cardSheet = { open, close, scrollTo };
+  if (document.body.classList.contains("p-plan")) document.addEventListener("click", e => {
+    const sm = e.target.closest("main details.day > summary");
+    if (!sm) return;
+    e.preventDefault(); e.stopPropagation();
+    open(sm.parentElement); hint();
+  }, true);
   document.addEventListener("click", e => {
     const c = e.target.closest(".sc");
     if (!c || e.target.closest("a, .price, .gl")) return;

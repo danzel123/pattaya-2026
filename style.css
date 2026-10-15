@@ -148,8 +148,8 @@ details.day .dsum { color: var(--mut); font-size: 15px; }
 details.day .chev { position: absolute; right: 12px; top: 10px; font-size: 20px; color: var(--c); transition: transform .2s; }
 details.day[open] .chev { transform: rotate(180deg); }
 details.day[open] summary { border-bottom: 1px solid var(--line); }
-details.day .tl { margin: 12px 14px 8px 30px; }
-details.day .tl li span { display: inline; }
+:is(details.day, .dbox) .tl { margin: 12px 14px 8px 30px; }
+:is(details.day, .dbox) .tl li span { display: inline; }
 .notes { display: block; margin: 4px 14px 14px; font-size: 13px; color: var(--mut); }
 .notes textarea { display: block; width: 100%; margin-top: 4px; font: inherit; font-size: 15px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 10px; resize: none; background: #fbfdff; }
 @media (max-width: 600px) {
@@ -599,9 +599,9 @@ footer { color: var(--mut); }
 html.noscroll, html.noscroll body { overflow: hidden; overscroll-behavior: none; }
 #more, #fx, #lightbox, #bigtext, #search, .msheet, .sres { overscroll-behavior: contain; }
 /* кнопка-ссылка и «Взять с собой» в карточке дня — одинаковые отступы */
-details.day .daylink { display: flex; align-items: center; gap: 8px; margin: 12px 14px 8px; padding: 11px 14px; border-radius: 12px; background: var(--sea-soft, #e1f4f2); color: var(--c2) !important; border: 1.5px solid #bfe3df; font-weight: 800; font-size: 15px; text-decoration: none !important; }
-details.day .bring { margin: 0 14px 10px; border-radius: 12px; }
-details.day .daylink + .bring { margin-top: 0; }
+:is(details.day, .dbox) .daylink { display: flex; align-items: center; gap: 8px; margin: 12px 14px 8px; padding: 11px 14px; border-radius: 12px; background: var(--sea-soft, #e1f4f2); color: var(--c2) !important; border: 1.5px solid #bfe3df; font-weight: 800; font-size: 15px; text-decoration: none !important; }
+:is(details.day, .dbox) .bring { margin: 0 14px 10px; border-radius: 12px; }
+:is(details.day, .dbox) .daylink + .bring { margin-top: 0; }
 .hero .sub3 { font-size: 15px; font-weight: 700; opacity: .95; }
 
 /* ==== короткие карточки и окно с подробностями ==== */
@@ -698,13 +698,13 @@ details.day .daylink + .bring { margin-top: 0; }
 /* миниатюры крупнее: на всю высоту карточки, но не уже 112 px */
 .sc .th { width: 112px; height: auto; min-height: 112px; align-self: stretch; }
 /* расширение карточки дня */
-details.day .dx { margin: 6px 14px 14px; padding-top: 10px; border-top: 1px dashed var(--line); font-size: 15px; }
-details.day .dx h4 { margin: 14px 0 6px; font-size: 16px; }
-details.day .dx ul { margin: 0; padding-left: 18px; }
-details.day .dx li { margin: 0 0 8px; line-height: 1.4; }
-details.day .dx .w { font-size: 12.5px; color: var(--mut); background: #eef2f4; border-radius: 999px; padding: 1px 8px; white-space: nowrap; }
-details.day .dx .why { color: var(--mut); }
-details.day .dx .tip { margin: 0 0 6px; line-height: 1.4; }
+:is(details.day, .dbox) .dx { margin: 6px 14px 14px; padding-top: 10px; border-top: 1px dashed var(--line); font-size: 15px; }
+:is(details.day, .dbox) .dx h4 { margin: 14px 0 6px; font-size: 16px; }
+:is(details.day, .dbox) .dx ul { margin: 0; padding-left: 18px; }
+:is(details.day, .dbox) .dx li { margin: 0 0 8px; line-height: 1.4; }
+:is(details.day, .dbox) .dx .w { font-size: 12.5px; color: var(--mut); background: #eef2f4; border-radius: 999px; padding: 1px 8px; white-space: nowrap; }
+:is(details.day, .dbox) .dx .why { color: var(--mut); }
+:is(details.day, .dbox) .dx .tip { margin: 0 0 6px; line-height: 1.4; }
 /* карточки-ссылки в днях плана */
 .minis { display: grid; gap: 8px; }
 .mini { display: flex; gap: 12px; align-items: stretch; background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 8px; text-decoration: none; color: inherit; }
@@ -713,5 +713,11 @@ details.day .dx .tip { margin: 0 0 6px; line-height: 1.4; }
 .mini .mt b { color: var(--c2); font-size: 15.5px; }
 .mini .mo { display: block; margin-top: 3px; }
 .mini .why { display: block; margin-top: 2px; color: var(--mut); font-size: 13.5px; }
-details.day .dx .mini .w { margin-left: 4px; }
+:is(details.day, .dbox) .dx .mini .w { margin-left: 4px; }
 .mini .mth { max-height: 112px; }
+/* день плана в окне */
+.csheet .dbox > .bring, .csheet .dbox > .daylink, .csheet .dbox > .dx { margin-left: 0; margin-right: 0; }
+.csheet .dbox > .tl { margin: 12px 0 8px 16px; }
+.csheet .dbox .den { margin: 0 0 10px; }
+.p-plan main details.day .chev { font-size: 0; }
+.p-plan main details.day .chev::after { content: "›"; font-size: 22px; line-height: 1; }
