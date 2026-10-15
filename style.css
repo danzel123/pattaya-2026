@@ -695,3 +695,5 @@ details.day .daylink + .bring { margin-top: 0; }
 .mp dd { margin: 0; text-align: right; font-weight: 700; }
 #massage .card.pad + .card.pad, #massage .card.pad + .certbox, .mprices + .card.pad + .certbox { margin-top: 12px; }
 .card.pad + .card.pad, .card.pad + .certbox { margin-top: 12px; }
+/* миниатюры крупнее: на всю высоту карточки, но не уже 112 px */
+.sc .th { width: 112px; height: auto; min-height: 112px; align-self: stretch; }
