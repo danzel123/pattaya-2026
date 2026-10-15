@@ -676,8 +676,6 @@ document.querySelectorAll('a[href^="http"]').forEach(a => { a.target = "_blank";
     pv.disabled = i <= 0; nx.disabled = i < 0 || i >= list.length - 1;
     cnt.textContent = list.length > 1 && i >= 0 ? `${i + 1} / ${list.length}` : "";
     sheet.querySelector(".nav").style.visibility = list.length > 1 ? "" : "hidden";
-    body.classList.remove("swl", "swr");
-    if (dir) { void body.offsetWidth; body.classList.add(dir > 0 ? "swl" : "swr"); }
     body.innerHTML = "";
     body.append(...card.querySelector(".full").cloneNode(true).childNodes);
     sheet.hidden = false; box.scrollTop = 0;
@@ -687,9 +685,28 @@ document.querySelectorAll('a[href^="http"]').forEach(a => { a.target = "_blank";
       gal.addEventListener("scroll", upd, { passive: true }); upd();
     }
   }
+  let busy = false;
   function step(d) {
     const i = list.indexOf(cur), c = list[i + d];
-    if (c) open(c, d);
+    if (!c || busy) { if (!busy) bounce(d); return; }
+    busy = true;
+    // старая карточка уезжает, новая выезжает с другой стороны
+    body.style.transition = "transform .18s ease-in, opacity .18s";
+    body.style.transform = `translateX(${-d * 100}%)`; body.style.opacity = "0";
+    setTimeout(() => {
+      open(c, d);
+      body.style.transition = "none";
+      body.style.transform = `translateX(${d * 100}%)`;
+      void body.offsetWidth;
+      body.style.transition = "transform .22s ease-out, opacity .22s";
+      body.style.transform = ""; body.style.opacity = "";
+      setTimeout(() => { busy = false; }, 230);
+    }, 180);
+  }
+  function bounce(d) {  // дальше листать некуда
+    body.style.transition = "transform .12s";
+    body.style.transform = `translateX(${-d * 24}px)`;
+    setTimeout(() => { body.style.transform = ""; }, 120);
   }
   function close() {
     sheet.hidden = true;
@@ -732,16 +749,36 @@ document.querySelectorAll('a[href^="http"]').forEach(a => { a.target = "_blank";
   // начали листать текст вниз — окно раскрывается на весь экран
   box.addEventListener("scroll", () => { if (box.scrollTop > 40) full(true); }, { passive: true });
   grab.addEventListener("click", e => { e.preventDefault(); e.stopPropagation(); close(); });
-  // свайп влево/вправо по окну (кроме галереи фото — там свой свайп)
-  let sx = 0, sy = 0, sw = false;
+  // свайп влево/вправо по окну: карточка едет за пальцем (кроме галереи фото — там свой свайп)
+  let sx = 0, sy = 0, sw = false, horiz = null;
   box.addEventListener("touchstart", e => {
-    const t = e.touches[0]; sx = t.clientX; sy = t.clientY; sw = !e.target.closest(".cgal, .sbar") && e.touches.length === 1;
+    const t = e.touches[0]; sx = t.clientX; sy = t.clientY; horiz = null;
+    sw = !busy && !e.target.closest(".cgal, .sbar") && e.touches.length === 1;
   }, { passive: true });
+  box.addEventListener("touchmove", e => {
+    if (!sw) return;
+    const t = e.touches[0], dx = t.clientX - sx, dy = t.clientY - sy;
+    if (horiz === null && (Math.abs(dx) > 8 || Math.abs(dy) > 8)) horiz = Math.abs(dx) > 1.3 * Math.abs(dy);
+    if (!horiz) return;
+    e.preventDefault();
+    const i = list.indexOf(cur), edge = (dx > 0 && i <= 0) || (dx < 0 && i >= list.length - 1);
+    body.style.transition = "none";
+    body.style.transform = `translateX(${edge ? dx / 4 : dx}px)`;
+    body.style.opacity = String(1 - Math.min(Math.abs(dx) / innerWidth, 1) * .5);
+  }, { passive: false });
   box.addEventListener("touchend", e => {
     if (!sw) return; sw = false;
-    const t = e.changedTouches[0], dx = t.clientX - sx, dy = t.clientY - sy;
-    if (Math.abs(dx) > 60 && Math.abs(dx) > 1.6 * Math.abs(dy)) step(dx < 0 ? 1 : -1);
+    if (!horiz) return;
+    const dx = e.changedTouches[0].clientX - sx, d = dx < 0 ? 1 : -1;
+    if (Math.abs(dx) > 70 && list[list.indexOf(cur) + d]) step(d);
+    else { body.style.transition = "transform .2s, opacity .2s"; body.style.transform = ""; body.style.opacity = ""; }
   }, { passive: true });
+  // подсказка: при первом открытии карточка чуть «покачивается» — видно, что можно листать
+  function hint() {
+    if (sessionStorage.getItem("swHint") || list.length < 2) return;
+    sessionStorage.setItem("swHint", "1");
+    setTimeout(() => { body.classList.add("nudge"); setTimeout(() => body.classList.remove("nudge"), 1300); }, 450);
+  }
   function scrollTo(card) {
     window.scrollTo(0, card.getBoundingClientRect().top + scrollY - (typeof topGap === "function" ? topGap(card) : 80));
   }
@@ -749,7 +786,7 @@ document.querySelectorAll('a[href^="http"]').forEach(a => { a.target = "_blank";
   document.addEventListener("click", e => {
     const c = e.target.closest(".sc");
     if (!c || e.target.closest("a, .price, .gl")) return;
-    open(c);
+    open(c); hint();
   });
   document.addEventListener("keydown", e => {
     if (e.key === "Escape" && !sheet.hidden) close();

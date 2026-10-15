@@ -657,12 +657,13 @@ details.day .daylink + .bring { margin-top: 0; }
 .csheet .sbar .nav button { width: 38px; height: 38px; border-radius: 50%; border: 0; background: var(--sea-soft, #e3f3f3); color: var(--c2); font-size: 26px; line-height: 1; padding: 0 0 3px; cursor: pointer; }
 .csheet .sbar .nav button:disabled { opacity: .3; cursor: default; }
 .csheet .sbar .cnt { font-size: 13px; color: var(--mut); min-width: 44px; text-align: center; }
-.csheet .cbody.swl { animation: swl .22s ease-out; }
-.csheet .cbody.swr { animation: swr .22s ease-out; }
-@keyframes swl { from { transform: translateX(40px); opacity: .3; } to { transform: none; opacity: 1; } }
-@keyframes swr { from { transform: translateX(-40px); opacity: .3; } to { transform: none; opacity: 1; } }
 .csheet .sbar { cursor: grab; touch-action: none; }
 .csheet .sbar .grab { width: 48px; height: 6px; padding: 10px 0; background-clip: content-box; box-sizing: content-box; cursor: pointer; }
 .csheet { max-height: 85vh; max-height: 85dvh; }
 .csheet.full { max-height: 100vh; max-height: 100dvh; height: 100vh; height: 100dvh; border-radius: 0; }
 .csheet.full .sbar { border-radius: 0; padding-top: env(safe-area-inset-top); }
+.csheet { overflow-x: hidden; }
+.csheet .cbody { will-change: transform; }
+.csheet .cbody.nudge { animation: nudge 1.2s ease-in-out; }
+@keyframes nudge { 0%, 100% { transform: none; } 25% { transform: translateX(-46px); } 50% { transform: none; } 70% { transform: translateX(-20px); } }
+.csheet .sbar .nav button:active { transform: scale(.9); }
