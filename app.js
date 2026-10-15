@@ -704,10 +704,32 @@ document.querySelectorAll('a[href^="http"]').forEach(a => { a.target = "_blank";
     if (e.key === "ArrowRight") step(1);
     if (e.key === "ArrowLeft") step(-1);
   });
+  // полоска сверху: потянуть вниз или нажать — закрыть
+  const bar = sheet.querySelector(".sbar"), grab = sheet.querySelector(".grab");
+  let gy = null, gd = 0;
+  bar.addEventListener("touchstart", e => {
+    if (e.target.closest("button")) return;
+    gy = e.touches[0].clientY; gd = 0; box.style.transition = "none";
+  }, { passive: true });
+  bar.addEventListener("touchmove", e => {
+    if (gy === null) return;
+    gd = Math.max(0, e.touches[0].clientY - gy);
+    box.style.transform = `translateY(${gd}px)`;
+    if (gd > 5) e.preventDefault();
+  }, { passive: false });
+  bar.addEventListener("touchend", () => {
+    if (gy === null) return;
+    gy = null; box.style.transition = "transform .2s";
+    if (gd > 80) {
+      box.style.transform = "translateY(100%)";
+      setTimeout(() => { close(); box.style.transition = box.style.transform = ""; }, 200);
+    } else box.style.transform = "";
+  });
+  grab.addEventListener("click", e => { e.preventDefault(); e.stopPropagation(); close(); });
   // свайп влево/вправо по окну (кроме галереи фото — там свой свайп)
   let sx = 0, sy = 0, sw = false;
   box.addEventListener("touchstart", e => {
-    const t = e.touches[0]; sx = t.clientX; sy = t.clientY; sw = !e.target.closest(".cgal") && e.touches.length === 1;
+    const t = e.touches[0]; sx = t.clientX; sy = t.clientY; sw = !e.target.closest(".cgal, .sbar") && e.touches.length === 1;
   }, { passive: true });
   box.addEventListener("touchend", e => {
     if (!sw) return; sw = false;

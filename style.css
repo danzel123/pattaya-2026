@@ -661,3 +661,5 @@ details.day .daylink + .bring { margin-top: 0; }
 .csheet .cbody.swr { animation: swr .22s ease-out; }
 @keyframes swl { from { transform: translateX(40px); opacity: .3; } to { transform: none; opacity: 1; } }
 @keyframes swr { from { transform: translateX(-40px); opacity: .3; } to { transform: none; opacity: 1; } }
+.csheet .sbar { cursor: grab; touch-action: none; }
+.csheet .sbar .grab { width: 48px; height: 6px; padding: 10px 0; background-clip: content-box; box-sizing: content-box; cursor: pointer; }
