@@ -988,22 +988,27 @@ document.querySelectorAll('a[href^="http"]').forEach(a => { a.target = "_blank";
     const close = () => { wrap.hidden = true; };
     const g = document.createElement("div"); g.className = "grab2"; box.prepend(g);
     g.addEventListener("click", e => { e.preventDefault(); e.stopPropagation(); close(); });
-    let y0 = null, d = 0, t0 = 0;
+    // тянуть можно с любого места, и с полей ввода тоже: простое нажатие на поле — обычный ввод
+    let y0 = null, x0 = 0, d = 0, t0 = 0, down = null;
     box.addEventListener("touchstart", e => {
       y0 = null;
       if (e.touches.length !== 1 || box.scrollTop > 0) return;
-      if (e.target.closest("input, select, textarea") ) return;  // в полях ввода — обычный ввод
-      y0 = e.touches[0].clientY; d = 0; t0 = Date.now(); box.style.transition = "none";
+      y0 = e.touches[0].clientY; x0 = e.touches[0].clientX; d = 0; down = null; t0 = Date.now(); box.style.transition = "none";
     }, { passive: true });
     box.addEventListener("touchmove", e => {
       if (y0 === null) return;
-      d = Math.max(0, e.touches[0].clientY - y0);
-      if (d > 5) { e.preventDefault(); box.style.transform = `translateY(${d}px)`; }
+      const dy = e.touches[0].clientY - y0, dx = e.touches[0].clientX - x0;
+      if (down === null && (Math.abs(dy) > 8 || Math.abs(dx) > 8)) down = dy > 0 && dy > 1.3 * Math.abs(dx);
+      if (!down) return;
+      e.preventDefault();
+      d = Math.max(0, dy); box.style.transform = `translateY(${d}px)`;
     }, { passive: false });
     box.addEventListener("touchend", () => {
       if (y0 === null) return;
       y0 = null; box.style.transition = "transform .25s cubic-bezier(.2,.8,.2,1)";
+      if (!down) { box.style.transform = ""; return; }
       if (d > box.offsetHeight * 0.3 || (d > 70 && Date.now() - t0 < 250)) {
+        if (document.activeElement && box.contains(document.activeElement)) document.activeElement.blur();  // убрать клавиатуру
         box.style.transform = "translateY(100%)";
         setTimeout(() => { close(); box.style.transition = "none"; box.style.transform = ""; }, 250);
       } else box.style.transform = "";
