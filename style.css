@@ -663,3 +663,6 @@ details.day .daylink + .bring { margin-top: 0; }
 @keyframes swr { from { transform: translateX(-40px); opacity: .3; } to { transform: none; opacity: 1; } }
 .csheet .sbar { cursor: grab; touch-action: none; }
 .csheet .sbar .grab { width: 48px; height: 6px; padding: 10px 0; background-clip: content-box; box-sizing: content-box; cursor: pointer; }
+.csheet { max-height: 85vh; max-height: 85dvh; }
+.csheet.full { max-height: 100vh; max-height: 100dvh; height: 100vh; height: 100dvh; border-radius: 0; }
+.csheet.full .sbar { border-radius: 0; padding-top: env(safe-area-inset-top); }

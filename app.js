@@ -668,6 +668,7 @@ document.querySelectorAll('a[href^="http"]').forEach(a => { a.target = "_blank";
   const pv = sheet.querySelector(".pv"), nx = sheet.querySelector(".nx"), cnt = sheet.querySelector(".cnt");
   let cur = null, list = [];
   function open(card, dir) {
+    if (!dir) box.classList.remove("full");
     cur = card;
     const grp = card.closest("section") || card.closest(".cards") || document;
     list = [...grp.querySelectorAll(".sc")].filter(c => !c.classList.contains("hide") && c.offsetParent !== null);
@@ -704,27 +705,32 @@ document.querySelectorAll('a[href^="http"]').forEach(a => { a.target = "_blank";
     if (e.key === "ArrowRight") step(1);
     if (e.key === "ArrowLeft") step(-1);
   });
-  // полоска сверху: потянуть вниз или нажать — закрыть
+  // полоска сверху: вверх — на весь экран, вниз — свернуть или закрыть, нажать — закрыть
   const bar = sheet.querySelector(".sbar"), grab = sheet.querySelector(".grab");
   let gy = null, gd = 0;
+  const full = on => box.classList.toggle("full", on);
   bar.addEventListener("touchstart", e => {
     if (e.target.closest("button")) return;
     gy = e.touches[0].clientY; gd = 0; box.style.transition = "none";
   }, { passive: true });
   bar.addEventListener("touchmove", e => {
     if (gy === null) return;
-    gd = Math.max(0, e.touches[0].clientY - gy);
-    box.style.transform = `translateY(${gd}px)`;
-    if (gd > 5) e.preventDefault();
+    gd = e.touches[0].clientY - gy;
+    box.style.transform = gd > 0 ? `translateY(${gd}px)` : "";
+    if (Math.abs(gd) > 5) e.preventDefault();
   }, { passive: false });
   bar.addEventListener("touchend", () => {
     if (gy === null) return;
-    gy = null; box.style.transition = "transform .2s";
-    if (gd > 80) {
+    gy = null; box.style.transition = "transform .2s, max-height .2s";
+    if (gd < -30) { full(true); box.style.transform = ""; }
+    else if (gd > 80 && box.classList.contains("full")) { full(false); box.style.transform = ""; }
+    else if (gd > 80) {
       box.style.transform = "translateY(100%)";
       setTimeout(() => { close(); box.style.transition = box.style.transform = ""; }, 200);
     } else box.style.transform = "";
   });
+  // начали листать текст вниз — окно раскрывается на весь экран
+  box.addEventListener("scroll", () => { if (box.scrollTop > 40) full(true); }, { passive: true });
   grab.addEventListener("click", e => { e.preventDefault(); e.stopPropagation(); close(); });
   // свайп влево/вправо по окну (кроме галереи фото — там свой свайп)
   let sx = 0, sy = 0, sw = false;
