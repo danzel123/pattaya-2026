@@ -665,7 +665,18 @@ document.querySelectorAll('a[href^="http"]').forEach(a => { a.target = "_blank";
   const sheet = $("card-sheet");
   if (!sheet) return;
   const box = sheet.querySelector(".csheet"), body = sheet.querySelector(".cbody");
-  function open(card) {
+  const pv = sheet.querySelector(".pv"), nx = sheet.querySelector(".nx"), cnt = sheet.querySelector(".cnt");
+  let cur = null, list = [];
+  function open(card, dir) {
+    cur = card;
+    const grp = card.closest("section") || card.closest(".cards") || document;
+    list = [...grp.querySelectorAll(".sc")].filter(c => !c.classList.contains("hide") && c.offsetParent !== null);
+    const i = list.indexOf(card);
+    pv.disabled = i <= 0; nx.disabled = i < 0 || i >= list.length - 1;
+    cnt.textContent = list.length > 1 && i >= 0 ? `${i + 1} / ${list.length}` : "";
+    sheet.querySelector(".nav").style.visibility = list.length > 1 ? "" : "hidden";
+    body.classList.remove("swl", "swr");
+    if (dir) { void body.offsetWidth; body.classList.add(dir > 0 ? "swl" : "swr"); }
     body.innerHTML = "";
     body.append(...card.querySelector(".full").cloneNode(true).childNodes);
     sheet.hidden = false; box.scrollTop = 0;
@@ -675,7 +686,34 @@ document.querySelectorAll('a[href^="http"]').forEach(a => { a.target = "_blank";
       gal.addEventListener("scroll", upd, { passive: true }); upd();
     }
   }
-  function close() { sheet.hidden = true; }
+  function step(d) {
+    const i = list.indexOf(cur), c = list[i + d];
+    if (c) open(c, d);
+  }
+  function close() {
+    sheet.hidden = true;
+    // если листали — под окном показываем последнюю открытую карточку
+    if (cur && list.length > 1) { const r = cur.getBoundingClientRect(); if (r.top < 60 || r.bottom > innerHeight) scrollTo(cur); }
+  }
+  [[pv, -1], [nx, 1]].forEach(([b, d]) => {
+    ["pointerdown", "touchstart", "mousedown"].forEach(ev => b.addEventListener(ev, e => e.stopPropagation(), { passive: true }));
+    b.addEventListener("click", e => { e.preventDefault(); e.stopPropagation(); step(d); });
+  });
+  document.addEventListener("keydown", e => {
+    if (sheet.hidden) return;
+    if (e.key === "ArrowRight") step(1);
+    if (e.key === "ArrowLeft") step(-1);
+  });
+  // свайп влево/вправо по окну (кроме галереи фото — там свой свайп)
+  let sx = 0, sy = 0, sw = false;
+  box.addEventListener("touchstart", e => {
+    const t = e.touches[0]; sx = t.clientX; sy = t.clientY; sw = !e.target.closest(".cgal") && e.touches.length === 1;
+  }, { passive: true });
+  box.addEventListener("touchend", e => {
+    if (!sw) return; sw = false;
+    const t = e.changedTouches[0], dx = t.clientX - sx, dy = t.clientY - sy;
+    if (Math.abs(dx) > 60 && Math.abs(dx) > 1.6 * Math.abs(dy)) step(dx < 0 ? 1 : -1);
+  }, { passive: true });
   function scrollTo(card) {
     window.scrollTo(0, card.getBoundingClientRect().top + scrollY - (typeof topGap === "function" ? topGap(card) : 80));
   }
