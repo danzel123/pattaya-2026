@@ -101,7 +101,7 @@ function jumpTo(id) {
   const el = $(id);
   if (!el) return;
   if (window.cardSheet && el.matches("details.day") && document.body.classList.contains("p-plan")) { window.cardSheet.scrollTo(el); window.cardSheet.open(el); return; }
-  if (window.cardSheet) { if (el.classList.contains("sc")) { if (!el.closest("#xcards")) window.cardSheet.scrollTo(el); window.cardSheet.open(el); return; } window.cardSheet.close(); }
+  if (window.cardSheet) { if (el.classList.contains("sc")) { if (!el.closest("#xcards")) window.cardSheet.scrollTo(el); window.cardSheet.open(el); return; } window.cardSheet.close(true); }
   openAnchor(id);
   topLock = Date.now() + 700;
   setTopHidden(el.getBoundingClientRect().top > 150);
@@ -585,6 +585,13 @@ document.querySelectorAll('a[href^="http"]').forEach(a => { a.target = "_blank";
   }, true);
   window.addEventListener("popstate", () => {
     if (!pushed) return;
+    const lb = $("lightbox"), cs = $("card-sheet");
+    const nested = cs && !cs.hidden && ((lb && !lb.hidden) || (window.cardSheet && window.cardSheet.depth()));
+    if (nested) {  // «Назад» закрывает только верхнее окно
+      if (lb && !lb.hidden) lb.hidden = true; else window.cardSheet.back();
+      history.pushState({ modal: 1 }, "");
+      return;
+    }
     fromPop = true; pushed = false;
     document.querySelectorAll(sel).forEach(e => (e.hidden = true));
     document.body.classList.remove("noscroll");
@@ -668,8 +675,18 @@ document.querySelectorAll('a[href^="http"]').forEach(a => { a.target = "_blank";
   const box = sheet.querySelector(".csheet"), body = sheet.querySelector(".cbody");
   const pv = sheet.querySelector(".pv"), nx = sheet.querySelector(".nx"), cnt = sheet.querySelector(".cnt");
   let cur = null, list = [];
-  function open(card, dir) {
-    if (!dir) box.classList.remove("full");
+  // стопка окон (LIFO): из дня открыли кафе — закрываем кафе и возвращаемся к дню на то же место
+  const stack = [];
+  const bk = document.createElement("button");
+  bk.type = "button"; bk.className = "bk"; bk.hidden = true;
+  sheet.querySelector(".sbar").prepend(bk);
+  ["pointerdown", "touchstart", "mousedown"].forEach(ev => bk.addEventListener(ev, e => e.stopPropagation(), { passive: true }));
+  bk.addEventListener("click", e => { e.preventDefault(); e.stopPropagation(); back(); });
+  const ttl = c => { const h = c.querySelector("summary h3, h3"); return h ? h.textContent.replace(/\s*\(.*?\)\s*$/, "").trim() : ""; };
+  function open(card, dir, restore) {
+    if (sheet.hidden) stack.length = 0;
+    else if (!dir && !restore && cur && card !== cur) stack.push({ card: cur, top: box.scrollTop, full: box.classList.contains("full") });
+    if (!dir && sheet.hidden) box.classList.remove("full");
     cur = card;
     sheet.dataset.cur = card.id;
     const isDay = card.matches("details.day");
@@ -678,12 +695,19 @@ document.querySelectorAll('a[href^="http"]').forEach(a => { a.target = "_blank";
     const i = list.indexOf(card);
     pv.disabled = i <= 0; nx.disabled = i < 0 || i >= list.length - 1;
     cnt.textContent = list.length > 1 && i >= 0 ? `${i + 1} / ${list.length}` : "";
-    sheet.querySelector(".nav").style.visibility = list.length > 1 && i >= 0 ? "" : "hidden";
+    sheet.querySelector(".nav").style.visibility = list.length > 1 && i >= 0 && !stack.length ? "" : "hidden";
+    bk.hidden = !stack.length;
+    if (stack.length) bk.textContent = "‹ " + ttl(stack[stack.length - 1].card);
     body.innerHTML = "";
     if (isDay) body.append(dayFull(card));
     else body.append(...card.querySelector(".full").cloneNode(true).childNodes);
     sheet.hidden = false; box.scrollTop = 0;
     box.classList.toggle("tall", box.scrollHeight > innerHeight * 0.86);
+    if (restore) {  // вернуть место прокрутки (повторно — когда подгрузятся фото)
+      box.classList.toggle("full", restore.full);
+      const set = () => { box.scrollTop = restore.top; };
+      set(); requestAnimationFrame(set); setTimeout(set, 120); setTimeout(set, 400);
+    }
     const gal = body.querySelector(".cgal"), dots = body.querySelectorAll(".dots i");
     if (gal && dots.length) {
       const upd = () => { const i = Math.round(gal.scrollLeft / (gal.firstElementChild.offsetWidth + 8)); dots.forEach((d, k) => d.classList.toggle("on", k === i)); };
@@ -729,7 +753,18 @@ document.querySelectorAll('a[href^="http"]').forEach(a => { a.target = "_blank";
     body.style.transform = `translateX(${-d * 24}px)`;
     setTimeout(() => { body.style.transform = ""; }, 120);
   }
-  function close() {
+  function back() {
+    if (!stack.length) return false;
+    const s = stack.pop();
+    body.style.transition = "none"; body.style.transform = "translateX(-30%)"; body.style.opacity = ".3";
+    open(s.card, 0, s);
+    void body.offsetWidth;
+    body.style.transition = "transform .22s ease-out, opacity .22s"; body.style.transform = ""; body.style.opacity = "";
+    return true;
+  }
+  function close(all) {
+    if (!all && back()) return;
+    stack.length = 0;
     sheet.hidden = true;
     // если листали — под окном показываем последнюю открытую карточку
     if (cur && list.length > 1) { const r = cur.getBoundingClientRect(); if (r.top < 60 || r.bottom > innerHeight) scrollTo(cur); }
@@ -766,7 +801,7 @@ document.querySelectorAll('a[href^="http"]').forEach(a => { a.target = "_blank";
     else if (gd > 80 && box.classList.contains("full") && box.classList.contains("tall")) { full(false); dy("0px"); }
     else if (shut(gd, gt)) {
       dy("100%");
-      setTimeout(() => { close(); box.style.transition = "none"; dy("0px"); void box.offsetWidth; box.style.transition = ""; }, 300);
+      setTimeout(() => { const had = stack.length; close(); if (had) { box.style.transition = ""; dy("0px"); return; } box.style.transition = "none"; dy("0px"); void box.offsetWidth; box.style.transition = ""; }, 300);
     } else dy("0px");
   });
   // начали листать текст вниз — окно раскрывается на весь экран
@@ -820,7 +855,7 @@ document.querySelectorAll('a[href^="http"]').forEach(a => { a.target = "_blank";
       full(false); box.style.setProperty("--dy", "0px");  // из полного экрана — сначала уменьшить
     } else if (shut(pd, pt)) {
       box.style.setProperty("--dy", "100%");
-      setTimeout(() => { close(); box.style.transition = "none"; box.style.setProperty("--dy", "0px"); void box.offsetWidth; box.style.transition = ""; }, 300);
+      setTimeout(() => { const had = stack.length; close(); if (had) { box.style.transition = ""; box.style.setProperty("--dy", "0px"); return; } box.style.transition = "none"; box.style.setProperty("--dy", "0px"); void box.offsetWidth; box.style.transition = ""; }, 300);
     } else box.style.setProperty("--dy", "0px");
   });
   // подсказка: при первом открытии карточка чуть «покачивается» — видно, что можно листать
@@ -832,7 +867,7 @@ document.querySelectorAll('a[href^="http"]').forEach(a => { a.target = "_blank";
   function scrollTo(card) {
     window.scrollTo(0, card.getBoundingClientRect().top + scrollY - (typeof topGap === "function" ? topGap(card) : 80));
   }
-  window.cardSheet = { open, close, scrollTo };
+  window.cardSheet = { open, close, scrollTo, back, depth: () => stack.length };
   if (document.body.classList.contains("p-plan")) document.addEventListener("click", e => {
     const sm = e.target.closest("main details.day > summary");
     if (!sm) return;
