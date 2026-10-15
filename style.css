@@ -705,3 +705,13 @@ details.day .dx li { margin: 0 0 8px; line-height: 1.4; }
 details.day .dx .w { font-size: 12.5px; color: var(--mut); background: #eef2f4; border-radius: 999px; padding: 1px 8px; white-space: nowrap; }
 details.day .dx .why { color: var(--mut); }
 details.day .dx .tip { margin: 0 0 6px; line-height: 1.4; }
+/* карточки-ссылки в днях плана */
+.minis { display: grid; gap: 8px; }
+.mini { display: flex; gap: 12px; align-items: stretch; background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 8px; text-decoration: none; color: inherit; }
+.mini .mth { flex: none; width: 96px; min-height: 72px; align-self: stretch; border-radius: 10px; object-fit: cover; background: #eef2f4; display: flex; align-items: center; justify-content: center; font-size: 22px; }
+.mini .mt { min-width: 0; font-size: 14.5px; line-height: 1.35; }
+.mini .mt b { color: var(--c2); font-size: 15.5px; }
+.mini .mo { display: block; margin-top: 3px; }
+.mini .why { display: block; margin-top: 2px; color: var(--mut); font-size: 13.5px; }
+details.day .dx .mini .w { margin-left: 4px; }
+.mini .mth { max-height: 112px; }

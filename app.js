@@ -100,7 +100,7 @@ let map_ = null;
 function jumpTo(id) {
   const el = $(id);
   if (!el) return;
-  if (window.cardSheet) { if (el.classList.contains("sc")) { window.cardSheet.scrollTo(el); window.cardSheet.open(el); return; } window.cardSheet.close(); }
+  if (window.cardSheet) { if (el.classList.contains("sc")) { if (!el.closest("#xcards")) window.cardSheet.scrollTo(el); window.cardSheet.open(el); return; } window.cardSheet.close(); }
   openAnchor(id);
   topLock = Date.now() + 700;
   setTopHidden(el.getBoundingClientRect().top > 150);
@@ -676,7 +676,7 @@ document.querySelectorAll('a[href^="http"]').forEach(a => { a.target = "_blank";
     const i = list.indexOf(card);
     pv.disabled = i <= 0; nx.disabled = i < 0 || i >= list.length - 1;
     cnt.textContent = list.length > 1 && i >= 0 ? `${i + 1} / ${list.length}` : "";
-    sheet.querySelector(".nav").style.visibility = list.length > 1 ? "" : "hidden";
+    sheet.querySelector(".nav").style.visibility = list.length > 1 && i >= 0 ? "" : "hidden";
     body.innerHTML = "";
     body.append(...card.querySelector(".full").cloneNode(true).childNodes);
     sheet.hidden = false; box.scrollTop = 0;
@@ -858,7 +858,7 @@ document.querySelectorAll('a[href^="http"]').forEach(a => { a.target = "_blank";
     if (sf) { const on = ids.has(sf.dataset.id); sf.classList.toggle("on", on); sf.textContent = on ? "★" : "☆"; }
   }
   document.querySelectorAll(SEL).forEach(el => {
-    if (el.closest("#alldays, #card-sheet")) return;
+    if (el.closest("#alldays, #card-sheet, #xcards")) return;
     const b = document.createElement("button");
     b.type = "button"; b.className = "fav"; b.dataset.id = el.id;
     el.style.position = el.style.position || "relative";
