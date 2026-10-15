@@ -686,3 +686,12 @@ details.day .daylink + .bring { margin-top: 0; }
 .favi img, .favi .noimg { width: 52px; height: 52px; border-radius: 10px; object-fit: cover; flex: none; display: flex; align-items: center; justify-content: center; background: #eef2f4; }
 .favi b { font-size: 15px; line-height: 1.25; }
 .favi .fav { top: 50%; transform: translateY(-50%); right: 8px; background: transparent; box-shadow: none; }
+/* массаж: цены блоками вместо таблицы */
+.mprices { display: grid; gap: 10px; margin: 8px 0 12px; }
+.mp { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 12px 14px; }
+.mp > b { display: block; font-size: 16px; margin-bottom: 6px; }
+.mp dl { display: grid; grid-template-columns: auto 1fr; gap: 4px 14px; margin: 0; font-size: 15px; }
+.mp dt { color: var(--mut); }
+.mp dd { margin: 0; text-align: right; font-weight: 700; }
+#massage .card.pad + .card.pad, #massage .card.pad + .certbox, .mprices + .card.pad + .certbox { margin-top: 12px; }
+.card.pad + .card.pad, .card.pad + .certbox { margin-top: 12px; }

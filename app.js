@@ -777,6 +777,29 @@ document.querySelectorAll('a[href^="http"]').forEach(a => { a.target = "_blank";
     if (Math.abs(dx) > 70 && list[list.indexOf(cur) + d]) step(d);
     else { body.style.transition = "transform .2s, opacity .2s"; body.style.transform = ""; body.style.opacity = ""; }
   }, { passive: true });
+  // карточка уже наверху и тянем вниз по содержимому — окно едет за пальцем и закрывается (как в iOS)
+  let py = null, px = 0, pd = 0, pmode = null;
+  box.addEventListener("touchstart", e => {
+    if (e.touches.length !== 1 || e.target.closest(".sbar")) { py = null; return; }
+    py = box.scrollTop <= 0 ? e.touches[0].clientY : null; px = e.touches[0].clientX; pd = 0; pmode = null;
+  }, { passive: true });
+  box.addEventListener("touchmove", e => {
+    if (py === null) return;
+    const t = e.touches[0], dy = t.clientY - py, dx = t.clientX - px;
+    if (pmode === null && (Math.abs(dy) > 8 || Math.abs(dx) > 8)) pmode = dy > 0 && dy > 1.3 * Math.abs(dx) && box.scrollTop <= 0;
+    if (!pmode) return;
+    e.preventDefault();
+    pd = Math.max(0, dy);
+    box.style.transition = "none"; box.style.setProperty("--dy", pd + "px");
+  }, { passive: false });
+  box.addEventListener("touchend", () => {
+    if (!pmode) { py = null; return; }
+    pmode = null; py = null; box.style.transition = "";
+    if (pd > 110) {
+      box.style.setProperty("--dy", "100%");
+      setTimeout(() => { close(); box.style.transition = "none"; box.style.setProperty("--dy", "0px"); void box.offsetWidth; box.style.transition = ""; }, 300);
+    } else box.style.setProperty("--dy", "0px");
+  });
   // подсказка: при первом открытии карточка чуть «покачивается» — видно, что можно листать
   function hint() {
     if (sessionStorage.getItem("swHint") || list.length < 2) return;
